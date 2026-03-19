@@ -12,6 +12,9 @@
 | exchange-processing.html | Обработка заявки |
 | exchange-error.html | Ошибка обмена |
 | exchange-complete.html | Обмен завершён |
+| dashboard.html | Личный кабинет |
+| faq.html | FAQ |
+| about.html | О нас |
 | styles.css | Стили и CSS-переменные |
 | script.js | Интерактивность |
 
@@ -217,6 +220,86 @@ COMPLETE LAYOUT (по центру)
 FOOTER (идентичен главной)
 ```
 
+## HTML структура: dashboard.html
+
+```
+HEADER (залогиненное состояние: аватар + email + "Выйти")
+
+DASHBOARD LAYOUT (sidebar + контент)
+├── SIDEBAR
+│   ├── User Card (аватар, имя, email)
+│   └── Navigation
+│       ├── История обменов (active)
+│       ├── Промокоды
+│       ├── Настройки профиля
+│       ├── Реферальная программа
+│       └── Выйти
+│
+└── CONTENT
+    ├── EXCHANGE HISTORY
+    │   ├── Filter Pills (Все, Завершено, В обработке, Ошибка)
+    │   ├── Table (ID, Дата, Отдал, Получил, Статус)
+    │   └── Pagination
+    │
+    ├── PROMO CODES
+    │   └── Promo Card ×3
+    │       ├── Code + Copy Button
+    │       ├── Discount
+    │       ├── Usage Count + Progress Bar
+    │       └── Status Badge
+    │
+    ├── PROFILE SETTINGS
+    │   ├── Email (значение + "Изменить")
+    │   ├── Telegram (значение + "Изменить")
+    │   └── Password Change Form (3 поля + кнопка)
+    │
+    └── REFERRAL PROGRAM
+        ├── Referral Link + Copy Button
+        ├── Stats (3 карточки: друзья, обмены, заработок)
+        ├── Earnings Table (Дата, Пользователь, Сумма, Бонус)
+        └── Info Message (условия программы)
+
+FOOTER (идентичен главной)
+```
+
+## HTML структура: about.html
+
+```
+HEADER (идентичен главной, ссылка "О нас" активна)
+
+ABOUT LAYOUT
+├── About Hero (заголовок, описание компании)
+├── About Stats (4 карточки с цифрами)
+│   ├── Лет на рынке
+│   ├── Криптовалют
+│   ├── Обменов выполнено
+│   └── Среднее время обмена
+└── About Advantages (6 карточек с иконками)
+    ├── Быстрый обмен
+    ├── Безопасность
+    ├── 200+ криптовалют
+    ├── Поддержка 24/7
+    ├── Без скрытых комиссий
+    └── Фиксация курса
+
+FOOTER (идентичен главной)
+```
+
+## HTML структура: faq.html
+
+```
+HEADER (идентичен главной, ссылка FAQ активна)
+
+FAQ LAYOUT
+├── FAQ Header (заголовок, подзаголовок)
+└── FAQ List (аккордеон, 10 вопросов)
+    └── FAQ Item ×10
+        ├── FAQ Question (текст + стрелка)
+        └── FAQ Answer (текст, скрыт по умолчанию)
+
+FOOTER (идентичен главной)
+```
+
 ## Атрибуты разметки
 
 ### Блоки (data-block)
@@ -234,6 +317,13 @@ FOOTER (идентичен главной)
 | processing-layout | processing | Layout обработки |
 | error-layout | error | Layout ошибки |
 | complete-layout | complete | Layout завершения |
+| dashboard-layout | dashboard | Двухколоночный layout ЛК |
+| exchange-history | dashboard | История обменов |
+| promo-codes | dashboard | Промокоды |
+| profile-settings | dashboard | Настройки профиля |
+| referral-program | dashboard | Реферальная программа |
+| about-layout | about | Layout страницы "О нас" |
+| faq-layout | faq | Layout FAQ |
 | footer | все | Футер |
 | partners | index | Партнёры |
 | seo-links | index | SEO-перелинковка |
@@ -257,6 +347,12 @@ FOOTER (идентичен главной)
 **exchange-error.html:** error-card, error-header, error-status, error-reason, exchange-direction, order-info, info-message, error-actions.
 
 **exchange-complete.html:** complete-card, complete-header, complete-status, exchange-direction, order-info, info-message, complete-actions.
+
+**dashboard.html:** header-user, dashboard-sidebar, sidebar-user, sidebar-nav, dashboard-content, section-title, filter-pills, exchange-table, pagination, promo-card, profile-fields, password-section, referral-link, referral-stats, referral-earnings, info-message.
+
+**about.html:** about-hero, about-stats, about-stat-card, about-advantages, about-advantage-card.
+
+**faq.html:** faq-header, faq-list, faq-item.
 
 ## CSS переменные (styles.css, блок :root)
 
@@ -287,3 +383,4 @@ FOOTER (идентичен главной)
 | .order-layout | Две колонки (grid 1fr 400px) | order, payment |
 | .processing-layout | По центру (max-width 800px) | processing, error, complete |
 | .verification-layout | По центру (max-width 800px) | card-verification, identity-verification |
+| .dashboard-layout | Sidebar + контент (grid 260px 1fr) | dashboard |

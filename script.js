@@ -170,7 +170,43 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     */
 
-    // 7. Переключение типа карты на странице верификации
+    // 7. Dashboard: навигация sidebar
+    const sidebarNavItems = document.querySelectorAll('.sidebar-nav-item[href^="#"]');
+    sidebarNavItems.forEach(item => {
+        item.addEventListener('click', function() {
+            sidebarNavItems.forEach(nav => nav.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // 8. Dashboard: фильтры
+    const filterPills = document.querySelectorAll('.filter-pill');
+    filterPills.forEach(pill => {
+        pill.addEventListener('click', function() {
+            filterPills.forEach(p => p.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // 9. Копирование в буфер (промокоды, адреса, реф. ссылки)
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    copyButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const field = this.closest('.address-field, .promo-code-field');
+            if (field) {
+                const value = field.querySelector('.address-value, .promo-code-value, .amount-value');
+                if (value) {
+                    navigator.clipboard.writeText(value.textContent.trim());
+                    const svgIcon = this.querySelector('svg');
+                    const originalHTML = this.innerHTML;
+                    this.textContent = 'Скопировано!';
+                    setTimeout(() => { this.innerHTML = originalHTML; }, 2000);
+                }
+            }
+        });
+    });
+
+    // 10. Переключение типа карты на странице верификации
     const cardTypeButtons = document.querySelectorAll('.card-type-btn');
     const physicalRequirements = document.getElementById('physical-requirements');
     const virtualRequirements = document.getElementById('virtual-requirements');
@@ -195,6 +231,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (virtualRequirements) virtualRequirements.style.display = 'block';
             }
         });
+    });
+
+    // 11. FAQ аккордеон
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (question) {
+            question.addEventListener('click', function() {
+                const isOpen = item.classList.contains('open');
+                const answer = item.querySelector('.faq-answer');
+
+                // Закрываем все остальные
+                faqItems.forEach(other => {
+                    if (other !== item) {
+                        other.classList.remove('open');
+                        const otherAnswer = other.querySelector('.faq-answer');
+                        if (otherAnswer) otherAnswer.style.maxHeight = null;
+                    }
+                });
+
+                // Переключаем текущий
+                if (isOpen) {
+                    item.classList.remove('open');
+                    answer.style.maxHeight = null;
+                } else {
+                    item.classList.add('open');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        }
     });
 
 });

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - Криптообменник</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- БЛОК: Шапка сайта -->
+    <header class="header" data-block="header">
+        <div class="container">
+            <div class="block-label">HEADER</div>
+            <div class="header-content">
+                <!-- Элемент: Логотип -->
+                <div class="logo" data-element="logo">
+                    <span class="element-label">Logo</span>
+                    <a href="index.html">CryptoExchange</a>
+                </div>
+
+                <!-- Элемент: Навигация -->
+                <nav class="nav" data-element="navigation">
+                    <span class="element-label">Navigation</span>
+
+                    <!-- Выпадающее меню: Обмен -->
+                    <div class="nav-dropdown" data-element="nav-dropdown">
+                        <span class="element-label">Dropdown Menu</span>
+                        <button class="nav-link nav-dropdown-toggle" id="exchange-dropdown">
+                            Обмен
+                            <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="nav-dropdown-menu" id="exchange-dropdown-menu">
+                            <a href="#" class="nav-dropdown-item">Крипта на крипту</a>
+                            <a href="#" class="nav-dropdown-item">Фиат на крипту / Крипта на фиат</a>
+                            <a href="#" class="nav-dropdown-item">Наличные</a>
+                            <a href="#" class="nav-dropdown-item">DEX</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="nav-link">Проверить AML</a>
+                    <a href="#" class="nav-link">Как совершить обмен</a>
+                    <a href="#" class="nav-link">О нас</a>
+                    <a href="#" class="nav-link">FAQ</a>
+                    <a href="#" class="nav-link">Контакты</a>
+                </nav>
+
+                <!-- Элемент: Настройки (тема и язык) -->
+                <div class="header-settings" data-element="header-settings">
+                    <span class="element-label">Settings</span>
+
+                    <!-- Переключатель темы -->
+                    <button class="theme-toggle" data-element="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                        <span class="element-label">Theme Toggle</span>
+                        <svg class="theme-icon theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <svg class="theme-icon theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                        </svg>
+                    </button>
+
+                    <!-- Переключатель языка -->
+                    <div class="language-toggle" data-element="language-toggle">
+                        <span class="element-label">Language Toggle</span>
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
+
+                <!-- Элемент: Пользователь (залогинен) -->
+                <div class="header-user" data-element="header-user">
+                    <span class="element-label">User Menu</span>
+                    <div class="user-avatar">АИ</div>
+                    <span class="user-name">alex@example.com</span>
+                    <a href="index.html" class="btn btn-secondary">Выйти</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- БЛОК: Основной контент -->
+    <main class="main">
+        <div class="container">
+
+            <!-- БЛОК: Dashboard Layout -->
+            <div class="dashboard-layout" data-block="dashboard-layout">
+                <div class="block-label">DASHBOARD LAYOUT</div>
+
+                <!-- Sidebar -->
+                <aside class="dashboard-sidebar" data-element="dashboard-sidebar">
+                    <span class="element-label">Sidebar</span>
+
+                    <!-- Карточка пользователя -->
+                    <div class="sidebar-user-card" data-element="sidebar-user">
+                        <span class="element-label">User Card</span>
+                        <div class="sidebar-user-email">alex@example.com</div>
+                    </div>
+
+                    <!-- Навигация -->
+                    <nav class="sidebar-nav" data-element="sidebar-nav">
+                        <span class="element-label">Sidebar Nav</span>
+                        <a href="#exchange-history" class="sidebar-nav-item active">
+                            <svg class="sidebar-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            История обменов
+                        </a>
+                        <a href="#promo-codes" class="sidebar-nav-item">
+                            <svg class="sidebar-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M20 12V22H4V12" stroke="currentColor" stroke-width="2"/>
+                                <path d="M22 7H2V12H22V7Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 22V7" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 7H7.5C6.83696 7 6.20107 6.73661 5.73223 6.26777C5.26339 5.79893 5 5.16304 5 4.5C5 3.83696 5.26339 3.20107 5.73223 2.73223C6.20107 2.26339 6.83696 2 7.5 2C11 2 12 7 12 7Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 7H16.5C17.163 7 17.7989 6.73661 18.2678 6.26777C18.7366 5.79893 19 5.16304 19 4.5C19 3.83696 18.7366 3.20107 18.2678 2.73223C17.7989 2.26339 17.163 2 16.5 2C13 2 12 7 12 7Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Промокоды
+                        </a>
+                        <a href="#profile-settings" class="sidebar-nav-item">
+                            <svg class="sidebar-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M20 21V19C20 16.7909 18.2091 15 16 15H8C5.79086 15 4 16.7909 4 19V21" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Настройки профиля
+                        </a>
+                        <a href="#referral-program" class="sidebar-nav-item">
+                            <svg class="sidebar-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 21V19C16 16.7909 14.2091 15 12 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                <path d="M20 8V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M23 11H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            Реферальная программа
+                        </a>
+                        <div class="sidebar-divider"></div>
+                        <a href="index.html" class="sidebar-nav-item logout">
+                            <svg class="sidebar-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M9 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H9" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 17L21 12L16 7" stroke="currentColor" stroke-width="2"/>
+                                <path d="M21 12H9" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Выйти
+                        </a>
+                    </nav>
+                </aside>
+
+                <!-- Контент -->
+                <div class="dashboard-content" data-element="dashboard-content">
+                    <span class="element-label">Dashboard Content</span>
+
+                    <!-- СЕКЦИЯ 1: История обменов -->
+                    <section id="exchange-history" data-block="exchange-history">
+                        <div class="block-label">EXCHANGE HISTORY</div>
+                        <div class="order-card">
+                            <h2 class="dashboard-section-title" data-element="section-title">
+                                <span class="element-label">Section Title</span>
+                                История обменов
+                            </h2>
+
+                            <!-- Фильтры -->
+                            <div class="filter-pills" data-element="filter-pills">
+                                <span class="element-label">Filter Pills</span>
+                                <button class="filter-pill active">Все</button>
+                                <button class="filter-pill">Завершено</button>
+                                <button class="filter-pill">В обработке</button>
+                                <button class="filter-pill">Ошибка</button>
+                            </div>
+
+                            <!-- Таблица -->
+                            <div class="table-wrapper" data-element="exchange-table">
+                                <span class="element-label">Exchange Table</span>
+                                <table class="dashboard-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Дата</th>
+                                            <th>Отдал</th>
+                                            <th>Получил</th>
+                                            <th>Статус</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#EX-2026-78432</td>
+                                            <td>19.03.2026, 14:30</td>
+                                            <td>1.0 BTC</td>
+                                            <td>45,320.00 USDT</td>
+                                            <td><span class="status-badge status-badge--success">Завершено</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#EX-2026-78290</td>
+                                            <td>17.03.2026, 09:15</td>
+                                            <td>500.00 USDT</td>
+                                            <td>0.27 ETH</td>
+                                            <td><span class="status-badge status-badge--success">Завершено</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#EX-2026-78105</td>
+                                            <td>15.03.2026, 18:42</td>
+                                            <td>2.5 ETH</td>
+                                            <td>4,500.00 USDT</td>
+                                            <td><span class="status-badge status-badge--warning">В обработке</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#EX-2026-77980</td>
+                                            <td>12.03.2026, 11:20</td>
+                                            <td>0.5 BTC</td>
+                                            <td>22,660.00 USDT</td>
+                                            <td><span class="status-badge status-badge--success">Завершено</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#EX-2026-77801</td>
+                                            <td>08.03.2026, 16:55</td>
+                                            <td>1000.00 USDT</td>
+                                            <td>0.022 BTC</td>
+                                            <td><span class="status-badge status-badge--error">Ошибка</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Пагинация -->
+                            <div class="pagination" data-element="pagination">
+                                <span class="element-label">Pagination</span>
+                                <button class="pagination-btn" disabled>Назад</button>
+                                <button class="pagination-btn active">1</button>
+                                <button class="pagination-btn">2</button>
+                                <button class="pagination-btn">3</button>
+                                <button class="pagination-btn">Вперёд</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- СЕКЦИЯ 2: Промокоды -->
+                    <section id="promo-codes" data-block="promo-codes">
+                        <div class="block-label">PROMO CODES</div>
+                        <div class="order-card">
+                            <h2 class="dashboard-section-title" data-element="section-title">
+                                <span class="element-label">Section Title</span>
+                                Мои промокоды
+                            </h2>
+
+                            <!-- Промокод 1 -->
+                            <div class="promo-card" data-element="promo-card">
+                                <span class="element-label">Promo Card</span>
+                                <div class="promo-card-header">
+                                    <span class="status-badge status-badge--success">Активен</span>
+                                </div>
+                                <div class="promo-code-field">
+                                    <div class="promo-code-value">WELCOME2026</div>
+                                    <button class="copy-btn">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                        Копировать
+                                    </button>
+                                </div>
+                                <div class="promo-details">
+                                    <div class="promo-usage">Осталось использований: <span class="promo-usage-count">3 из 10</span></div>
+                                </div>
+                                <div class="promo-usage-bar">
+                                    <div class="promo-usage-bar-fill" style="width: 70%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Промокод 2 -->
+                            <div class="promo-card" data-element="promo-card">
+                                <span class="element-label">Promo Card</span>
+                                <div class="promo-card-header">
+                                    <span class="status-badge status-badge--neutral">Использован</span>
+                                </div>
+                                <div class="promo-code-field">
+                                    <div class="promo-code-value">CRYPTO15</div>
+                                    <button class="copy-btn">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                        Копировать
+                                    </button>
+                                </div>
+                                <div class="promo-details">
+                                    <div class="promo-usage">Осталось использований: <span class="promo-usage-count">0 из 5</span></div>
+                                </div>
+                                <div class="promo-usage-bar">
+                                    <div class="promo-usage-bar-fill depleted" style="width: 100%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Промокод 3 -->
+                            <div class="promo-card" data-element="promo-card">
+                                <span class="element-label">Promo Card</span>
+                                <div class="promo-card-header">
+                                    <span class="status-badge status-badge--success">Активен</span>
+                                </div>
+                                <div class="promo-code-field">
+                                    <div class="promo-code-value">SPRING2026</div>
+                                    <button class="copy-btn">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                        Копировать
+                                    </button>
+                                </div>
+                                <div class="promo-details">
+                                    <div class="promo-usage">Осталось использований: <span class="promo-usage-count">7 из 7</span></div>
+                                </div>
+                                <div class="promo-usage-bar">
+                                    <div class="promo-usage-bar-fill" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- СЕКЦИЯ 3: Настройки профиля -->
+                    <section id="profile-settings" data-block="profile-settings">
+                        <div class="block-label">PROFILE SETTINGS</div>
+                        <div class="order-card">
+                            <h2 class="dashboard-section-title" data-element="section-title">
+                                <span class="element-label">Section Title</span>
+                                Настройки профиля
+                            </h2>
+
+                            <!-- Текущие данные -->
+                            <div data-element="profile-fields">
+                                <span class="element-label">Profile Fields</span>
+
+                                <div class="profile-field">
+                                    <div class="profile-field-info">
+                                        <div class="profile-field-label">Email</div>
+                                        <div class="profile-field-value">alex@example.com</div>
+                                    </div>
+                                    <button class="btn btn-secondary">Изменить</button>
+                                </div>
+
+                                <div class="profile-field">
+                                    <div class="profile-field-info">
+                                        <div class="profile-field-label">Telegram</div>
+                                        <div class="profile-field-value">@alexivanov</div>
+                                    </div>
+                                    <button class="btn btn-secondary">Изменить</button>
+                                </div>
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <!-- Смена пароля -->
+                            <div class="password-section" data-element="password-section">
+                                <span class="element-label">Password Section</span>
+                                <div class="password-section-title">Смена пароля</div>
+
+                                <form class="password-form">
+                                    <div class="form-group">
+                                        <label class="form-label">Текущий пароль</label>
+                                        <input type="password" class="form-input" placeholder="Введите текущий пароль">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Новый пароль</label>
+                                        <input type="password" class="form-input" placeholder="Введите новый пароль">
+                                        <div class="form-hint">Минимум 8 символов</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Подтвердите новый пароль</label>
+                                        <input type="password" class="form-input" placeholder="Повторите новый пароль">
+                                    </div>
+
+                                    <button type="button" class="btn btn-primary">Сменить пароль</button>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- СЕКЦИЯ 4: Реферальная программа -->
+                    <section id="referral-program" data-block="referral-program">
+                        <div class="block-label">REFERRAL PROGRAM</div>
+                        <div class="order-card">
+                            <h2 class="dashboard-section-title" data-element="section-title">
+                                <span class="element-label">Section Title</span>
+                                Реферальная программа
+                            </h2>
+
+                            <!-- Реферальная ссылка -->
+                            <div data-element="referral-link">
+                                <span class="element-label">Referral Link</span>
+                                <div class="address-field">
+                                    <div class="address-value">https://cryptoexchange.com/ref/ALEXIVANOV2026</div>
+                                    <button class="copy-btn">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                        Копировать
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <!-- Статистика -->
+                            <div class="referral-stats" data-element="referral-stats">
+                                <span class="element-label">Referral Stats</span>
+                                <div class="referral-stat-card">
+                                    <div class="referral-stat-value">12</div>
+                                    <div class="referral-stat-label">Приглашено друзей</div>
+                                </div>
+                                <div class="referral-stat-card">
+                                    <div class="referral-stat-value">150.00 USDT</div>
+                                    <div class="referral-stat-label">Заработано</div>
+                                </div>
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <!-- Вывод средств -->
+                            <div class="withdraw-section" data-element="referral-withdraw">
+                                <span class="element-label">Referral Withdraw</span>
+                                <h3 class="withdraw-title">Вывод средств</h3>
+
+                                <form class="withdraw-form">
+                                    <!-- Валюта вывода -->
+                                    <div class="form-group">
+                                        <label class="form-label">Валюта</label>
+                                        <select class="form-input">
+                                            <option>USDT (Tether)</option>
+                                            <option>BTC (Bitcoin)</option>
+                                            <option>ETH (Ethereum)</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Сеть -->
+                                    <div class="form-group">
+                                        <label class="form-label">Сеть</label>
+                                        <select class="form-input">
+                                            <option>BEP20 (BNB Smart Chain)</option>
+                                            <option>ERC20 (Ethereum)</option>
+                                            <option>TRC20 (Tron)</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Сумма -->
+                                    <div class="form-group">
+                                        <label class="form-label">Сумма</label>
+                                        <input type="text" class="form-input" placeholder="0.00" value="150.00">
+                                        <div class="form-hint">Доступно: 150.00 USDT</div>
+                                    </div>
+
+                                    <!-- Адрес кошелька -->
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            Адрес кошелька
+                                            <span class="form-required">*</span>
+                                        </label>
+                                        <input type="text" class="form-input" placeholder="Введите адрес кошелька">
+                                        <div class="form-hint">Убедитесь, что адрес соответствует выбранной сети</div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-primary btn-large">Вывести средства</button>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- БЛОК: Футер -->
+    <footer class="footer" data-block="footer">
+        <div class="container">
+            <div class="block-label">FOOTER</div>
+            <div class="footer-content">
+                <!-- Элемент: Колонка футера - О компании -->
+                <div class="footer-section" data-element="footer-column">
+                    <span class="element-label">Footer Column</span>
+                    <h4 class="footer-title">CryptoExchange</h4>
+                    <p class="footer-text">Надежный криптообменник с 2026 года</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">TG</a>
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">X</a>
+                    </div>
+                </div>
+                <!-- Элемент: Колонка футера - Сервисы -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Сервисы</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Обмен валют</a></li>
+                        <li><a href="#">Партнерская программа</a></li>
+                    </ul>
+                </div>
+                <!-- Элемент: Колонка футера - Информация -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Информация</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Как это работает</a></li>
+                        <li><a href="#">Правила использования</a></li>
+                        <li><a href="#">AML регламент</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                <!-- Элемент: Колонка футера - Поддержка -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Поддержка</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">support@cryptoexchange.com</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Элемент: Подвал футера (копирайт) -->
+            <div class="footer-bottom" data-element="footer-copyright">
+                <span class="element-label">Copyright</span>
+                <p>&copy; 2026 CryptoExchange. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
