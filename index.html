@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Криптообменник - Шаблон</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- БЛОК: Шапка сайта -->
+    <header class="header" data-block="header">
+        <div class="container">
+            <div class="block-label">HEADER</div>
+            <div class="header-content">
+                <!-- Элемент: Логотип -->
+                <div class="logo" data-element="logo">
+                    <span class="element-label">Logo</span>
+                    CryptoExchange
+                </div>
+
+                <!-- Элемент: Навигация -->
+                <nav class="nav" data-element="navigation">
+                    <span class="element-label">Navigation</span>
+
+                    <!-- Выпадающее меню: Обмен -->
+                    <div class="nav-dropdown" data-element="nav-dropdown">
+                        <span class="element-label">Dropdown Menu</span>
+                        <button class="nav-link nav-dropdown-toggle active" id="exchange-dropdown">
+                            Обмен
+                            <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="nav-dropdown-menu" id="exchange-dropdown-menu">
+                            <a href="#" class="nav-dropdown-item">Крипта на крипту</a>
+                            <a href="#" class="nav-dropdown-item">Фиат на крипту / Крипта на фиат</a>
+                            <a href="#" class="nav-dropdown-item">Наличные</a>
+                            <a href="#" class="nav-dropdown-item">DEX</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="nav-link">Проверить AML</a>
+                    <a href="#" class="nav-link">Как совершить обмен</a>
+                    <a href="#" class="nav-link">О нас</a>
+                    <a href="#" class="nav-link">FAQ</a>
+                    <a href="#" class="nav-link">Контакты</a>
+                </nav>
+
+                <!-- Элемент: Настройки (тема и язык) -->
+                <div class="header-settings" data-element="header-settings">
+                    <span class="element-label">Settings</span>
+
+                    <!-- Переключатель темы -->
+                    <button class="theme-toggle" data-element="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                        <span class="element-label">Theme Toggle</span>
+                        <svg class="theme-icon theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <svg class="theme-icon theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                        </svg>
+                    </button>
+
+                    <!-- Переключатель языка -->
+                    <div class="language-toggle" data-element="language-toggle">
+                        <span class="element-label">Language Toggle</span>
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
+
+                <!-- Элемент: Кнопки действий -->
+                <div class="header-actions" data-element="header-buttons">
+                    <span class="element-label">Actions</span>
+                    <button class="btn btn-secondary">Войти</button>
+                    <button class="btn btn-primary">Регистрация</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- БЛОК: Основной контент -->
+    <main class="main">
+        <div class="container">
+
+            <!-- БЛОК: Hero-секция (Главный экран) -->
+            <section class="hero" data-block="hero">
+                <div class="block-label">HERO SECTION</div>
+                <div class="hero-layout">
+                    <!-- Элемент: Левая колонка с текстом -->
+                    <div class="hero-content" data-element="hero-text">
+                        <span class="element-label">Hero Text</span>
+                        <h1 class="hero-title">Быстрый и надежный обмен криптовалюты</h1>
+                        <p class="hero-subtitle">Обменивайте криптовалюту по лучшему курсу без комиссий</p>
+
+                        <!-- Элемент: Условия обмена (бейджи) -->
+                        <div class="conditions-badges" data-element="conditions-badges">
+                            <span class="element-label">Conditions Badges</span>
+
+                            <!-- Бейдж: Фиксация курса (с выдвижным текстом) -->
+                            <div class="condition-badge-wrapper" data-element="condition-badge">
+                                <span class="element-label">Badge (Expandable)</span>
+                                <button class="condition-badge clickable" data-toggle="rate-fix">
+                                    <div class="badge-icon">
+                                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                                            <path d="M10 2L12 8L18 8L13 12L15 18L10 14L5 18L7 12L2 8L8 8L10 2Z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <div class="badge-content">
+                                        <div class="badge-label">Фиксация курса</div>
+                                        <div class="badge-value" id="rate-type-badge-text">По подтверждениям</div>
+                                    </div>
+                                    <svg class="badge-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <div class="badge-expandable" id="rate-fix">
+                                    <p class="expandable-text" id="rate-type-badge-description">Курс не фиксируется и фиксируется только в момент получения подтверждений в блокчейн-сети. Это обеспечивает актуальность курса на момент завершения транзакции.</p>
+                                </div>
+                            </div>
+
+                            <!-- Бейдж: AML проверка (с выдвижным текстом) -->
+                            <div class="condition-badge-wrapper">
+                                <button class="condition-badge clickable" data-toggle="aml-check">
+                                    <div class="badge-icon">
+                                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                                            <rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                                            <path d="M7 10L9 12L13 8" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+                                    <div class="badge-content">
+                                        <div class="badge-label">AML проверка</div>
+                                        <div class="badge-value">Автоматическая</div>
+                                    </div>
+                                    <svg class="badge-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <div class="badge-expandable" id="aml-check">
+                                    <p class="expandable-text">Все транзакции проходят автоматическую AML проверку (Anti-Money Laundering). Мы проверяем источники средств на соответствие законодательству и отклоняем подозрительные транзакции для вашей безопасности.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- БЛОК: Форма обмена (справа или по центру) -->
+                    <div class="exchange-wrapper" data-block="exchange-form">
+                        <div class="block-label">EXCHANGE FORM</div>
+
+                        <div class="exchange-card">
+                            <!-- Элемент: Заголовок формы -->
+                            <div class="exchange-header" data-element="form-header">
+                                <span class="element-label">Form Title</span>
+                                <h2>Обмен</h2>
+                            </div>
+
+                            <!-- Элемент: Выбор типа курса -->
+                            <div class="rate-type-selector" data-element="rate-type-selector">
+                                <span class="element-label">Rate Type Selector</span>
+                                <div class="rate-type-buttons">
+                                    <button class="rate-type-btn active" data-rate-type="floating">
+                                        <div class="rate-type-content">
+                                            <span class="rate-type-label">Плавающий курс</span>
+                                            <span class="rate-type-desc">Актуальный курс на момент подтверждения</span>
+                                        </div>
+                                    </button>
+                                    <button class="rate-type-btn" data-rate-type="fixed">
+                                        <div class="rate-type-content">
+                                            <span class="rate-type-label">Фиксированный курс</span>
+                                            <span class="rate-type-desc">Курс фиксируется при создании заявки</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="exchange-form">
+                                <!-- Элемент: Поле "Отдаете" -->
+                                <div class="exchange-field" data-element="send-field">
+                                    <span class="element-label">Send Field</span>
+                                    <label class="field-label">Отдаете</label>
+                                    <div class="input-group">
+                                        <input type="number" class="input-amount" placeholder="0.00" value="1.0">
+                                        <div class="currency-select">
+                                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" class="currency-icon">
+                                            <span class="currency-code">BTC</span>
+                                            <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <!-- Элемент: Выбор сети -->
+                                    <div class="network-select" data-element="network-select">
+                                        <span class="element-label">Network Select</span>
+                                        <label class="network-label">Сеть:</label>
+                                        <div class="network-dropdown">
+                                            <span class="network-current">Bitcoin (BTC)</span>
+                                            <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="field-info">
+                                        <span>Мин: 0.001 BTC / Макс: 100 BTC</span>
+                                    </div>
+                                </div>
+
+                                <!-- Элемент: Кнопка переключения направления -->
+                                <div class="exchange-switch" data-element="switch-button">
+                                    <span class="element-label">Switch</span>
+                                    <button class="switch-btn">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                            <path d="M5 12L10 17L15 12M5 8L10 3L15 8" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Элемент: Поле "Получаете" -->
+                                <div class="exchange-field" data-element="receive-field">
+                                    <span class="element-label">Receive Field</span>
+                                    <label class="field-label">Получаете</label>
+                                    <div class="input-group">
+                                        <input type="number" class="input-amount" placeholder="0.00" value="45320.00">
+                                        <div class="currency-select">
+                                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/825.png" alt="USDT" class="currency-icon">
+                                            <span class="currency-code">USDT</span>
+                                            <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <!-- Элемент: Выбор сети -->
+                                    <div class="network-select">
+                                        <label class="network-label">Сеть:</label>
+                                        <div class="network-dropdown">
+                                            <span class="network-current">Ethereum (ERC20)</span>
+                                            <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="field-info">
+                                        <span>Мин: 45.32 USDT / Макс: 4,532,000 USDT</span>
+                                    </div>
+                                </div>
+
+                                <!-- Элемент: Информация о подтверждениях -->
+                                <div class="confirmations-info" data-element="confirmations-info">
+                                    <span class="element-label">Confirmations Info</span>
+                                    <svg class="info-icon" width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                        <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                                        <path d="M10 6V10L13 13" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                    <span class="info-text">Требуется 3 подтверждения сети</span>
+                                </div>
+
+                                <!-- Элемент: Чекбокс согласия -->
+                                <div class="agreement-checkbox" data-element="agreement-checkbox">
+                                    <span class="element-label">Agreement Checkbox</span>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" checked required>
+                                        <span class="checkbox-text">
+                                            Я согласен с
+                                            <a href="#" class="agreement-link">правилами обмена</a> и
+                                            <a href="#" class="agreement-link">AML регламентом</a>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <!-- Элемент: Кнопка отправки формы -->
+                                <div data-element="submit-button">
+                                    <span class="element-label">Submit Button</span>
+                                    <button class="btn btn-primary btn-large">
+                                        Обменять
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- БЛОК: SEO текст для направления обмена -->
+            <section class="seo-text" data-block="seo-text">
+                <div class="block-label">SEO TEXT</div>
+                <div class="seo-text-content" data-element="seo-text-content">
+                    <span class="element-label">SEO Text Content</span>
+                    <h2 class="seo-text-title">Обмен Bitcoin (BTC) на Tether (USDT)</h2>
+                    <div class="seo-text-body">
+                        <p>Наш криптообменник предлагает быстрый и безопасный обмен Bitcoin на Tether по выгодному курсу. Мы работаем с 2026 года и обработали тысячи транзакций для клиентов по всему миру. Процесс обмена BTC на USDT занимает всего несколько минут и не требует регистрации.</p>
+
+                        <p>При обмене Bitcoin на Tether вы получаете лучший курс на рынке благодаря интеграции с ведущими биржами. Процесс обмена максимально автоматизирован и занимает минимальное количество времени. Вы можете отслеживать статус вашей транзакции в режиме реального времени через личный кабинет или по уникальному идентификатору заявки, который вы получите сразу после создания обмена.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- БЛОК: Популярные направления обмена -->
+            <section class="popular-directions" data-block="popular-directions">
+                <div class="block-label">POPULAR DIRECTIONS</div>
+                <h2 class="section-title" data-element="section-title">
+                    <span class="element-label">Section Title</span>
+                    Популярные направления обмена
+                </h2>
+                <div class="directions-grid" data-element="directions-grid">
+                    <span class="element-label">Directions Grid</span>
+
+                    <a href="#" class="direction-card" data-element="direction-card">
+                        <span class="element-label">Direction Card</span>
+                        <div class="direction-pair">
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" class="direction-icon">
+                                <span>BTC</span>
+                            </div>
+                            <svg class="direction-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/825.png" alt="USDT" class="direction-icon">
+                                <span>USDT</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="direction-card">
+                        <div class="direction-pair">
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png" alt="ETH" class="direction-icon">
+                                <span>ETH</span>
+                            </div>
+                            <svg class="direction-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" class="direction-icon">
+                                <span>BTC</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="direction-card">
+                        <div class="direction-pair">
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" class="direction-icon">
+                                <span>BTC</span>
+                            </div>
+                            <svg class="direction-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/328.png" alt="XMR" class="direction-icon">
+                                <span>XMR</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="direction-card">
+                        <div class="direction-pair">
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/825.png" alt="USDT" class="direction-icon">
+                                <span>USDT</span>
+                            </div>
+                            <svg class="direction-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png" alt="ETH" class="direction-icon">
+                                <span>ETH</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="direction-card">
+                        <div class="direction-pair">
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/2.png" alt="LTC" class="direction-icon">
+                                <span>LTC</span>
+                            </div>
+                            <svg class="direction-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" class="direction-icon">
+                                <span>BTC</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="direction-card">
+                        <div class="direction-pair">
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/328.png" alt="XMR" class="direction-icon">
+                                <span>XMR</span>
+                            </div>
+                            <svg class="direction-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/825.png" alt="USDT" class="direction-icon">
+                                <span>USDT</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- БЛОК: Этапы совершения обмена -->
+            <section class="exchange-steps" data-block="exchange-steps">
+                <div class="block-label">EXCHANGE STEPS</div>
+                <h2 class="section-title" data-element="section-title">
+                    <span class="element-label">Section Title</span>
+                    Как совершить обмен
+                </h2>
+                <div class="exchange-steps-grid" data-element="exchange-steps-grid">
+                    <span class="element-label">Steps Grid</span>
+
+                    <div class="exchange-step-card" data-element="step-card">
+                        <span class="element-label">Step Card</span>
+                        <div class="exchange-step-number">1</div>
+                        <div class="exchange-step-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="exchange-step-title">Выберите валюту</h3>
+                        <p class="exchange-step-desc">Выберите валюту для обмена, укажите сумму и сеть. Ознакомьтесь с курсом и условиями.</p>
+                    </div>
+
+                    <div class="exchange-step-card">
+                        <div class="exchange-step-number">2</div>
+                        <div class="exchange-step-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M3 10H21" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="exchange-step-title">Введите данные</h3>
+                        <p class="exchange-step-desc">Укажите адрес кошелька для получения средств, email для уведомлений и другие данные.</p>
+                    </div>
+
+                    <div class="exchange-step-card">
+                        <div class="exchange-step-number">3</div>
+                        <div class="exchange-step-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2"/>
+                                <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="exchange-step-title">Оплатите заявку</h3>
+                        <p class="exchange-step-desc">Отправьте указанную сумму на предоставленный адрес. Следите за статусом заявки в реальном времени.</p>
+                    </div>
+
+                    <div class="exchange-step-card">
+                        <div class="exchange-step-number">4</div>
+                        <div class="exchange-step-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                <path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18457 2.99721 7.13633 4.39828 5.49707C5.79935 3.85782 7.69279 2.71538 9.79619 2.24015C11.8996 1.76491 14.1003 1.98234 16.07 2.86" stroke="currentColor" stroke-width="2"/>
+                                <path d="M22 4L12 14.01L9 11.01" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="exchange-step-title">Получите средства</h3>
+                        <p class="exchange-step-desc">После подтверждения транзакции средства будут автоматически отправлены на ваш кошелек.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- БЛОК: Отзывы -->
+            <section class="reviews" data-block="reviews">
+                <div class="block-label">REVIEWS</div>
+                <h2 class="section-title" data-element="section-title">
+                    <span class="element-label">Section Title</span>
+                    Отзывы клиентов
+                </h2>
+                <div class="reviews-grid" data-element="reviews-grid">
+                    <span class="element-label">Reviews Grid</span>
+
+                    <div class="review-card" data-element="review-card">
+                        <span class="element-label">Review Card</span>
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://ui-avatars.com/api/?name=AK&background=6366f1&color=fff&size=40" alt="Avatar">
+                            </div>
+                            <div class="review-author">
+                                <div class="review-name">Алексей К.</div>
+                                <div class="review-date">15.03.2026</div>
+                            </div>
+                            <div class="review-rating">
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                        <p class="review-text">Обменял BTC на USDT за пару минут. Курс был даже лучше, чем на бирже. Рекомендую сервис.</p>
+                        <div class="review-pair">BTC → USDT</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://ui-avatars.com/api/?name=MS&background=ec4899&color=fff&size=40" alt="Avatar">
+                            </div>
+                            <div class="review-author">
+                                <div class="review-name">Мария С.</div>
+                                <div class="review-date">12.03.2026</div>
+                            </div>
+                            <div class="review-rating">
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                        <p class="review-text">Пользуюсь обменником уже несколько месяцев. Всегда быстро и без проблем. Поддержка отвечает оперативно.</p>
+                        <div class="review-pair">ETH → BTC</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://ui-avatars.com/api/?name=DV&background=22c55e&color=fff&size=40" alt="Avatar">
+                            </div>
+                            <div class="review-author">
+                                <div class="review-name">Дмитрий В.</div>
+                                <div class="review-date">10.03.2026</div>
+                            </div>
+                            <div class="review-rating">
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star empty">*</span>
+                            </div>
+                        </div>
+                        <p class="review-text">Хороший сервис для обмена XMR. Анонимность на высоте, обмен прошел быстро. Буду пользоваться еще.</p>
+                        <div class="review-pair">USDT → XMR</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://ui-avatars.com/api/?name=ER&background=f59e0b&color=fff&size=40" alt="Avatar">
+                            </div>
+                            <div class="review-author">
+                                <div class="review-name">Елена Р.</div>
+                                <div class="review-date">08.03.2026</div>
+                            </div>
+                            <div class="review-rating">
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                        <p class="review-text">Первый раз пользовалась криптообменником и осталась довольна. Все понятно и просто. Средства пришли быстро.</p>
+                        <div class="review-pair">LTC → ETH</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- БЛОК: Футер -->
+    <footer class="footer" data-block="footer">
+        <div class="container">
+            <div class="block-label">FOOTER</div>
+            <div class="footer-content">
+                <!-- Элемент: Колонка футера - О компании -->
+                <div class="footer-section" data-element="footer-column">
+                    <span class="element-label">Footer Column</span>
+                    <h4 class="footer-title">CryptoExchange</h4>
+                    <p class="footer-text">Надежный криптообменник с 2026 года</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">TG</a>
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">X</a>
+                    </div>
+                </div>
+                <!-- Элемент: Колонка футера - Сервисы -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Сервисы</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Обмен валют</a></li>
+                        <li><a href="#">Партнерская программа</a></li>
+                    </ul>
+                </div>
+                <!-- Элемент: Колонка футера - Информация -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Информация</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Как это работает</a></li>
+                        <li><a href="#">Правила использования</a></li>
+                        <li><a href="#">AML регламент</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                <!-- Элемент: Колонка футера - Поддержка -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Поддержка</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">support@cryptoexchange.com</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- БЛОК: Партнеры -->
+            <div class="partners-section" data-block="partners">
+                <div class="block-label">PARTNERS</div>
+                <h4 class="partners-title">Наши партнеры</h4>
+                <div class="partners-grid" data-element="partners-grid">
+                    <span class="element-label">Partners Grid</span>
+                    <!-- Элемент: Логотип партнера -->
+                    <div class="partner-logo" data-element="partner-logo">
+                        <span class="element-label">Partner Logo</span>
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+1" alt="Partner 1">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+2" alt="Partner 2">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+3" alt="Partner 3">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+4" alt="Partner 4">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+5" alt="Partner 5">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+6" alt="Partner 6">
+                    </div>
+                </div>
+            </div>
+
+            <!-- БЛОК: Перелинковка направлений (SEO Links) -->
+            <div class="seo-links-section" data-block="seo-links">
+                <div class="block-label">SEO LINKS</div>
+                <div class="seo-links-grid" data-element="seo-links-grid">
+                    <span class="element-label">SEO Links Grid</span>
+
+                    <!-- Колонка: Buy Crypto -->
+                    <div class="seo-column" data-element="seo-column">
+                        <span class="element-label">SEO Column</span>
+                        <h4 class="seo-title">Buy Crypto</h4>
+                        <ul class="seo-list">
+                            <li><a href="#">Buy Bitcoin (BTC)</a></li>
+                            <li><a href="#">Buy Ethereum (ETH)</a></li>
+                            <li><a href="#">Buy Tether (USDT)</a></li>
+                            <li><a href="#">Buy Binance Coin (BNB)</a></li>
+                            <li><a href="#">Buy USD Coin (USDC)</a></li>
+                            <li><a href="#">Buy XRP (XRP)</a></li>
+                            <li><a href="#">Buy Dogecoin (DOGE)</a></li>
+                            <li><a href="#">Buy Litecoin (LTC)</a></li>
+                            <li><a href="#">Buy Monero (XMR)</a></li>
+                            <li><a href="#">Buy TRON (TRX)</a></li>
+                            <li><a href="#">Buy Toncoin (TON)</a></li>
+                            <li><a href="#">Buy Solana (SOL)</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Колонка: Exchange -->
+                    <div class="seo-column">
+                        <h4 class="seo-title">Exchange</h4>
+                        <ul class="seo-list">
+                            <li><a href="#">Exchange Bitcoin (BTC)</a></li>
+                            <li><a href="#">Exchange Ethereum (ETH)</a></li>
+                            <li><a href="#">Exchange Tether (USDT ERC20)</a></li>
+                            <li><a href="#">Exchange Tether (USDT TRC20)</a></li>
+                            <li><a href="#">Exchange Circle USD (USDC)</a></li>
+                            <li><a href="#">Exchange Monero (XMR)</a></li>
+                            <li><a href="#">Exchange Cardano (ADA)</a></li>
+                            <li><a href="#">Exchange Dogecoin (DOGE)</a></li>
+                            <li><a href="#">Exchange Polygon (POL)</a></li>
+                            <li><a href="#">Exchange Toncoin (TON)</a></li>
+                            <li><a href="#">Exchange XRP (XRP)</a></li>
+                            <li><a href="#">Exchange Shiba Inu (SHIB)</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Колонка: Exchange Pairs -->
+                    <div class="seo-column">
+                        <h4 class="seo-title">Exchange Pairs</h4>
+                        <ul class="seo-list">
+                            <li><a href="#">BTC to XMR</a></li>
+                            <li><a href="#">BTC to USDT</a></li>
+                            <li><a href="#">USDT to XMR</a></li>
+                            <li><a href="#">ETH to XMR</a></li>
+                            <li><a href="#">ETH to BTC</a></li>
+                            <li><a href="#">XMR to BTC</a></li>
+                            <li><a href="#">BTC to ETH</a></li>
+                            <li><a href="#">USDT to BTC</a></li>
+                            <li><a href="#">USDT to TRX</a></li>
+                            <li><a href="#">LTC to XMR</a></li>
+                            <li><a href="#">ETH to BNB</a></li>
+                            <li><a href="#">BNB to BTC</a></li>
+                            <li><a href="#">XMR to LTC</a></li>
+                            <li><a href="#">BTC to LTC</a></li>
+                            <li><a href="#">XMR to ETH</a></li>
+                            <li><a href="#">BTC to TRX</a></li>
+                            <li><a href="#">LTC to BTC</a></li>
+                            <li><a href="#">BTC to BNB</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Элемент: Подвал футера (копирайт) -->
+            <div class="footer-bottom" data-element="footer-copyright">
+                <span class="element-label">Copyright</span>
+                <p>&copy; 2026 CryptoExchange. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
