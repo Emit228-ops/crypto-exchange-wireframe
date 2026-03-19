@@ -2184,6 +2184,358 @@ a {
 
 
 /* ==========================================
+   СТРАНИЦА ОПЛАТЫ
+   ========================================== */
+
+/* Payment Header */
+.payment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.payment-header .order-card-title {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.order-id {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    background-color: rgba(59, 130, 246, 0.1);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-primary);
+}
+
+/* Payment Timer */
+.payment-timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+    background-color: var(--color-bg-secondary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.timer-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.timer-header svg {
+    color: var(--color-warning);
+}
+
+.timer-display {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    font-family: var(--font-family-mono);
+    letter-spacing: 4px;
+}
+
+.timer-progress {
+    width: 100%;
+    height: 6px;
+    background-color: var(--color-bg-tertiary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.timer-progress-bar {
+    height: 100%;
+    background-color: var(--color-success);
+    border-radius: var(--radius-full);
+    transition: width 1s linear;
+}
+
+.timer-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+/* Payment Address */
+.payment-address {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.address-title {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.address-field {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: var(--color-bg-tertiary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.address-value {
+    flex: 1;
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    font-weight: 500;
+    word-break: break-all;
+}
+
+.copy-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+}
+
+.copy-btn:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.address-network {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+/* QR Code */
+.qr-code-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.qr-placeholder {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    background-color: var(--color-bg-tertiary);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    color: var(--color-text-muted);
+}
+
+.qr-text {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.qr-hint {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+
+/* ==========================================
+   СТРАНИЦА ОБРАБОТКИ
+   ========================================== */
+
+.processing-layout {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+.processing-card {
+    width: 100%;
+}
+
+.processing-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-2xl) var(--spacing-xl);
+}
+
+.processing-spinner {
+    color: var(--color-primary);
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.processing-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.processing-desc {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   СТРАНИЦА ОШИБКИ
+   ========================================== */
+
+/* Step error state */
+.step.error .step-number {
+    background-color: var(--color-error);
+    border-color: var(--color-error);
+    color: white;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
+}
+
+.step.error .step-label {
+    color: var(--color-error);
+    font-weight: 600;
+}
+
+/* Error Status */
+.error-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-2xl) var(--spacing-xl);
+}
+
+.error-icon-wrapper {
+    color: var(--color-error);
+}
+
+.error-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.error-desc {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+/* Error Reason */
+.error-reason {
+    padding: var(--spacing-lg);
+    background-color: rgba(239, 68, 68, 0.08);
+    border: 2px solid var(--color-error);
+    border-radius: var(--radius-lg);
+}
+
+.error-reason-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-error);
+    margin-bottom: var(--spacing-sm);
+}
+
+.error-reason-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+/* Error Value */
+.error-value {
+    color: var(--color-error) !important;
+}
+
+/* Error Actions */
+.error-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+
+/* ==========================================
+   СТРАНИЦА ЗАВЕРШЕНИЯ
+   ========================================== */
+
+/* Complete Status */
+.complete-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-2xl) var(--spacing-xl);
+}
+
+.complete-icon-wrapper {
+    color: var(--color-success);
+}
+
+.complete-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.complete-desc {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+/* Complete Value */
+.complete-value {
+    color: var(--color-success) !important;
+    font-weight: 600;
+}
+
+/* Complete Actions */
+.complete-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+
+/* ==========================================
    АДАПТИВНОСТЬ
    ========================================== */
 

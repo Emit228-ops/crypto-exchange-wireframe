@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата заявки - Криптообменник</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- БЛОК: Шапка сайта -->
+    <header class="header" data-block="header">
+        <div class="container">
+            <div class="block-label">HEADER</div>
+            <div class="header-content">
+                <!-- Элемент: Логотип -->
+                <div class="logo" data-element="logo">
+                    <span class="element-label">Logo</span>
+                    <a href="index.html">CryptoExchange</a>
+                </div>
+
+                <!-- Элемент: Навигация -->
+                <nav class="nav" data-element="navigation">
+                    <span class="element-label">Navigation</span>
+
+                    <!-- Выпадающее меню: Обмен -->
+                    <div class="nav-dropdown" data-element="nav-dropdown">
+                        <span class="element-label">Dropdown Menu</span>
+                        <button class="nav-link nav-dropdown-toggle active" id="exchange-dropdown">
+                            Обмен
+                            <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="nav-dropdown-menu" id="exchange-dropdown-menu">
+                            <a href="#" class="nav-dropdown-item">Крипта на крипту</a>
+                            <a href="#" class="nav-dropdown-item">Фиат на крипту / Крипта на фиат</a>
+                            <a href="#" class="nav-dropdown-item">Наличные</a>
+                            <a href="#" class="nav-dropdown-item">DEX</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="nav-link">Проверить AML</a>
+                    <a href="#" class="nav-link">Как совершить обмен</a>
+                    <a href="#" class="nav-link">О нас</a>
+                    <a href="#" class="nav-link">FAQ</a>
+                    <a href="#" class="nav-link">Контакты</a>
+                </nav>
+
+                <!-- Элемент: Настройки (тема и язык) -->
+                <div class="header-settings" data-element="header-settings">
+                    <span class="element-label">Settings</span>
+
+                    <!-- Переключатель темы -->
+                    <button class="theme-toggle" data-element="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                        <span class="element-label">Theme Toggle</span>
+                        <svg class="theme-icon theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <svg class="theme-icon theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                        </svg>
+                    </button>
+
+                    <!-- Переключатель языка -->
+                    <div class="language-toggle" data-element="language-toggle">
+                        <span class="element-label">Language Toggle</span>
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
+
+                <!-- Элемент: Кнопки действий -->
+                <div class="header-actions" data-element="header-buttons">
+                    <span class="element-label">Actions</span>
+                    <button class="btn btn-secondary">Войти</button>
+                    <button class="btn btn-primary">Регистрация</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- БЛОК: Основной контент -->
+    <main class="main">
+        <div class="container">
+
+            <!-- БЛОК: Индикатор шагов -->
+            <section class="steps-indicator" data-block="steps-indicator">
+                <div class="block-label">STEPS INDICATOR</div>
+                <div class="steps" data-element="steps">
+                    <span class="element-label">Steps</span>
+                    <div class="step completed">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Выбор валют</div>
+                    </div>
+                    <div class="step completed">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Ввод данных</div>
+                    </div>
+                    <div class="step active">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Оплата</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Обработка</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-label">Завершено</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- БЛОК: Оплата заявки -->
+            <div class="order-layout" data-block="payment-layout">
+                <div class="block-label">PAYMENT LAYOUT</div>
+
+                <!-- Левая колонка: Оплата -->
+                <div class="order-left" data-element="payment-form">
+                    <span class="element-label">Payment Form</span>
+
+                    <div class="order-card">
+                        <!-- Заголовок с ID заявки -->
+                        <div class="payment-header" data-element="payment-header">
+                            <span class="element-label">Payment Header</span>
+                            <h2 class="order-card-title">Оплата заявки</h2>
+                            <div class="order-id">#EX-2026-78432</div>
+                        </div>
+
+                        <!-- Таймер обратного отсчёта -->
+                        <div class="payment-timer" data-element="payment-timer">
+                            <span class="element-label">Payment Timer</span>
+                            <div class="timer-header">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                <span>Оплатите в течение:</span>
+                            </div>
+                            <div class="timer-display">29:45</div>
+                            <div class="timer-progress">
+                                <div class="timer-progress-bar" style="width: 99%;"></div>
+                            </div>
+                            <div class="timer-hint">После истечения времени заявка будет автоматически отменена</div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <!-- Сумма для оплаты -->
+                        <div class="payment-address" data-element="payment-amount">
+                            <span class="element-label">Payment Amount</span>
+                            <div class="address-title">Сумма к оплате:</div>
+                            <div class="address-field">
+                                <div class="address-value amount-value">1.00000000 BTC</div>
+                                <button class="copy-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                    Копировать
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Адрес для оплаты -->
+                        <div class="payment-address" data-element="payment-address">
+                            <span class="element-label">Payment Address</span>
+                            <div class="address-title">Адрес для отправки:</div>
+                            <div class="address-field">
+                                <div class="address-value">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</div>
+                                <button class="copy-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                    Копировать
+                                </button>
+                            </div>
+                            <div class="address-network">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M2 12H22" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 2C14.5 4.5 16 8 16 12C16 16 14.5 19.5 12 22C9.5 19.5 8 16 8 12C8 8 9.5 4.5 12 2Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Сеть: Bitcoin (BTC)
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <!-- QR-код -->
+                        <div class="qr-code-section" data-element="qr-code">
+                            <span class="element-label">QR Code</span>
+                            <div class="qr-placeholder">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                                    <rect x="2" y="2" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                                    <rect x="14" y="2" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                                    <rect x="2" y="14" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                                    <rect x="14" y="14" width="4" height="4" rx="1" stroke="currentColor" stroke-width="2"/>
+                                    <rect x="18" y="18" width="4" height="4" rx="1" stroke="currentColor" stroke-width="2"/>
+                                    <rect x="14" y="18" width="4" height="4" rx="1" stroke="currentColor" stroke-width="2"/>
+                                    <rect x="5" y="5" width="2" height="2" fill="currentColor"/>
+                                    <rect x="17" y="5" width="2" height="2" fill="currentColor"/>
+                                    <rect x="5" y="17" width="2" height="2" fill="currentColor"/>
+                                </svg>
+                                <div class="qr-text">QR Code</div>
+                            </div>
+                            <div class="qr-hint">Отсканируйте QR-код для оплаты</div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <!-- Кнопка "Я оплатил" -->
+                        <div data-element="confirm-payment">
+                            <span class="element-label">Confirm Payment</span>
+                            <button class="btn btn-primary btn-large">
+                                Я оплатил
+                            </button>
+                        </div>
+
+                        <!-- Предупреждение -->
+                        <div class="warning-box" data-element="warning-box">
+                            <span class="element-label">Warning</span>
+                            <svg class="warning-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2L2 17H18L10 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M10 8V12M10 14V14.5" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="warning-content">
+                                <div class="warning-title">Внимание!</div>
+                                <div class="warning-text">
+                                    Отправляйте только BTC в сети Bitcoin на указанный адрес. Отправка другой валюты или по другой сети приведет к безвозвратной потере средств.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правая колонка: Детали заявки -->
+                <div class="order-right" data-element="order-details">
+                    <span class="element-label">Order Details</span>
+
+                    <!-- Карточка: Сводка по обмену -->
+                    <div class="order-card">
+                        <h3 class="order-card-title">Детали заявки</h3>
+
+                        <!-- Блок: Направление обмена -->
+                        <div class="exchange-direction" data-element="exchange-direction">
+                            <span class="element-label">Exchange Direction</span>
+                            <div class="exchange-pair">
+                                <div class="exchange-currency">
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" class="currency-icon-large">
+                                    <div class="currency-info">
+                                        <div class="currency-name">Bitcoin</div>
+                                        <div class="currency-amount">1.0 BTC</div>
+                                    </div>
+                                </div>
+                                <div class="exchange-arrow">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="exchange-currency">
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/825.png" alt="USDT" class="currency-icon-large">
+                                    <div class="currency-info">
+                                        <div class="currency-name">Tether</div>
+                                        <div class="currency-amount">45,320.00 USDT</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <!-- Блок: Информация о заявке -->
+                        <div class="order-info" data-element="order-info">
+                            <span class="element-label">Order Info</span>
+
+                            <div class="info-row">
+                                <span class="info-label">ID заявки:</span>
+                                <span class="info-value">#EX-2026-78432</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">Тип курса:</span>
+                                <span class="info-value">Плавающий</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">Сеть отдачи:</span>
+                                <span class="info-value">Bitcoin (BTC)</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">Сеть получения:</span>
+                                <span class="info-value">Ethereum (ERC20)</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">Подтверждений:</span>
+                                <span class="info-value">3 подтверждения</span>
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <div class="info-row info-row-total">
+                                <span class="info-label">Вы получите:</span>
+                                <span class="info-value-large">45,320.00 USDT</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- БЛОК: Футер -->
+    <footer class="footer" data-block="footer">
+        <div class="container">
+            <div class="block-label">FOOTER</div>
+            <div class="footer-content">
+                <!-- Элемент: Колонка футера - О компании -->
+                <div class="footer-section" data-element="footer-column">
+                    <span class="element-label">Footer Column</span>
+                    <h4 class="footer-title">CryptoExchange</h4>
+                    <p class="footer-text">Надежный криптообменник с 2026 года</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">TG</a>
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">X</a>
+                    </div>
+                </div>
+                <!-- Элемент: Колонка футера - Сервисы -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Сервисы</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Обмен валют</a></li>
+                        <li><a href="#">Партнерская программа</a></li>
+                    </ul>
+                </div>
+                <!-- Элемент: Колонка футера - Информация -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Информация</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Как это работает</a></li>
+                        <li><a href="#">Правила использования</a></li>
+                        <li><a href="#">AML регламент</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                <!-- Элемент: Колонка футера - Поддержка -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Поддержка</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">support@cryptoexchange.com</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Элемент: Подвал футера (копирайт) -->
+            <div class="footer-bottom" data-element="footer-copyright">
+                <span class="element-label">Copyright</span>
+                <p>&copy; 2026 CryptoExchange. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
