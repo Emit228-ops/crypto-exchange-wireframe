@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Криптообменник</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- БЛОК: Шапка сайта -->
+    <header class="header" data-block="header">
+        <div class="container">
+            <div class="block-label">HEADER</div>
+            <div class="header-content">
+                <div class="logo" data-element="logo">
+                    <span class="element-label">Logo</span>
+                    <a href="index.html">CryptoExchange</a>
+                </div>
+
+                <nav class="nav" data-element="navigation">
+                    <span class="element-label">Navigation</span>
+                    <div class="nav-dropdown" data-element="nav-dropdown">
+                        <span class="element-label">Dropdown Menu</span>
+                        <button class="nav-link nav-dropdown-toggle" id="exchange-dropdown">
+                            Обмен
+                            <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="nav-dropdown-menu" id="exchange-dropdown-menu">
+                            <a href="#" class="nav-dropdown-item">Крипта на крипту</a>
+                            <a href="#" class="nav-dropdown-item">Фиат на крипту / Крипта на фиат</a>
+                            <a href="#" class="nav-dropdown-item">Наличные</a>
+                            <a href="#" class="nav-dropdown-item">DEX</a>
+                        </div>
+                    </div>
+                    <a href="#" class="nav-link">Проверить AML</a>
+                    <a href="how-it-works.html" class="nav-link">Как совершить обмен</a>
+                    <a href="about.html" class="nav-link">О нас</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <a href="contacts.html" class="nav-link active">Контакты</a>
+                </nav>
+
+                <div class="header-settings" data-element="header-settings">
+                    <span class="element-label">Settings</span>
+                    <button class="theme-toggle" data-element="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                        <span class="element-label">Theme Toggle</span>
+                        <svg class="theme-icon theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <svg class="theme-icon theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    <div class="language-toggle" data-element="language-toggle">
+                        <span class="element-label">Language Toggle</span>
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
+
+                <div class="header-actions" data-element="header-buttons">
+                    <span class="element-label">Actions</span>
+                    <button class="btn btn-secondary">Войти</button>
+                    <button class="btn btn-primary">Регистрация</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- БЛОК: Основной контент -->
+    <main class="main">
+        <div class="container">
+
+            <!-- БЛОК: Контакты -->
+            <div class="contacts-layout" data-block="contacts-layout">
+                <div class="block-label">CONTACTS LAYOUT</div>
+
+                <div class="contacts-header" data-element="contacts-header">
+                    <span class="element-label">Contacts Header</span>
+                    <h1 class="contacts-title">Контакты</h1>
+                    <p class="contacts-subtitle">Свяжитесь с нами удобным способом</p>
+                </div>
+
+                <div class="contacts-grid" data-element="contacts-grid">
+                    <span class="element-label">Contacts Grid</span>
+
+                    <!-- Контактные карточки -->
+                    <div class="contacts-cards">
+
+                        <div class="contact-card" data-element="contact-card">
+                            <span class="element-label">Contact Card</span>
+                            <div class="contact-card-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="contact-card-title">Telegram</h3>
+                            <p class="contact-card-value">@cryptoexchange_support</p>
+                            <p class="contact-card-hint">Среднее время ответа — 15 минут</p>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3 class="contact-card-title">Email</h3>
+                            <p class="contact-card-value">support@cryptoexchange.com</p>
+                            <p class="contact-card-hint">Ответ в течение 24 часов</p>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="contact-card-title">Режим работы</h3>
+                            <p class="contact-card-value">24/7</p>
+                            <p class="contact-card-hint">Круглосуточная поддержка без выходных</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Форма обратной связи -->
+                    <div class="contact-form-card order-card" data-element="contact-form">
+                        <span class="element-label">Contact Form</span>
+                        <h2 class="contact-form-title">Форма обратной связи</h2>
+
+                        <form class="contact-form">
+                            <div class="form-group">
+                                <label class="form-label">Имя</label>
+                                <input type="text" class="form-input" placeholder="Ваше имя">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Email <span class="required">*</span></label>
+                                <input type="email" class="form-input" placeholder="email@example.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Тема</label>
+                                <select class="form-input form-select">
+                                    <option>Вопрос по обмену</option>
+                                    <option>Проблема с заявкой</option>
+                                    <option>Верификация</option>
+                                    <option>Партнёрство</option>
+                                    <option>Другое</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Сообщение <span class="required">*</span></label>
+                                <textarea class="form-input form-textarea" rows="5" placeholder="Опишите ваш вопрос..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full">Отправить сообщение</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- БЛОК: Футер -->
+    <footer class="footer" data-block="footer">
+        <div class="container">
+            <div class="block-label">FOOTER</div>
+            <div class="footer-content">
+                <div class="footer-section" data-element="footer-column">
+                    <span class="element-label">Footer Column</span>
+                    <h4 class="footer-title">CryptoExchange</h4>
+                    <p class="footer-text">Надежный криптообменник с 2026 года</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">TG</a>
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">X</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Сервисы</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Обмен валют</a></li>
+                        <li><a href="#">Партнерская программа</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Информация</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="how-it-works.html">Как это работает</a></li>
+                        <li><a href="terms.html">Правила использования</a></li>
+                        <li><a href="aml.html">AML регламент</a></li>
+                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Поддержка</h4>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">support@cryptoexchange.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" data-element="footer-copyright">
+                <span class="element-label">Copyright</span>
+                <p>&copy; 2026 CryptoExchange. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

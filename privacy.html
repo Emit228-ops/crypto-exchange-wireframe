@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Политика конфиденциальности - Криптообменник</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- БЛОК: Шапка сайта -->
+    <header class="header" data-block="header">
+        <div class="container">
+            <div class="block-label">HEADER</div>
+            <div class="header-content">
+                <div class="logo" data-element="logo">
+                    <span class="element-label">Logo</span>
+                    <a href="index.html">CryptoExchange</a>
+                </div>
+
+                <nav class="nav" data-element="navigation">
+                    <span class="element-label">Navigation</span>
+                    <div class="nav-dropdown" data-element="nav-dropdown">
+                        <span class="element-label">Dropdown Menu</span>
+                        <button class="nav-link nav-dropdown-toggle" id="exchange-dropdown">
+                            Обмен
+                            <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="nav-dropdown-menu" id="exchange-dropdown-menu">
+                            <a href="#" class="nav-dropdown-item">Крипта на крипту</a>
+                            <a href="#" class="nav-dropdown-item">Фиат на крипту / Крипта на фиат</a>
+                            <a href="#" class="nav-dropdown-item">Наличные</a>
+                            <a href="#" class="nav-dropdown-item">DEX</a>
+                        </div>
+                    </div>
+                    <a href="#" class="nav-link">Проверить AML</a>
+                    <a href="how-it-works.html" class="nav-link">Как совершить обмен</a>
+                    <a href="about.html" class="nav-link">О нас</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                </nav>
+
+                <div class="header-settings" data-element="header-settings">
+                    <span class="element-label">Settings</span>
+                    <button class="theme-toggle" data-element="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                        <span class="element-label">Theme Toggle</span>
+                        <svg class="theme-icon theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <svg class="theme-icon theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    <div class="language-toggle" data-element="language-toggle">
+                        <span class="element-label">Language Toggle</span>
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
+
+                <div class="header-actions" data-element="header-buttons">
+                    <span class="element-label">Actions</span>
+                    <button class="btn btn-secondary">Войти</button>
+                    <button class="btn btn-primary">Регистрация</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- БЛОК: Основной контент -->
+    <main class="main">
+        <div class="container">
+
+            <div class="legal-layout" data-block="legal-layout">
+                <div class="block-label">LEGAL LAYOUT</div>
+
+                <div class="legal-header" data-element="legal-header">
+                    <span class="element-label">Legal Header</span>
+                    <h1 class="legal-title">Политика конфиденциальности</h1>
+
+                </div>
+
+                <div class="legal-content" data-element="legal-content">
+                    <span class="element-label">Legal Content</span>
+
+                    <div class="legal-section">
+                        <h2>1. Сбор данных</h2>
+                        <p>Мы собираем следующие данные при использовании сервиса:</p>
+                        <ul>
+                            <li>Email-адрес (для уведомлений о статусе заявки)</li>
+                            <li>Адреса криптовалютных кошельков</li>
+                            <li>IP-адрес и данные браузера</li>
+                            <li>Данные верификации (при обмене с фиатными валютами)</li>
+                        </ul>
+                    </div>
+
+                    <div class="legal-section">
+                        <h2>2. Использование данных</h2>
+                        <p>Собранные данные используются для:</p>
+                        <ul>
+                            <li>Обработки и выполнения заявок на обмен</li>
+                            <li>Отправки уведомлений о статусе заявки</li>
+                            <li>Проведения AML-проверок</li>
+                            <li>Улучшения работы сервиса</li>
+                            <li>Предотвращения мошеннических действий</li>
+                        </ul>
+                    </div>
+
+                    <div class="legal-section">
+                        <h2>3. Хранение данных</h2>
+                        <p>Персональные данные хранятся на защищённых серверах с использованием шифрования. Данные о транзакциях хранятся в течение срока, предусмотренного законодательством. Данные верификации обрабатываются через сертифицированного партнёра Sumsub.</p>
+                    </div>
+
+                    <div class="legal-section">
+                        <h2>4. Передача данных третьим лицам</h2>
+                        <p>Мы не продаём и не передаём персональные данные третьим лицам, за исключением случаев:</p>
+                        <ul>
+                            <li>Требования законодательства или запрос уполномоченных органов</li>
+                            <li>Проведение верификации через партнёрские сервисы (Sumsub)</li>
+                            <li>Проведение AML-проверок через специализированные сервисы</li>
+                        </ul>
+                    </div>
+
+                    <div class="legal-section">
+                        <h2>5. Cookies</h2>
+                        <p>Сервис использует cookies для сохранения настроек темы и языка интерфейса. Мы не используем рекламные или отслеживающие cookies.</p>
+                    </div>
+
+                    <div class="legal-section">
+                        <h2>6. Права пользователя</h2>
+                        <p>Вы имеете право запросить информацию о хранимых данных, потребовать их удаления или исправления. Для этого свяжитесь с нашей поддержкой по адресу support@cryptoexchange.com.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- БЛОК: Футер -->
+    <footer class="footer" data-block="footer">
+        <div class="container">
+            <div class="block-label">FOOTER</div>
+            <div class="footer-content">
+                <div class="footer-section" data-element="footer-column">
+                    <span class="element-label">Footer Column</span>
+                    <h4 class="footer-title">CryptoExchange</h4>
+                    <p class="footer-text">Надежный криптообменник с 2026 года</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">TG</a>
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">X</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Сервисы</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Обмен валют</a></li>
+                        <li><a href="#">Партнерская программа</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Информация</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="how-it-works.html">Как это работает</a></li>
+                        <li><a href="terms.html">Правила использования</a></li>
+                        <li><a href="aml.html">AML регламент</a></li>
+                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Поддержка</h4>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">support@cryptoexchange.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" data-element="footer-copyright">
+                <span class="element-label">Copyright</span>
+                <p>&copy; 2026 CryptoExchange. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

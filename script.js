@@ -263,4 +263,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // 12. Таймер обновления курса
+    const rateTimers = document.querySelectorAll('.rate-refresh-timer');
+    if (rateTimers.length > 0) {
+        let seconds = 60;
+        setInterval(function() {
+            seconds--;
+            if (seconds <= 0) seconds = 60;
+            rateTimers.forEach(function(timer) {
+                timer.textContent = seconds;
+            });
+        }, 1000);
+    }
+
 });

@@ -15,6 +15,13 @@
 | dashboard.html | Личный кабинет |
 | faq.html | FAQ |
 | about.html | О нас |
+| contacts.html | Контакты |
+| how-it-works.html | Как совершить обмен |
+| terms.html | Правила использования |
+| aml.html | AML регламент |
+| privacy.html | Политика конфиденциальности |
+| blog.html | Блог (список SEO-статей) |
+| blog-article.html | Шаблон статьи блога |
 | styles.css | Стили и CSS-переменные |
 | script.js | Интерактивность |
 
@@ -47,6 +54,7 @@ HERO SECTION
     ├── Receive Field (сумма, валюта, сеть, лимиты)
     ├── Confirmations Info
     ├── Agreement Checkbox
+    ├── Rate Refresh (таймер обновления курса, 60 сек)
     └── Submit Button
 
 SEO TEXT (заголовок направления, 2 абзаца)
@@ -87,6 +95,7 @@ ORDER LAYOUT (две колонки)
 └── ORDER DETAILS (правая колонка)
     └── ORDER CARD
         ├── Заголовок: "Детали заявки"
+        ├── Rate Refresh (таймер обновления курса, 60 сек)
         ├── Exchange Direction (BTC → USDT)
         ├── Order Info (курс, сети, подтверждения, сумма)
         └── Warning Box
@@ -213,9 +222,9 @@ COMPLETE LAYOUT (по центру)
         ├── Complete Header (заголовок + ID заявки)
         ├── Complete Status (зелёная иконка галочки, текст)
         ├── Exchange Direction (BTC → USDT)
-        ├── Order Info (ID, статус "Завершено", TX Hash, сумма)
+        ├── Order Info (ID, статус "Завершено", сумма)
         ├── Info Message (детали на email)
-        └── Complete Actions ("Новый обмен", "Вернуться на главную")
+        └── Complete Actions ("Повторить обмен", "Новый обмен", "Вернуться на главную")
 
 FOOTER (идентичен главной)
 ```
@@ -227,11 +236,13 @@ HEADER (залогиненное состояние: аватар + email + "В�
 
 DASHBOARD LAYOUT (sidebar + контент)
 ├── SIDEBAR
-│   ├── User Card (аватар, имя, email)
+│   ├── User Card (email)
 │   └── Navigation
 │       ├── История обменов (active)
 │       ├── Промокоды
 │       ├── Настройки профиля
+│       ├── AML проверки
+│       ├── Верификация и безопасность
 │       ├── Реферальная программа
 │       └── Выйти
 │
@@ -244,7 +255,6 @@ DASHBOARD LAYOUT (sidebar + контент)
     ├── PROMO CODES
     │   └── Promo Card ×3
     │       ├── Code + Copy Button
-    │       ├── Discount
     │       ├── Usage Count + Progress Bar
     │       └── Status Badge
     │
@@ -253,11 +263,23 @@ DASHBOARD LAYOUT (sidebar + контент)
     │   ├── Telegram (значение + "Изменить")
     │   └── Password Change Form (3 поля + кнопка)
     │
+    ├── AML HISTORY
+    │   ├── Table (Дата, Адрес, Валюта, Risk Score, Результат, Подробнее)
+    │   └── Pagination
+    │
+    ├── VERIFICATION & SECURITY
+    │   ├── Card Verification (статус + кнопка)
+    │   ├── Identity Verification / KYC (статус + кнопка)
+    │   └── 2FA Setup
+    │       ├── Steps (3 шага инструкции)
+    │       ├── QR Code (placeholder)
+    │       ├── Secret Key + Copy
+    │       └── Code Input + Confirm Button
+    │
     └── REFERRAL PROGRAM
         ├── Referral Link + Copy Button
-        ├── Stats (3 карточки: друзья, обмены, заработок)
-        ├── Earnings Table (Дата, Пользователь, Сумма, Бонус)
-        └── Info Message (условия программы)
+        ├── Stats (2 карточки: друзья, заработок)
+        └── Withdraw Form (валюта, сеть, сумма, адрес, кнопка)
 
 FOOTER (идентичен главной)
 ```
@@ -300,6 +322,103 @@ FAQ LAYOUT
 FOOTER (идентичен главной)
 ```
 
+## HTML структура: contacts.html
+
+```
+HEADER (идентичен главной, ссылка "Контакты" активна)
+
+CONTACTS LAYOUT
+├── Contacts Header (заголовок, подзаголовок)
+├── Contacts Cards (3 карточки)
+│   ├── Telegram (@cryptoexchange_support)
+│   ├── Email (support@cryptoexchange.com)
+│   └── Режим работы (24/7)
+└── Contact Form (форма обратной связи)
+    ├── Имя
+    ├── Email
+    ├── Тема (select)
+    ├── Сообщение (textarea)
+    └── Кнопка "Отправить сообщение"
+
+FOOTER (идентичен главной)
+```
+
+## HTML структура: how-it-works.html
+
+```
+HEADER (идентичен главной, ссылка "Как совершить обмен" активна)
+
+HOW IT WORKS LAYOUT
+├── How Header (заголовок, подзаголовок)
+├── How Steps (5 шагов)
+│   ├── 1. Выберите валюту
+│   ├── 2. Заполните данные
+│   ├── 3. Отправьте средства
+│   ├── 4. Дождитесь подтверждений
+│   └── 5. Получите средства
+└── Info Message (примечание о верификации)
+
+FOOTER (идентичен главной)
+```
+
+## HTML структура: terms.html / aml.html / privacy.html
+
+```
+HEADER (идентичен главной)
+
+LEGAL LAYOUT
+├── Legal Header (заголовок)
+└── Legal Content
+    └── Legal Section ×N
+        ├── Заголовок раздела (h2)
+        ├── Текст (p)
+        └── Список (ul/li, опционально)
+
+FOOTER (идентичен главной)
+```
+
+## HTML структура: blog.html
+
+```
+HEADER (идентичен главной)
+
+BLOG LAYOUT
+├── Blog Header (заголовок, подзаголовок)
+├── Blog Filters (Все, Новости, Гайды, Аналитика, Безопасность)
+├── BLOG GRID (сетка 3 колонки)
+│   └── Blog Card ×6
+│       ├── Image Placeholder
+│       ├── Meta (категория, дата)
+│       ├── Title
+│       ├── Excerpt
+│       └── "Читать далее →"
+└── Pagination
+
+FOOTER (идентичен главной)
+```
+
+## HTML структура: blog-article.html
+
+```
+HEADER (идентичен главной)
+
+ARTICLE LAYOUT
+├── Breadcrumbs (Главная / Блог / Название)
+├── Article Header
+│   ├── Meta (категория, дата, время чтения)
+│   └── Title
+├── Article Image (placeholder 1200×600)
+├── Article Content
+│   ├── Lead (выделенный первый абзац)
+│   ├── H2 + параграфы
+│   └── Callout (блок-выделение)
+├── Article Tags
+├── Article Navigation (← предыдущая / следующая →)
+└── Article CTA (призыв к обмену + кнопка)
+
+FOOTER (идентичен главной)
+```
+
 ## Атрибуты разметки
 
 ### Блоки (data-block)
@@ -324,6 +443,12 @@ FOOTER (идентичен главной)
 | referral-program | dashboard | Реферальная программа |
 | about-layout | about | Layout страницы "О нас" |
 | faq-layout | faq | Layout FAQ |
+| contacts-layout | contacts | Layout контактов |
+| how-it-works-layout | how-it-works | Layout инструкции |
+| legal-layout | terms, aml, privacy | Layout юридических страниц |
+| blog-layout | blog | Layout списка статей |
+| blog-grid | blog | Сетка карточек статей |
+| article-layout | blog-article | Layout страницы статьи |
 | footer | все | Футер |
 | partners | index | Партнёры |
 | seo-links | index | SEO-перелинковка |
@@ -332,9 +457,9 @@ FOOTER (идентичен главной)
 
 **Общие (header/footer):** logo, navigation, nav-dropdown, header-settings, theme-toggle, language-toggle, header-buttons, footer-column, footer-copyright.
 
-**index.html:** send-field, receive-field, rate-type-selector, network-select, condition-badge, seo-text-content.
+**index.html:** send-field, receive-field, rate-type-selector, network-select, condition-badge, rate-refresh, seo-text-content.
 
-**exchange-order.html:** steps, order-form, order-details, form-field, form-checkbox, exchange-direction, order-info, warning-box, submit-button.
+**exchange-order.html:** steps, order-form, order-details, form-field, form-checkbox, rate-refresh, exchange-direction, order-info, warning-box, submit-button.
 
 **exchange-card-verification.html:** verification-card, card-type-selector, upload-area, physical-card-form, virtual-card-form.
 
@@ -348,11 +473,21 @@ FOOTER (идентичен главной)
 
 **exchange-complete.html:** complete-card, complete-header, complete-status, exchange-direction, order-info, info-message, complete-actions.
 
-**dashboard.html:** header-user, dashboard-sidebar, sidebar-user, sidebar-nav, dashboard-content, section-title, filter-pills, exchange-table, pagination, promo-card, profile-fields, password-section, referral-link, referral-stats, referral-earnings, info-message.
+**dashboard.html:** header-user, dashboard-sidebar, sidebar-user, sidebar-nav, dashboard-content, section-title, filter-pills, exchange-table, pagination, promo-card, profile-fields, password-section, aml-table, card-verification, identity-verification, two-factor-auth, twofa-qr, referral-link, referral-stats, referral-withdraw.
 
 **about.html:** about-hero, about-stats, about-stat-card, about-advantages, about-advantage-card.
 
 **faq.html:** faq-header, faq-list, faq-item.
+
+**contacts.html:** contacts-header, contacts-grid, contact-card, contact-form.
+
+**how-it-works.html:** how-header, how-steps, how-step, info-message.
+
+**terms.html / aml.html / privacy.html:** legal-header, legal-content.
+
+**blog.html:** blog-header, blog-filters, blog-card, blog-card-image, blog-card-meta, pagination.
+
+**blog-article.html:** breadcrumbs, article-header, article-image, article-content, article-callout, article-tags, article-nav, article-cta.
 
 ## CSS переменные (styles.css, блок :root)
 
@@ -384,3 +519,5 @@ FOOTER (идентичен главной)
 | .processing-layout | По центру (max-width 800px) | processing, error, complete |
 | .verification-layout | По центру (max-width 800px) | card-verification, identity-verification |
 | .dashboard-layout | Sidebar + контент (grid 260px 1fr) | dashboard |
+| .blog-layout | По центру (max-width 1100px) | blog |
+| .article-layout | По центру (max-width 800px) | blog-article |
