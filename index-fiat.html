@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Купить/Продать криптовалюту за фиат - Криптообменник</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- БЛОК: Шапка сайта -->
+    <header class="header" data-block="header">
+        <div class="container">
+            <div class="block-label">HEADER</div>
+            <div class="header-content">
+                <div class="logo" data-element="logo">
+                    <span class="element-label">Logo</span>
+                    <a href="index.html">CryptoExchange</a>
+                </div>
+
+                <nav class="nav" data-element="navigation">
+                    <span class="element-label">Navigation</span>
+                    <div class="nav-dropdown" data-element="nav-dropdown">
+                        <span class="element-label">Dropdown Menu</span>
+                        <button class="nav-link nav-dropdown-toggle active" id="exchange-dropdown">
+                            Обмен
+                            <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="nav-dropdown-menu" id="exchange-dropdown-menu">
+                            <a href="index.html" class="nav-dropdown-item">Крипта на крипту</a>
+                            <a href="index-fiat.html" class="nav-dropdown-item active">Фиат на крипту / Крипта на фиат</a>
+                            <a href="#" class="nav-dropdown-item">Наличные</a>
+                            <a href="#" class="nav-dropdown-item">DEX</a>
+                        </div>
+                    </div>
+                    <a href="aml-check.html" class="nav-link">Проверить AML</a>
+                    <a href="how-it-works.html" class="nav-link">Как совершить обмен</a>
+                    <a href="about.html" class="nav-link">О нас</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                </nav>
+
+                <div class="header-settings" data-element="header-settings">
+                    <span class="element-label">Settings</span>
+                    <button class="theme-toggle" data-element="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                        <span class="element-label">Theme Toggle</span>
+                        <svg class="theme-icon theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <svg class="theme-icon theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    <div class="language-toggle" data-element="language-toggle">
+                        <span class="element-label">Language Toggle</span>
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
+
+                <div class="header-actions" data-element="header-buttons">
+                    <span class="element-label">Actions</span>
+                    <button class="btn btn-secondary">Войти</button>
+                    <button class="btn btn-primary">Регистрация</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- БЛОК: Основной контент -->
+    <main class="main">
+        <div class="container">
+
+            <!-- БЛОК: Hero-секция -->
+            <section class="hero" data-block="hero">
+                <div class="block-label">HERO SECTION</div>
+                <div class="hero-layout">
+                    <!-- Левая колонка с текстом -->
+                    <div class="hero-content" data-element="hero-text">
+                        <span class="element-label">Hero Text</span>
+                        <h1 class="hero-title">Купите или продайте криптовалюту за рубли</h1>
+                        <p class="hero-subtitle">Безопасный обмен фиатных валют на криптовалюту и обратно с банковской карты</p>
+
+                        <!-- Бейджи условий -->
+                        <div class="conditions-badges" data-element="conditions-badges">
+                            <span class="element-label">Conditions Badges</span>
+
+                            <!-- Бейдж: Фиксация курса -->
+                            <div class="condition-badge-wrapper" data-element="condition-badge">
+                                <span class="element-label">Badge (Expandable)</span>
+                                <button class="condition-badge clickable" data-toggle="rate-fix">
+                                    <div class="badge-icon">
+                                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                                            <path d="M10 2L12 8L18 8L13 12L15 18L10 14L5 18L7 12L2 8L8 8L10 2Z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <div class="badge-content">
+                                        <div class="badge-label">Фиксация курса</div>
+                                        <div class="badge-value" id="rate-type-badge-text">По подтверждениям</div>
+                                    </div>
+                                    <svg class="badge-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <div class="badge-expandable" id="rate-fix">
+                                    <p class="expandable-text" id="rate-type-badge-description">Курс фиксируется на момент подтверждения оплаты. При плавающем курсе — актуальный курс на момент обработки заявки.</p>
+                                </div>
+                            </div>
+
+                            <!-- Бейдж: Верификация -->
+                            <div class="condition-badge-wrapper">
+                                <button class="condition-badge clickable" data-toggle="verification-info">
+                                    <div class="badge-icon">
+                                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                                            <path d="M10 2L4 5V10C4 14.5 10 18 10 18C10 18 16 14.5 16 10V5L10 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                            <path d="M7 10L9 12L13 8" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+                                    <div class="badge-content">
+                                        <div class="badge-label">Верификация</div>
+                                        <div class="badge-value">Обязательная</div>
+                                    </div>
+                                    <svg class="badge-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <div class="badge-expandable" id="verification-info">
+                                    <p class="expandable-text">При обмене с участием фиатных валют требуется верификация банковской карты и/или личности (KYC). Это необходимо для соблюдения законодательства и обеспечения безопасности операций.</p>
+                                </div>
+                            </div>
+
+                            <!-- Бейдж: Способы оплаты -->
+                            <div class="condition-badge-wrapper">
+                                <button class="condition-badge clickable" data-toggle="payment-methods">
+                                    <div class="badge-icon">
+                                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                                            <rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                                            <path d="M2 8H18" stroke="currentColor" stroke-width="2"/>
+                                            <rect x="4" y="11" width="5" height="2" rx="1" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <div class="badge-content">
+                                        <div class="badge-label">Способы оплаты</div>
+                                        <div class="badge-value">Банковская карта</div>
+                                    </div>
+                                    <svg class="badge-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <div class="badge-expandable" id="payment-methods">
+                                    <p class="expandable-text">Принимаем оплату банковскими картами Visa, Mastercard, МИР. Перевод осуществляется card-to-card. Карта должна быть оформлена на ваше имя.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- БЛОК: Форма обмена (фиат) -->
+                    <div class="exchange-wrapper" data-block="exchange-form-fiat">
+                        <div class="block-label">EXCHANGE FORM (FIAT)</div>
+
+                        <div class="exchange-card">
+                            <!-- Заголовок формы -->
+                            <div class="exchange-header" data-element="form-header">
+                                <span class="element-label">Form Title</span>
+                                <h2>Обмен</h2>
+                            </div>
+
+                            <!-- Табы направления -->
+                            <div class="fiat-form-tabs" data-element="fiat-form-tabs">
+                                <span class="element-label">Direction Tabs</span>
+                                <div class="fiat-tabs fiat-tabs-compact">
+                                    <button class="fiat-tab active">Купить</button>
+                                    <button class="fiat-tab">Продать</button>
+                                </div>
+                            </div>
+
+                            <div class="exchange-form">
+                                <!-- Поле "Отдаете" (фиат) -->
+                                <div class="exchange-field" data-element="send-field-fiat">
+                                    <span class="element-label">Send Field (Fiat)</span>
+                                    <label class="field-label">Отдаете</label>
+                                    <div class="input-group">
+                                        <input type="number" class="input-amount" placeholder="0.00" value="50000">
+                                        <div class="currency-select">
+                                            <div class="fiat-currency-icon-small">₽</div>
+                                            <span class="currency-code">RUB</span>
+                                            <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <!-- Способ оплаты -->
+                                    <div class="fiat-payment-select" data-element="payment-method-select">
+                                        <span class="element-label">Payment Method</span>
+                                        <label class="network-label">Способ оплаты:</label>
+                                        <div class="network-dropdown">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="margin-right: 4px;">
+                                                <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                                                <path d="M2 10H22" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                            <span class="network-current">Банковская карта</span>
+                                            <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <!-- Выбор банка -->
+                                    <div class="fiat-bank-select" data-element="bank-select">
+                                        <span class="element-label">Bank Select</span>
+                                        <label class="network-label">Банк:</label>
+                                        <div class="network-dropdown">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="margin-right: 4px;">
+                                                <path d="M3 21H21M4 18H20M6 18V13M10 18V13M14 18V13M18 18V13M12 3L22 10H2L12 3Z" stroke="currentColor" stroke-width="1.5"/>
+                                            </svg>
+                                            <span class="network-current">Сбербанк</span>
+                                            <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="field-info">
+                                        <span>Мин: 1,000 ₽ / Макс: 500,000 ₽</span>
+                                    </div>
+                                </div>
+
+                                <!-- Кнопка переключения -->
+                                <div class="exchange-switch" data-element="switch-button">
+                                    <span class="element-label">Switch</span>
+                                    <button class="switch-btn">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                            <path d="M5 12L10 17L15 12M5 8L10 3L15 8" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Поле "Получаете" (крипта) -->
+                                <div class="exchange-field" data-element="receive-field-crypto">
+                                    <span class="element-label">Receive Field (Crypto)</span>
+                                    <label class="field-label">Получаете</label>
+                                    <div class="input-group">
+                                        <input type="number" class="input-amount" placeholder="0.00" value="0.00534200">
+                                        <div class="currency-select">
+                                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" class="currency-icon">
+                                            <span class="currency-code">BTC</span>
+                                            <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <!-- Выбор сети -->
+                                    <div class="network-select" data-element="network-select">
+                                        <span class="element-label">Network Select</span>
+                                        <label class="network-label">Сеть:</label>
+                                        <div class="network-dropdown">
+                                            <span class="network-current">Bitcoin (BTC)</span>
+                                            <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="field-info">
+                                        <span>Мин: 0.0001 BTC / Макс: 10 BTC</span>
+                                    </div>
+                                </div>
+
+                                <!-- Информация о верификации -->
+                                <div class="fiat-verification-notice" data-element="verification-notice">
+                                    <span class="element-label">Verification Notice</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                    <span class="fiat-notice-text">Потребуется верификация карты и/или личности</span>
+                                </div>
+
+                                <!-- Чекбокс согласия -->
+                                <div class="agreement-checkbox" data-element="agreement-checkbox">
+                                    <span class="element-label">Agreement Checkbox</span>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" checked required>
+                                        <span class="checkbox-text">
+                                            Я согласен с
+                                            <a href="terms.html" class="agreement-link">правилами обмена</a> и
+                                            <a href="aml.html" class="agreement-link">AML регламентом</a>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <!-- Таймер обновления курса -->
+                                <div class="rate-refresh" data-element="rate-refresh">
+                                    <span class="element-label">Rate Refresh</span>
+                                    <div class="rate-refresh-content">
+                                        <svg class="rate-refresh-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                            <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M3.51 15C4.15839 16.8404 5.38734 18.4202 7.01166 19.4896C8.63598 20.5591 10.5677 21.0629 12.5157 20.9261C14.4637 20.7893 16.3084 20.0198 17.7672 18.7346C19.226 17.4493 20.2184 15.7178 20.5962 13.8068C20.974 11.8958 20.7169 9.91456 19.862 8.16661C19.007 6.41866 17.6025 5.00078 15.8628 4.12916C14.1232 3.25754 12.1443 2.98152 10.2291 3.34075C8.31398 3.69998 6.57154 4.67462 5.27 6.12L1 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="rate-refresh-text">Курс обновится через <strong class="rate-refresh-timer">60</strong> сек</span>
+                                    </div>
+                                    <div class="rate-refresh-bar">
+                                        <div class="rate-refresh-bar-fill"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Кнопка -->
+                                <div data-element="submit-button">
+                                    <span class="element-label">Submit Button</span>
+                                    <button class="btn btn-primary btn-large">
+                                        Купить BTC
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- БЛОК: SEO текст -->
+            <section class="seo-text" data-block="seo-text">
+                <div class="block-label">SEO TEXT</div>
+                <div class="seo-text-content" data-element="seo-text-content">
+                    <span class="element-label">SEO Text Content</span>
+                    <h2 class="seo-text-title">Купить Bitcoin (BTC) за рубли (RUB)</h2>
+                    <div class="seo-text-body">
+                        <p>Наш криптообменник предлагает быструю и безопасную покупку Bitcoin за рубли с банковской карты. Процесс занимает всего несколько минут: выберите сумму, пройдите верификацию и получите криптовалюту на ваш кошелек. Мы работаем с картами Visa, Mastercard и МИР.</p>
+                        <p>При продаже криптовалюты за рубли средства зачисляются на вашу банковскую карту в течение 15 минут после подтверждения транзакции. Все операции проходят AML проверку и соответствуют требованиям законодательства.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- БЛОК: Популярные направления (фиат) -->
+            <section class="popular-directions" data-block="popular-directions-fiat">
+                <div class="block-label">POPULAR DIRECTIONS (FIAT)</div>
+                <h2 class="section-title" data-element="section-title">
+                    <span class="element-label">Section Title</span>
+                    Популярные направления
+                </h2>
+                <div class="directions-grid" data-element="directions-grid">
+                    <span class="element-label">Directions Grid</span>
+
+                    <a href="#" class="direction-card" data-element="direction-card">
+                        <span class="element-label">Direction Card</span>
+                        <div class="direction-pair">
+                            <div class="direction-currency">
+                                <div class="fiat-direction-icon">₽</div>
+                                <span>RUB</span>
+                            </div>
+                            <svg class="direction-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" class="direction-icon">
+                                <span>BTC</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="direction-card">
+                        <div class="direction-pair">
+                            <div class="direction-currency">
+                                <div class="fiat-direction-icon">₽</div>
+                                <span>RUB</span>
+                            </div>
+                            <svg class="direction-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/825.png" alt="USDT" class="direction-icon">
+                                <span>USDT</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="direction-card">
+                        <div class="direction-pair">
+                            <div class="direction-currency">
+                                <div class="fiat-direction-icon">₽</div>
+                                <span>RUB</span>
+                            </div>
+                            <svg class="direction-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png" alt="ETH" class="direction-icon">
+                                <span>ETH</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="direction-card">
+                        <div class="direction-pair">
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" class="direction-icon">
+                                <span>BTC</span>
+                            </div>
+                            <svg class="direction-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="direction-currency">
+                                <div class="fiat-direction-icon">₽</div>
+                                <span>RUB</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="direction-card">
+                        <div class="direction-pair">
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/825.png" alt="USDT" class="direction-icon">
+                                <span>USDT</span>
+                            </div>
+                            <svg class="direction-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="direction-currency">
+                                <div class="fiat-direction-icon">₽</div>
+                                <span>RUB</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="direction-card">
+                        <div class="direction-pair">
+                            <div class="direction-currency">
+                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png" alt="ETH" class="direction-icon">
+                                <span>ETH</span>
+                            </div>
+                            <svg class="direction-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="direction-currency">
+                                <div class="fiat-direction-icon">₽</div>
+                                <span>RUB</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- БЛОК: Этапы обмена (фиат) -->
+            <section class="exchange-steps" data-block="exchange-steps-fiat">
+                <div class="block-label">EXCHANGE STEPS (FIAT)</div>
+                <h2 class="section-title" data-element="section-title">
+                    <span class="element-label">Section Title</span>
+                    Как купить или продать криптовалюту
+                </h2>
+                <div class="exchange-steps-grid" data-element="exchange-steps-grid">
+                    <span class="element-label">Steps Grid</span>
+
+                    <div class="exchange-step-card" data-element="step-card">
+                        <span class="element-label">Step Card</span>
+                        <div class="exchange-step-number">1</div>
+                        <div class="exchange-step-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="exchange-step-title">Выберите валюту и сумму</h3>
+                        <p class="exchange-step-desc">Укажите фиатную валюту, сумму и криптовалюту, которую хотите купить или продать.</p>
+                    </div>
+
+                    <div class="exchange-step-card">
+                        <div class="exchange-step-number">2</div>
+                        <div class="exchange-step-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M3 10H21" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="exchange-step-title">Укажите реквизиты</h3>
+                        <p class="exchange-step-desc">Введите данные банковской карты и адрес криптовалютного кошелька для получения средств.</p>
+                    </div>
+
+                    <div class="exchange-step-card">
+                        <div class="exchange-step-number">3</div>
+                        <div class="exchange-step-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="exchange-step-title">Пройдите верификацию</h3>
+                        <p class="exchange-step-desc">Верифицируйте банковскую карту и/или пройдите проверку личности (KYC) через Sumsub.</p>
+                    </div>
+
+                    <div class="exchange-step-card">
+                        <div class="exchange-step-number">4</div>
+                        <div class="exchange-step-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                <path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18457 2.99721 7.13633 4.39828 5.49707C5.79935 3.85782 7.69279 2.71538 9.79619 2.24015C11.8996 1.76491 14.1003 1.98234 16.07 2.86" stroke="currentColor" stroke-width="2"/>
+                                <path d="M22 4L12 14.01L9 11.01" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="exchange-step-title">Получите средства</h3>
+                        <p class="exchange-step-desc">Оплатите заявку и получите криптовалюту на кошелек или рубли на карту.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- БЛОК: Отзывы -->
+            <section class="reviews" data-block="reviews">
+                <div class="block-label">REVIEWS</div>
+                <h2 class="section-title" data-element="section-title">
+                    <span class="element-label">Section Title</span>
+                    Отзывы клиентов
+                </h2>
+                <div class="reviews-grid" data-element="reviews-grid">
+                    <span class="element-label">Reviews Grid</span>
+
+                    <div class="review-card" data-element="review-card">
+                        <span class="element-label">Review Card</span>
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://ui-avatars.com/api/?name=PN&background=6366f1&color=fff&size=40" alt="Avatar">
+                            </div>
+                            <div class="review-author">
+                                <div class="review-name">Павел Н.</div>
+                                <div class="review-date">18.03.2026</div>
+                            </div>
+                            <div class="review-rating">
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                        <p class="review-text">Купил BTC с карты Сбербанка. Верификация заняла пару минут, деньги пришли быстро. Курс лучше, чем на P2P биржах.</p>
+                        <div class="review-pair">RUB → BTC</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://ui-avatars.com/api/?name=OL&background=ec4899&color=fff&size=40" alt="Avatar">
+                            </div>
+                            <div class="review-author">
+                                <div class="review-name">Ольга Л.</div>
+                                <div class="review-date">16.03.2026</div>
+                            </div>
+                            <div class="review-rating">
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                        <p class="review-text">Продала USDT за рубли, деньги на карту пришли за 10 минут. Очень удобный сервис, особенно нравится что работают с МИР.</p>
+                        <div class="review-pair">USDT → RUB</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://ui-avatars.com/api/?name=IK&background=22c55e&color=fff&size=40" alt="Avatar">
+                            </div>
+                            <div class="review-author">
+                                <div class="review-name">Игорь К.</div>
+                                <div class="review-date">14.03.2026</div>
+                            </div>
+                            <div class="review-rating">
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star empty">*</span>
+                            </div>
+                        </div>
+                        <p class="review-text">Регулярно покупаю ETH за рубли. Верификацию прошёл один раз, дальше всё работает быстро. Курс адекватный.</p>
+                        <div class="review-pair">RUB → ETH</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://ui-avatars.com/api/?name=AS&background=f59e0b&color=fff&size=40" alt="Avatar">
+                            </div>
+                            <div class="review-author">
+                                <div class="review-name">Анна С.</div>
+                                <div class="review-date">11.03.2026</div>
+                            </div>
+                            <div class="review-rating">
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                        <p class="review-text">Первый раз покупала крипту через обменник. Всё понятно, верификация простая. Тинькофф карту приняли без проблем.</p>
+                        <div class="review-pair">RUB → BTC</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- БЛОК: Футер -->
+    <footer class="footer" data-block="footer">
+        <div class="container">
+            <div class="block-label">FOOTER</div>
+            <div class="footer-content">
+                <div class="footer-section" data-element="footer-column">
+                    <span class="element-label">Footer Column</span>
+                    <h4 class="footer-title">CryptoExchange</h4>
+                    <p class="footer-text">Надежный криптообменник с 2026 года</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">TG</a>
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">X</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Сервисы</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Обмен валют</a></li>
+                        <li><a href="#">Партнерская программа</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Информация</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="how-it-works.html">Как это работает</a></li>
+                        <li><a href="terms.html">Правила использования</a></li>
+                        <li><a href="aml.html">AML регламент</a></li>
+                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Поддержка</h4>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">support@cryptoexchange.com</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Партнеры -->
+            <div class="partners-section" data-block="partners">
+                <div class="block-label">PARTNERS</div>
+                <h4 class="partners-title">Наши партнеры</h4>
+                <div class="partners-grid" data-element="partners-grid">
+                    <span class="element-label">Partners Grid</span>
+                    <div class="partner-logo" data-element="partner-logo">
+                        <span class="element-label">Partner Logo</span>
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+1" alt="Partner 1">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+2" alt="Partner 2">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+3" alt="Partner 3">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+4" alt="Partner 4">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+5" alt="Partner 5">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+6" alt="Partner 6">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO перелинковка (фиат) -->
+            <div class="seo-links-section" data-block="seo-links">
+                <div class="block-label">SEO LINKS</div>
+                <div class="seo-links-grid" data-element="seo-links-grid">
+                    <span class="element-label">SEO Links Grid</span>
+
+                    <div class="seo-column" data-element="seo-column">
+                        <span class="element-label">SEO Column</span>
+                        <h4 class="seo-title">Купить за рубли</h4>
+                        <ul class="seo-list">
+                            <li><a href="#">Купить Bitcoin (BTC) за RUB</a></li>
+                            <li><a href="#">Купить Ethereum (ETH) за RUB</a></li>
+                            <li><a href="#">Купить Tether (USDT) за RUB</a></li>
+                            <li><a href="#">Купить BNB за RUB</a></li>
+                            <li><a href="#">Купить Solana (SOL) за RUB</a></li>
+                            <li><a href="#">Купить TRON (TRX) за RUB</a></li>
+                            <li><a href="#">Купить Toncoin (TON) за RUB</a></li>
+                            <li><a href="#">Купить XRP за RUB</a></li>
+                            <li><a href="#">Купить Litecoin (LTC) за RUB</a></li>
+                            <li><a href="#">Купить Monero (XMR) за RUB</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="seo-column">
+                        <h4 class="seo-title">Продать за рубли</h4>
+                        <ul class="seo-list">
+                            <li><a href="#">Продать Bitcoin (BTC) за RUB</a></li>
+                            <li><a href="#">Продать Ethereum (ETH) за RUB</a></li>
+                            <li><a href="#">Продать Tether (USDT) за RUB</a></li>
+                            <li><a href="#">Продать BNB за RUB</a></li>
+                            <li><a href="#">Продать Solana (SOL) за RUB</a></li>
+                            <li><a href="#">Продать TRON (TRX) за RUB</a></li>
+                            <li><a href="#">Продать Toncoin (TON) за RUB</a></li>
+                            <li><a href="#">Продать XRP за RUB</a></li>
+                            <li><a href="#">Продать Litecoin (LTC) за RUB</a></li>
+                            <li><a href="#">Продать Monero (XMR) за RUB</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="seo-column">
+                        <h4 class="seo-title">Другие валюты</h4>
+                        <ul class="seo-list">
+                            <li><a href="#">Купить BTC за USD</a></li>
+                            <li><a href="#">Купить ETH за USD</a></li>
+                            <li><a href="#">Купить BTC за EUR</a></li>
+                            <li><a href="#">Купить USDT за EUR</a></li>
+                            <li><a href="#">Купить BTC за KZT</a></li>
+                            <li><a href="#">Купить BTC за UAH</a></li>
+                            <li><a href="#">Продать BTC за USD</a></li>
+                            <li><a href="#">Продать ETH за USD</a></li>
+                            <li><a href="#">Продать USDT за EUR</a></li>
+                            <li><a href="#">Продать BTC за KZT</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom" data-element="footer-copyright">
+                <span class="element-label">Copyright</span>
+                <p>&copy; 2026 CryptoExchange. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

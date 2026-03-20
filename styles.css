@@ -4133,6 +4133,263 @@ a {
 }
 
 
+/* Покупка AML проверок — подзаголовок */
+
+.aml-buy-subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    margin-top: var(--spacing-xs);
+}
+
+/* Покупка AML проверок — пакеты */
+
+.aml-packages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+}
+
+.aml-package-card {
+    position: relative;
+    background: var(--color-bg-secondary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg) var(--spacing-md);
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.aml-package-card:hover {
+    border-color: var(--color-primary);
+}
+
+.aml-package-card.active {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.aml-package-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: #fff;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+}
+
+.aml-package-save {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-success);
+    color: #fff;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+}
+
+.aml-package-count {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.aml-package-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.aml-package-price {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 2px;
+}
+
+.aml-package-per {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+/* Покупка AML проверок — выбранный пакет */
+
+.aml-buy-selected {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+}
+
+.aml-buy-selected-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.aml-buy-selected-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.aml-buy-selected-value {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* AML баланс в ЛК */
+
+.aml-balance-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.aml-balance-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.aml-balance-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-success);
+}
+
+.aml-balance-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.aml-balance-value {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-success);
+}
+
+/* Табы способа оплаты AML */
+
+.aml-payment-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.aml-payment-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.aml-payment-tab:not(:last-child) {
+    border-right: 1px solid var(--color-border);
+}
+
+.aml-payment-tab.active {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.aml-payment-tab:hover:not(.active) {
+    background: var(--color-bg-secondary);
+}
+
+/* Содержимое табов */
+
+.aml-payment-tab-content {
+    display: none;
+}
+
+.aml-payment-tab-content.active {
+    display: block;
+}
+
+/* Фиат-форма */
+
+.aml-fiat-form {
+    margin-bottom: var(--spacing-lg);
+}
+
+.aml-fiat-form .form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.aml-fiat-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+/* Баланс — сводка списания */
+
+.aml-balance-summary {
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.aml-balance-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-xs) 0;
+}
+
+.aml-balance-summary-row:not(:last-child) {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.aml-balance-summary-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.aml-balance-summary-value {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
 /* ==========================================
    СТРАНИЦА БЛОГА
    ========================================== */
@@ -4849,5 +5106,726 @@ a {
 
     .section-title {
         font-size: var(--font-size-xl);
+    }
+}
+
+/* ==========================================
+   СТРАНИЦЫ ФИАТ-ОБМЕНА
+   ========================================== */
+
+/* Табы направления фиат-обмена */
+.fiat-direction-tabs {
+    max-width: 1200px;
+    margin: 0 auto var(--spacing-xl);
+    position: relative;
+}
+
+.fiat-tabs {
+    display: flex;
+    gap: var(--spacing-xs);
+    background: var(--color-bg-tertiary);
+    padding: 4px;
+    border-radius: var(--border-radius-lg);
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.fiat-tab {
+    padding: var(--spacing-sm) var(--spacing-xl);
+    border: none;
+    border-radius: var(--border-radius-md);
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.fiat-tab.active {
+    background: var(--color-bg-primary);
+    color: var(--color-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.fiat-tab:hover:not(.active) {
+    color: var(--color-text-primary);
+}
+
+/* Метка направления потока */
+.fiat-flow-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-primary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: rgba(59, 130, 246, 0.08);
+    border-radius: var(--border-radius-md);
+    display: inline-block;
+}
+
+/* Секция банковской карты */
+.fiat-card-section {
+    position: relative;
+}
+
+.fiat-card-section .form-section-title {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Поле ввода номера карты с иконкой */
+.fiat-card-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.fiat-card-icon {
+    position: absolute;
+    left: var(--spacing-md);
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.fiat-card-number {
+    padding-left: 48px !important;
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-lg);
+    letter-spacing: 2px;
+}
+
+/* Иконка фиатной валюты (рубль, доллар и т.д.) */
+.fiat-currency-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-bg-tertiary);
+    border: 2px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+}
+
+/* Детали фиат-оплаты */
+.fiat-payment-details {
+    position: relative;
+}
+
+.fiat-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    position: relative;
+}
+
+.fiat-detail-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.fiat-detail-value {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.fiat-amount-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-xs);
+}
+
+/* Загрузка чека */
+.fiat-receipt-upload {
+    position: relative;
+}
+
+.fiat-receipt-hint {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.fiat-upload-area {
+    border: 2px dashed var(--color-border);
+    border-radius: var(--border-radius-lg);
+}
+
+.fiat-upload-area .upload-label {
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+}
+
+/* Фиат-метод оплаты */
+.fiat-payment-method {
+    position: relative;
+}
+
+.fiat-payment-method .form-section-title {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Тёмная тема */
+[data-theme="dark"] .fiat-tab {
+    color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .fiat-tab.active {
+    background: var(--color-bg-tertiary);
+    color: var(--color-primary);
+}
+
+[data-theme="dark"] .fiat-flow-label {
+    background: rgba(59, 130, 246, 0.15);
+}
+
+[data-theme="dark"] .fiat-currency-icon {
+    background: var(--color-bg-dark);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .fiat-upload-area {
+    border-color: var(--color-border);
+}
+
+/* Адаптивность фиат-страниц */
+@media (max-width: 768px) {
+    .fiat-tabs {
+        width: 100%;
+    }
+
+    .fiat-tab {
+        flex: 1;
+        text-align: center;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .fiat-card-number {
+        font-size: var(--font-size-base);
+        letter-spacing: 1px;
+    }
+
+    .fiat-detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    .fiat-currency-icon {
+        width: 32px;
+        height: 32px;
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* Иконка фиатной валюты (маленькая, для формы обмена) */
+.fiat-currency-icon-small {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--color-bg-tertiary);
+    border: 1.5px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+}
+
+/* Иконка фиатной валюты в карточках направлений */
+.fiat-direction-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-bg-tertiary);
+    border: 1.5px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+}
+
+/* Табы в форме обмена (Купить/Продать) */
+.fiat-form-tabs {
+    margin-bottom: var(--spacing-lg);
+}
+
+.fiat-tabs-compact {
+    width: 100%;
+}
+
+.fiat-tabs-compact .fiat-tab {
+    flex: 1;
+    text-align: center;
+}
+
+/* Способ оплаты (вместо сети) */
+.fiat-payment-select {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+/* Выбор банка */
+.fiat-bank-select {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+/* Уведомление о верификации */
+.fiat-verification-notice {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(59, 130, 246, 0.08);
+    border-radius: var(--border-radius-md);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    position: relative;
+}
+
+.fiat-notice-text {
+    font-weight: 500;
+}
+
+/* Тёмная тема — дополнения для фиат-главной */
+[data-theme="dark"] .fiat-currency-icon-small {
+    background: var(--color-bg-dark);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .fiat-direction-icon {
+    background: var(--color-bg-dark);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .fiat-verification-notice {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Адаптивность — дополнения */
+@media (max-width: 480px) {
+    .fiat-currency-icon-small {
+        width: 20px;
+        height: 20px;
+        font-size: var(--font-size-xs);
+    }
+
+    .fiat-direction-icon {
+        width: 24px;
+        height: 24px;
+        font-size: var(--font-size-sm);
+    }
+}
+
+
+/* ==========================================
+   СТРАНИЦА DEX ОБМЕНА
+   ========================================== */
+
+/* Кнопка подключения кошелька в хедере */
+.dex-connect-wallet-btn {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Описание виджета */
+.dex-widget-description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-lg);
+}
+
+.dex-lifi-link {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.dex-lifi-link:hover {
+    text-decoration: underline;
+}
+
+/* Контейнер виджета LI.FI */
+.dex-lifi-widget {
+    position: relative;
+    margin-bottom: var(--spacing-lg);
+}
+
+.dex-lifi-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-3xl) var(--spacing-xl);
+    background-color: var(--color-bg-tertiary);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    min-height: 380px;
+    text-align: center;
+}
+
+.dex-lifi-placeholder-icon {
+    color: var(--color-primary);
+    opacity: 0.6;
+}
+
+.dex-lifi-placeholder-text {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.dex-lifi-placeholder-hint {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    max-width: 280px;
+}
+
+.dex-lifi-placeholder-features {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: var(--spacing-sm);
+}
+
+.dex-lifi-feature {
+    display: inline-flex;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background-color: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+/* Бейдж сети в карточке направления */
+.dex-pair-chain {
+    text-align: center;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    font-weight: 500;
+    margin-top: var(--spacing-xs);
+    padding-top: var(--spacing-xs);
+    border-top: 1px solid var(--color-border);
+}
+
+/* Секция поддерживаемых сетей */
+.dex-chains-section {
+    padding: var(--spacing-3xl) 0;
+}
+
+.dex-chains-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--spacing-lg);
+    position: relative;
+}
+
+.dex-chain-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xl) var(--spacing-md);
+    background-color: var(--color-bg-primary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+    text-align: center;
+    position: relative;
+}
+
+.dex-chain-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.dex-chain-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.dex-chain-card-name {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.dex-chain-card-desc {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    line-height: 1.4;
+}
+
+/* Секция поддерживаемых кошельков */
+.dex-wallets-section {
+    padding: var(--spacing-3xl) 0;
+}
+
+.dex-wallets-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--spacing-lg);
+    position: relative;
+}
+
+.dex-wallet-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl) var(--spacing-md);
+    background-color: var(--color-bg-primary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+    text-align: center;
+    position: relative;
+}
+
+.dex-wallet-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.dex-wallet-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-tertiary);
+    border-radius: var(--radius-lg);
+    color: var(--color-text-secondary);
+}
+
+.dex-wallet-name {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* Уведомление об AML-метке DEX */
+.dex-aml-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: var(--radius-lg);
+    color: var(--color-success);
+    margin-top: var(--spacing-md);
+    position: relative;
+}
+
+.dex-aml-notice svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.dex-aml-notice-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.dex-aml-notice-text strong {
+    color: var(--color-success);
+    font-weight: 700;
+}
+
+/* Тёмная тема — DEX */
+[data-theme="dark"] .dex-aml-notice {
+    background-color: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+[data-theme="dark"] .dex-lifi-placeholder {
+    background-color: var(--color-bg-dark);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .dex-lifi-feature {
+    background-color: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .dex-chain-card {
+    background-color: var(--color-bg-dark);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .dex-wallet-card {
+    background-color: var(--color-bg-dark);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .dex-wallet-icon {
+    background-color: var(--color-bg-tertiary);
+}
+
+/* Тёмная тема — AML покупка и баланс */
+[data-theme="dark"] .aml-package-card {
+    background-color: var(--color-bg-dark);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .aml-package-card.active {
+    border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .aml-buy-selected {
+    background-color: var(--color-bg-dark);
+}
+
+[data-theme="dark"] .aml-payment-tabs {
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .aml-payment-tab:not(:last-child) {
+    border-right-color: var(--color-border);
+}
+
+[data-theme="dark"] .aml-payment-tab:hover:not(.active) {
+    background-color: var(--color-bg-dark);
+}
+
+[data-theme="dark"] .aml-balance-summary {
+    background-color: var(--color-bg-dark);
+}
+
+[data-theme="dark"] .aml-balance-card {
+    background-color: rgba(16, 185, 129, 0.08);
+    border-color: rgba(16, 185, 129, 0.25);
+}
+
+[data-theme="dark"] .aml-balance-icon {
+    background-color: rgba(16, 185, 129, 0.15);
+}
+
+/* Адаптивность AML покупка */
+@media (max-width: 768px) {
+    .aml-packages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .aml-balance-card {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-md);
+    }
+
+    .aml-balance-info {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .aml-packages-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .aml-payment-tabs {
+        flex-direction: column;
+    }
+
+    .aml-payment-tab:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .aml-fiat-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Адаптивность DEX */
+@media (max-width: 1024px) {
+    .dex-chains-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .dex-wallets-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .dex-chains-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dex-wallets-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .dex-lifi-placeholder {
+        min-height: 300px;
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .dex-lifi-placeholder-features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dex-chains-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .dex-wallets-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .dex-chain-card-icon {
+        width: 36px;
+        height: 36px;
     }
 }

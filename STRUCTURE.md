@@ -4,7 +4,8 @@
 
 | Файл | Тип |
 |------|-----|
-| index.html | Главная страница |
+| index.html | Главная страница (крипта-крипта) |
+| index-fiat.html | Главная страница (фиат-крипта) |
 | exchange-order.html | Оформление заявки |
 | exchange-card-verification.html | Верификация карты |
 | exchange-identity-verification.html | Верификация личности |
@@ -22,8 +23,11 @@
 | privacy.html | Политика конфиденциальности |
 | blog.html | Блог (список SEO-статей) |
 | blog-article.html | Шаблон статьи блога |
+| exchange-order-fiat.html | Оформление заявки (фиат) |
+| exchange-payment-fiat.html | Оплата заявки (фиат) |
+| index-dex.html | Главная страница DEX (децентрализованный обмен) |
 | aml-check.html | AML проверка (форма) |
-| aml-check-payment.html | Оплата AML проверки |
+| aml-check-payment.html | Оплата AML проверки (крипта / карта / баланс) |
 | aml-check-result.html | Результаты AML проверки |
 | styles.css | Стили и CSS-переменные |
 | script.js | Интерактивность |
@@ -75,6 +79,70 @@ FOOTER
 └── Copyright
 ```
 
+## HTML структура: index-fiat.html
+
+```
+HEADER (идентичен главной)
+
+HERO SECTION
+├── Hero Text (заголовок, подзаголовок — покупка/продажа)
+├── Conditions Badges
+│   ├── Фиксация курса (expandable)
+│   ├── Верификация (expandable)
+│   └── Способы оплаты (expandable)
+└── EXCHANGE FORM (FIAT)
+    ├── Direction Tabs (Купить / Продать)
+    ├── Send Field (фиат: сумма, валюта ₽ RUB, способ оплаты)
+    ├── Switch Button
+    ├── Receive Field (крипта: сумма, BTC, сеть)
+    ├── Verification Notice
+    ├── Agreement Checkbox
+    ├── Rate Refresh
+    └── Submit Button ("Купить BTC")
+
+SEO TEXT (покупка/продажа крипты за рубли)
+
+POPULAR DIRECTIONS FIAT (6 карточек: RUB→BTC, RUB→USDT, RUB→ETH, BTC→RUB, USDT→RUB, ETH→RUB)
+
+EXCHANGE STEPS FIAT (4 шага: валюта, реквизиты, верификация, получение)
+
+REVIEWS (4 карточки отзывов о фиат-обменах)
+
+FOOTER
+├── Footer Columns (4 колонки)
+├── Partners Block (6 логотипов)
+├── SEO Links (Купить за рубли, Продать за рубли, Другие валюты)
+└── Copyright
+```
+
+## HTML структура: index-dex.html
+
+```
+HEADER (кнопка "Подключить кошелек" вместо Войти/Регистрация)
+
+HERO SECTION
+├── Hero Text (заголовок, подзаголовок — децентрализованный обмен)
+├── Conditions Badges
+│   ├── Тип обмена — Децентрализованный (expandable)
+│   ├── Верификация — Не требуется (expandable)
+│   └── Сети — Мультисеть (expandable)
+└── LI.FI WIDGET
+    ├── Widget Header (заголовок "Swap")
+    └── Widget Container (placeholder для виджета li.fi)
+
+SEO TEXT (DEX обмен, агрегатор, поддерживаемые сети)
+
+EXCHANGE STEPS DEX (4 шага: кошелек, токены, Approve, Swap)
+
+REVIEWS (4 карточки отзывов о DEX обменах)
+
+FOOTER
+├── Footer Columns (4 колонки)
+├── Partners Block (6 логотипов)
+├── SEO Links (Swap Ethereum, Swap BNB Chain, Swap L2 Networks)
+└── Copyright
+```
+
 ## HTML структура: exchange-order.html
 
 ```
@@ -102,6 +170,106 @@ ORDER LAYOUT (две колонки)
         ├── Exchange Direction (BTC → USDT)
         ├── Order Info (курс, сети, подтверждения, сумма)
         └── Warning Box
+
+FOOTER (идентичен главной)
+```
+
+## HTML структура: exchange-order-fiat.html
+
+```
+HEADER (идентичен главной)
+
+STEPS INDICATOR (6 шагов — фиат поток)
+├── Выбор валют [completed]
+├── Ввод данных [active]
+├── Верификация
+├── Оплата
+├── Обработка
+└── Завершено
+
+ORDER LAYOUT — ФИАТ → КРИПТА
+├── Order Form (Fiat → Crypto)
+│   ├── Bank Card Details (списание)
+│   │   ├── Card Number (с иконкой карты)
+│   │   ├── Card Holder Name
+│   │   └── Bank Select
+│   ├── Crypto Wallet Address
+│   ├── MEMO
+│   ├── Email
+│   ├── Telegram
+│   ├── Promo Code
+│   ├── Agreement Checkbox
+│   └── Submit Button
+└── Order Details
+    ├── Rate Refresh (таймер 60 сек)
+    ├── Exchange Direction (RUB → BTC, иконка ₽)
+    ├── Order Info (курс, способ оплаты, комиссия, сумма)
+    ├── Warning Box (верификация)
+    └── Info Message (этап верификации)
+
+ORDER LAYOUT — КРИПТА → ФИАТ
+├── Order Form (Crypto → Fiat)
+│   ├── Bank Card Details (зачисление)
+│   │   ├── Card Number
+│   │   ├── Card Holder Name
+│   │   └── Bank Select
+│   ├── Email
+│   ├── Telegram
+│   ├── Promo Code
+│   ├── Agreement Checkbox
+│   └── Submit Button
+└── Order Details
+    ├── Rate Refresh
+    ├── Exchange Direction (BTC → RUB)
+    ├── Order Info (курс, способ получения, сумма)
+    ├── Warning Box
+    └── Info Message
+
+FOOTER (идентичен главной)
+```
+
+## HTML структура: exchange-payment-fiat.html
+
+```
+HEADER (идентичен главной)
+
+STEPS INDICATOR (6 шагов — фиат поток)
+├── Выбор валют [completed]
+├── Ввод данных [completed]
+├── Верификация [completed]
+├── Оплата [active]
+├── Обработка
+└── Завершено
+
+PAYMENT LAYOUT — ФИАТ → КРИПТА
+├── Payment Form (Fiat → Crypto)
+│   ├── Payment Header (заголовок, ID заявки)
+│   ├── Payment Timer
+│   ├── Payment Details
+│   │   ├── Recipient Card (номер карты с копированием)
+│   │   ├── Recipient Bank
+│   │   ├── Recipient Name
+│   │   └── Payment Amount (с копированием)
+│   ├── Confirm Payment Button
+│   └── Warning Box
+└── Order Details
+    ├── Exchange Direction (RUB → BTC)
+    └── Order Info (ID, курс, способ оплаты, сумма)
+
+PAYMENT LAYOUT — КРИПТА → ФИАТ
+├── Payment Form (Crypto → Fiat)
+│   ├── Payment Header (заголовок, ID заявки)
+│   ├── Payment Timer
+│   ├── Payment Amount (с копированием)
+│   ├── Payment Address (крипто-адрес с копированием)
+│   ├── Network (Bitcoin)
+│   ├── QR Code
+│   ├── Confirm Payment Button
+│   ├── Warning Box
+│   └── Payout Info (зачисление на карту)
+└── Order Details
+    ├── Exchange Direction (BTC → RUB)
+    └── Order Info (ID, курс, сеть, карта получателя, сумма)
 
 FOOTER (идентичен главной)
 ```
@@ -267,6 +435,7 @@ DASHBOARD LAYOUT (sidebar + контент)
     │   └── Password Change Form (3 поля + кнопка)
     │
     ├── AML HISTORY
+    │   ├── AML Balance (счётчик проверок + кнопка "Купить проверки")
     │   ├── Table (Дата, Адрес, Валюта, Risk Score, Результат, Подробнее)
     │   └── Pagination
     │
@@ -447,17 +616,38 @@ FOOTER (идентичен главной)
 HEADER (идентичен главной, ссылка "Проверить AML" активна)
 
 AML CHECK PAYMENT
-├── Payment Header (← Назад, заголовок, бейдж $1.50)
-└── PAYMENT FORM
-    ├── Payment Network (карточки: Bitcoin, Ethereum, BSC, Tron)
-    ├── Payment Coin (карточки)
-    ├── Divider
-    ├── Payment Details
-    │   ├── QR Code (placeholder)
-    │   ├── Timer (15:00)
-    │   ├── Payment Address + Copy
-    │   └── Payment Amount + Copy
-    └── Warning Message
+├── Payment Header (← Назад, заголовок)
+├── QUANTITY SELECT
+│   └── Packages Grid (4 пакета)
+│       ├── Package Card (1 проверка — $1.50, active)
+│       ├── Package Card (5 проверок — $5.00)
+│       ├── Package Card (10 проверок — $8.00, "Популярный")
+│       └── Package Card (25 проверок — $17.50, "-40%")
+└── PAYMENT METHOD
+    ├── Payment Tabs (Криптовалюта | Банковская карта | Баланс проверок)
+    │
+    ├── Tab: Crypto Payment
+    │   ├── Payment Summary (количество + цена)
+    │   ├── Payment Network (карточки: Bitcoin, Ethereum, BSC, Tron)
+    │   ├── Payment Coin (карточки)
+    │   ├── Payment Details
+    │   │   ├── QR Code (placeholder)
+    │   │   ├── Timer (15:00)
+    │   │   ├── Payment Address + Copy
+    │   │   └── Payment Amount + Copy
+    │   └── Warning Message
+    │
+    ├── Tab: Fiat Payment
+    │   ├── Payment Summary (количество + цена в ₽)
+    │   ├── Card Form (номер, срок, CVV, имя, email)
+    │   ├── Pay Button
+    │   └── Info Message (защищённый шлюз)
+    │
+    └── Tab: Balance Payment
+        ├── Balance Info (доступно проверок: 7)
+        ├── Balance Summary (будет списано / останется)
+        ├── Use Balance Button
+        └── Info Message (мгновенная проверка)
 
 FOOTER (идентичен главной)
 ```
@@ -520,11 +710,14 @@ FOOTER (идентичен главной)
 | aml-check-layout | aml-check | Layout формы AML проверки |
 | aml-check-form | aml-check | Форма AML проверки |
 | aml-check-payment-layout | aml-check-payment | Layout оплаты AML |
-| aml-payment-form | aml-check-payment | Форма оплаты AML |
+| aml-quantity-select | aml-check-payment | Выбор количества проверок |
+| aml-payment-method | aml-check-payment | Способ оплаты (табы) |
 | aml-check-result-layout | aml-check-result | Layout результатов AML |
 | risk-score-block | aml-check-result | Блок Risk Score |
 | check-info | aml-check-result | Информация о проверке |
 | funds-origin | aml-check-result | Происхождение средств |
+| dex-swap-form | index-dex | Виджет DEX обмена (LI.FI) |
+| exchange-steps-dex | index-dex | Шаги DEX обмена |
 | footer | все | Футер |
 | partners | index | Партнёры |
 | seo-links | index | SEO-перелинковка |
@@ -549,7 +742,7 @@ FOOTER (идентичен главной)
 
 **exchange-complete.html:** complete-card, complete-header, complete-status, exchange-direction, order-info, info-message, complete-actions.
 
-**dashboard.html:** header-user, dashboard-sidebar, sidebar-user, sidebar-nav, dashboard-content, section-title, filter-pills, exchange-table, pagination, promo-card, profile-fields, password-section, aml-table, card-verification, identity-verification, two-factor-auth, twofa-qr, referral-link, referral-stats, referral-withdraw.
+**dashboard.html:** header-user, dashboard-sidebar, sidebar-user, sidebar-nav, dashboard-content, section-title, filter-pills, exchange-table, pagination, promo-card, profile-fields, password-section, aml-balance, aml-table, card-verification, identity-verification, two-factor-auth, twofa-qr, referral-link, referral-stats, referral-withdraw.
 
 **about.html:** about-hero, about-stats, about-stat-card, about-advantages, about-advantage-card.
 
@@ -567,9 +760,11 @@ FOOTER (идентичен главной)
 
 **aml-check.html:** aml-check-header, aml-check-tabs, network-select, coin-select, wallet-address, email-field, check-price.
 
-**aml-check-payment.html:** aml-payment-header, payment-network, payment-coin, payment-details, payment-qr, payment-timer, payment-address, payment-amount, payment-warning.
+**aml-check-payment.html:** aml-payment-header, quantity-select, package-card, payment-tabs, tab-crypto, payment-summary, payment-network, payment-coin, payment-details, payment-qr, payment-timer, payment-address, payment-amount, payment-warning, tab-fiat, payment-summary-fiat, fiat-form, fiat-info, tab-balance, balance-info, balance-summary, balance-info-msg.
 
 **aml-check-result.html:** result-header, result-id, risk-score-display, section-title, check-details, sources-legal, sources-medium, sources-high, result-actions.
+
+**index-dex.html:** hero-text, condition-badge, lifi-widget-container, widget-info, step-card, seo-links-grid, seo-column.
 
 ## CSS переменные (styles.css, блок :root)
 

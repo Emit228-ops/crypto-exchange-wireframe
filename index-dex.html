@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEX обмен - Децентрализованный обмен криптовалюты</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- БЛОК: Шапка сайта -->
+    <header class="header" data-block="header">
+        <div class="container">
+            <div class="block-label">HEADER</div>
+            <div class="header-content">
+                <div class="logo" data-element="logo">
+                    <span class="element-label">Logo</span>
+                    <a href="index.html">CryptoExchange</a>
+                </div>
+
+                <nav class="nav" data-element="navigation">
+                    <span class="element-label">Navigation</span>
+                    <div class="nav-dropdown" data-element="nav-dropdown">
+                        <span class="element-label">Dropdown Menu</span>
+                        <button class="nav-link nav-dropdown-toggle active" id="exchange-dropdown">
+                            Обмен
+                            <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="nav-dropdown-menu" id="exchange-dropdown-menu">
+                            <a href="index.html" class="nav-dropdown-item">Крипта на крипту</a>
+                            <a href="index-fiat.html" class="nav-dropdown-item">Фиат на крипту / Крипта на фиат</a>
+                            <a href="#" class="nav-dropdown-item">Наличные</a>
+                            <a href="index-dex.html" class="nav-dropdown-item active">DEX</a>
+                        </div>
+                    </div>
+                    <a href="aml-check.html" class="nav-link">Проверить AML</a>
+                    <a href="how-it-works.html" class="nav-link">Как совершить обмен</a>
+                    <a href="about.html" class="nav-link">О нас</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                </nav>
+
+                <div class="header-settings" data-element="header-settings">
+                    <span class="element-label">Settings</span>
+                    <button class="theme-toggle" data-element="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                        <span class="element-label">Theme Toggle</span>
+                        <svg class="theme-icon theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <svg class="theme-icon theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    <div class="language-toggle" data-element="language-toggle">
+                        <span class="element-label">Language Toggle</span>
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
+
+                <!-- Кнопка подключения кошелька (вместо Войти/Регистрация) -->
+                <div class="header-actions" data-element="header-buttons">
+                    <span class="element-label">Actions</span>
+                    <button class="btn btn-primary dex-connect-wallet-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="margin-right: 6px;">
+                            <rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 6V6C2 4.89543 2.89543 4 4 4H20C21.1046 4 22 4.89543 22 6V6" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="17" cy="13" r="2" fill="currentColor"/>
+                        </svg>
+                        Подключить кошелек
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- БЛОК: Основной контент -->
+    <main class="main">
+        <div class="container">
+
+            <!-- БЛОК: Hero-секция -->
+            <section class="hero" data-block="hero">
+                <div class="block-label">HERO SECTION</div>
+                <div class="hero-layout">
+                    <!-- Левая колонка с текстом -->
+                    <div class="hero-content" data-element="hero-text">
+                        <span class="element-label">Hero Text</span>
+                        <h1 class="hero-title">Децентрализованный обмен криптовалюты</h1>
+                        <p class="hero-subtitle">Обменивайте токены напрямую из своего кошелька через смарт-контракты. Без регистрации, без KYC, без посредников.</p>
+
+                        <!-- Бейджи условий -->
+                        <div class="conditions-badges" data-element="conditions-badges">
+                            <span class="element-label">Conditions Badges</span>
+
+                            <!-- Бейдж: Децентрализованно -->
+                            <div class="condition-badge-wrapper" data-element="condition-badge">
+                                <span class="element-label">Badge (Expandable)</span>
+                                <button class="condition-badge clickable" data-toggle="dex-decentralized">
+                                    <div class="badge-icon">
+                                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                                            <circle cx="10" cy="4" r="2" stroke="currentColor" stroke-width="1.5"/>
+                                            <circle cx="4" cy="16" r="2" stroke="currentColor" stroke-width="1.5"/>
+                                            <circle cx="16" cy="16" r="2" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M10 6V10M10 10L5 14M10 10L15 14" stroke="currentColor" stroke-width="1.5"/>
+                                        </svg>
+                                    </div>
+                                    <div class="badge-content">
+                                        <div class="badge-label">Тип обмена</div>
+                                        <div class="badge-value">Децентрализованный</div>
+                                    </div>
+                                    <svg class="badge-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <div class="badge-expandable" id="dex-decentralized">
+                                    <p class="expandable-text">Обмен происходит через смарт-контракты на блокчейне. Ваши средства не передаются третьим лицам — вы взаимодействуете напрямую с децентрализованными протоколами (Uniswap, PancakeSwap, SushiSwap и др.).</p>
+                                </div>
+                            </div>
+
+                            <!-- Бейдж: Без KYC -->
+                            <div class="condition-badge-wrapper">
+                                <button class="condition-badge clickable" data-toggle="dex-no-kyc">
+                                    <div class="badge-icon">
+                                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                                            <circle cx="10" cy="7" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                            <path d="M3 18C3 14.134 6.13401 11 10 11C13.866 11 17 14.134 17 18" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M3 3L17 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <div class="badge-content">
+                                        <div class="badge-label">Верификация</div>
+                                        <div class="badge-value">Не требуется</div>
+                                    </div>
+                                    <svg class="badge-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <div class="badge-expandable" id="dex-no-kyc">
+                                    <p class="expandable-text">Для DEX обмена не требуется регистрация, верификация личности или предоставление персональных данных. Достаточно подключить свой криптовалютный кошелек.</p>
+                                </div>
+                            </div>
+
+                            <!-- Бейдж: Мультисеть -->
+                            <div class="condition-badge-wrapper">
+                                <button class="condition-badge clickable" data-toggle="dex-multichain">
+                                    <div class="badge-icon">
+                                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+                                            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                            <path d="M2 10H18" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M10 2C12.5 4.5 14 7 14 10C14 13 12.5 15.5 10 18" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M10 2C7.5 4.5 6 7 6 10C6 13 7.5 15.5 10 18" stroke="currentColor" stroke-width="1.5"/>
+                                        </svg>
+                                    </div>
+                                    <div class="badge-content">
+                                        <div class="badge-label">Сети</div>
+                                        <div class="badge-value">Мультисеть</div>
+                                    </div>
+                                    <svg class="badge-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <div class="badge-expandable" id="dex-multichain">
+                                    <p class="expandable-text">Поддерживаются обмены в сетях Ethereum, BNB Chain, Polygon, Arbitrum, Optimism, Avalanche и других. Агрегатор находит лучший маршрут обмена среди множества DEX.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- БЛОК: Виджет LI.FI -->
+                    <div class="exchange-wrapper" data-block="dex-swap-form">
+                        <div class="block-label">LI.FI WIDGET</div>
+
+                        <div class="exchange-card">
+                            <!-- Заголовок -->
+                            <div class="exchange-header" data-element="form-header">
+                                <span class="element-label">Widget Title</span>
+                                <h2>Swap</h2>
+                            </div>
+
+                            <!-- Контейнер виджета LI.FI -->
+                            <div class="dex-lifi-widget" data-element="lifi-widget-container">
+                                <span class="element-label">LI.FI Widget Container</span>
+                                <div class="dex-lifi-placeholder" id="lifi-widget">
+                                    <div class="dex-lifi-placeholder-icon">
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                                            <rect x="2" y="3" width="20" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M2 8H22" stroke="currentColor" stroke-width="1.5"/>
+                                            <circle cx="5" cy="5.5" r="1" fill="currentColor"/>
+                                            <circle cx="8" cy="5.5" r="1" fill="currentColor"/>
+                                            <circle cx="11" cy="5.5" r="1" fill="currentColor"/>
+                                            <path d="M8 13L11 16L16 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <div class="dex-lifi-placeholder-text">LI.FI Widget</div>
+                                    <div class="dex-lifi-placeholder-hint">Здесь будет отображаться виджет обмена от li.fi</div>
+                                    <div class="dex-lifi-placeholder-features">
+                                        <span class="dex-lifi-feature">Мультичейн свопы</span>
+                                        <span class="dex-lifi-feature">Кросс-чейн мосты</span>
+                                        <span class="dex-lifi-feature">Лучший курс</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Информационное сообщение -->
+                            <div class="info-message" data-element="widget-info">
+                                <span class="element-label">Widget Info</span>
+                                <svg class="info-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 16V12M12 8H12.01" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                <div class="info-text">
+                                    Виджет подключает ваш кошелек (MetaMask, WalletConnect и др.) и выполняет обмен через смарт-контракты. Все операции происходят on-chain — мы не храним ваши средства.
+                                </div>
+                            </div>
+
+                            <!-- Уведомление об AML-метке -->
+                            <div class="dex-aml-notice" data-element="aml-notice">
+                                <span class="element-label">AML Notice</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                <div class="dex-aml-notice-text">
+                                    Средства на выходе будут иметь метку <strong>100% DEX</strong>. Данная метка не является высокорисковой.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- БЛОК: SEO текст -->
+            <section class="seo-text" data-block="seo-text">
+                <div class="block-label">SEO TEXT</div>
+                <div class="seo-text-content" data-element="seo-text-content">
+                    <span class="element-label">SEO Text Content</span>
+                    <h2 class="seo-text-title">DEX обмен — децентрализованная торговля криптовалютой</h2>
+                    <div class="seo-text-body">
+                        <p>Наш DEX агрегатор находит лучший маршрут обмена среди десятков децентрализованных бирж. Вы обмениваете токены напрямую из своего кошелька через смарт-контракты — без передачи средств третьим лицам, без регистрации и верификации.</p>
+                        <p>Поддерживаются все популярные сети: Ethereum, BNB Chain, Polygon, Arbitrum, Optimism и Avalanche. Агрегатор автоматически разбивает сделку на части для получения лучшей цены и минимального проскальзывания.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- БЛОК: Этапы DEX обмена -->
+            <section class="exchange-steps" data-block="exchange-steps-dex">
+                <div class="block-label">EXCHANGE STEPS (DEX)</div>
+                <h2 class="section-title" data-element="section-title">
+                    <span class="element-label">Section Title</span>
+                    Как обменять токены через DEX
+                </h2>
+                <div class="exchange-steps-grid" data-element="exchange-steps-grid">
+                    <span class="element-label">Steps Grid</span>
+
+                    <div class="exchange-step-card" data-element="step-card">
+                        <span class="element-label">Step Card</span>
+                        <div class="exchange-step-number">1</div>
+                        <div class="exchange-step-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                <rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M2 6V6C2 4.89543 2.89543 4 4 4H20C21.1046 4 22 4.89543 22 6V6" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="17" cy="13" r="2" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="exchange-step-title">Подключите кошелек</h3>
+                        <p class="exchange-step-desc">Подключите MetaMask, Trust Wallet, WalletConnect или другой Web3-кошелек к платформе.</p>
+                    </div>
+
+                    <div class="exchange-step-card">
+                        <div class="exchange-step-number">2</div>
+                        <div class="exchange-step-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="exchange-step-title">Выберите токены</h3>
+                        <p class="exchange-step-desc">Выберите сеть, токен для отправки и токен для получения. Укажите сумму обмена.</p>
+                    </div>
+
+                    <div class="exchange-step-card">
+                        <div class="exchange-step-number">3</div>
+                        <div class="exchange-step-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="exchange-step-title">Подтвердите Approve</h3>
+                        <p class="exchange-step-desc">Разрешите смарт-контракту доступ к вашим токенам. Это разовая операция для каждого токена.</p>
+                    </div>
+
+                    <div class="exchange-step-card">
+                        <div class="exchange-step-number">4</div>
+                        <div class="exchange-step-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                <path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18457 2.99721 7.13633 4.39828 5.49707C5.79935 3.85782 7.69279 2.71538 9.79619 2.24015C11.8996 1.76491 14.1003 1.98234 16.07 2.86" stroke="currentColor" stroke-width="2"/>
+                                <path d="M22 4L12 14.01L9 11.01" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="exchange-step-title">Выполните Swap</h3>
+                        <p class="exchange-step-desc">Подтвердите транзакцию в кошельке. Токены поступят на ваш адрес после подтверждения в сети.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- БЛОК: Отзывы -->
+            <section class="reviews" data-block="reviews">
+                <div class="block-label">REVIEWS</div>
+                <h2 class="section-title" data-element="section-title">
+                    <span class="element-label">Section Title</span>
+                    Отзывы клиентов
+                </h2>
+                <div class="reviews-grid" data-element="reviews-grid">
+                    <span class="element-label">Reviews Grid</span>
+
+                    <div class="review-card" data-element="review-card">
+                        <span class="element-label">Review Card</span>
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://ui-avatars.com/api/?name=VT&background=6366f1&color=fff&size=40" alt="Avatar">
+                            </div>
+                            <div class="review-author">
+                                <div class="review-name">Виктор Т.</div>
+                                <div class="review-date">19.03.2026</div>
+                            </div>
+                            <div class="review-rating">
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                        <p class="review-text">Отличный DEX агрегатор. Свапнул ETH на USDT через Uniswap — курс был лучше чем напрямую. Gas тоже оптимизирован.</p>
+                        <div class="review-pair">ETH → USDT (Ethereum)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://ui-avatars.com/api/?name=NB&background=ec4899&color=fff&size=40" alt="Avatar">
+                            </div>
+                            <div class="review-author">
+                                <div class="review-name">Наталья Б.</div>
+                                <div class="review-date">17.03.2026</div>
+                            </div>
+                            <div class="review-rating">
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                        <p class="review-text">Пользуюсь для свопов на BSC. PancakeSwap через агрегатор даёт лучшую цену за счёт разбивки по пулам. Рекомендую.</p>
+                        <div class="review-pair">BNB → USDT (BSC)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://ui-avatars.com/api/?name=SK&background=22c55e&color=fff&size=40" alt="Avatar">
+                            </div>
+                            <div class="review-author">
+                                <div class="review-name">Сергей К.</div>
+                                <div class="review-date">15.03.2026</div>
+                            </div>
+                            <div class="review-rating">
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star empty">*</span>
+                            </div>
+                        </div>
+                        <p class="review-text">Удобно что поддерживает Arbitrum. Газ копеечный, свопы проходят моментально. Интерфейс простой и понятный.</p>
+                        <div class="review-pair">WETH → ARB (Arbitrum)</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://ui-avatars.com/api/?name=LD&background=f59e0b&color=fff&size=40" alt="Avatar">
+                            </div>
+                            <div class="review-author">
+                                <div class="review-name">Леонид Д.</div>
+                                <div class="review-date">12.03.2026</div>
+                            </div>
+                            <div class="review-rating">
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                        <p class="review-text">Наконец-то нормальный агрегатор с поддержкой Polygon. Свопнул MATIC на USDC — минимальный slippage и быстрое исполнение.</p>
+                        <div class="review-pair">MATIC → USDC (Polygon)</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- БЛОК: Футер -->
+    <footer class="footer" data-block="footer">
+        <div class="container">
+            <div class="block-label">FOOTER</div>
+            <div class="footer-content">
+                <div class="footer-section" data-element="footer-column">
+                    <span class="element-label">Footer Column</span>
+                    <h4 class="footer-title">CryptoExchange</h4>
+                    <p class="footer-text">Надежный криптообменник с 2026 года</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">TG</a>
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">X</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Сервисы</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Обмен валют</a></li>
+                        <li><a href="index-fiat.html">Фиат обмен</a></li>
+                        <li><a href="index-dex.html">DEX обмен</a></li>
+                        <li><a href="#">Партнерская программа</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Информация</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="how-it-works.html">Как это работает</a></li>
+                        <li><a href="terms.html">Правила использования</a></li>
+                        <li><a href="aml.html">AML регламент</a></li>
+                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Поддержка</h4>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">support@cryptoexchange.com</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Партнеры -->
+            <div class="partners-section" data-block="partners">
+                <div class="block-label">PARTNERS</div>
+                <h4 class="partners-title">Наши партнеры</h4>
+                <div class="partners-grid" data-element="partners-grid">
+                    <span class="element-label">Partners Grid</span>
+                    <div class="partner-logo" data-element="partner-logo">
+                        <span class="element-label">Partner Logo</span>
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+1" alt="Partner 1">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+2" alt="Partner 2">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+3" alt="Partner 3">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+4" alt="Partner 4">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+5" alt="Partner 5">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://via.placeholder.com/120x40/333/666?text=Partner+6" alt="Partner 6">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO перелинковка (DEX) -->
+            <div class="seo-links-section" data-block="seo-links">
+                <div class="block-label">SEO LINKS</div>
+                <div class="seo-links-grid" data-element="seo-links-grid">
+                    <span class="element-label">SEO Links Grid</span>
+
+                    <div class="seo-column" data-element="seo-column">
+                        <span class="element-label">SEO Column</span>
+                        <h4 class="seo-title">Swap Ethereum</h4>
+                        <ul class="seo-list">
+                            <li><a href="#">Swap ETH to USDT</a></li>
+                            <li><a href="#">Swap ETH to USDC</a></li>
+                            <li><a href="#">Swap ETH to DAI</a></li>
+                            <li><a href="#">Swap ETH to WBTC</a></li>
+                            <li><a href="#">Swap ETH to UNI</a></li>
+                            <li><a href="#">Swap ETH to LINK</a></li>
+                            <li><a href="#">Swap ETH to AAVE</a></li>
+                            <li><a href="#">Swap USDT to ETH</a></li>
+                            <li><a href="#">Swap USDC to ETH</a></li>
+                            <li><a href="#">Swap WBTC to ETH</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="seo-column">
+                        <h4 class="seo-title">Swap BNB Chain</h4>
+                        <ul class="seo-list">
+                            <li><a href="#">Swap BNB to USDT</a></li>
+                            <li><a href="#">Swap BNB to BUSD</a></li>
+                            <li><a href="#">Swap BNB to CAKE</a></li>
+                            <li><a href="#">Swap USDT to BNB</a></li>
+                            <li><a href="#">Swap BNB to ETH</a></li>
+                            <li><a href="#">Swap BNB to USDC</a></li>
+                            <li><a href="#">Swap CAKE to BNB</a></li>
+                            <li><a href="#">Swap BNB to XRP</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="seo-column">
+                        <h4 class="seo-title">Swap L2 Networks</h4>
+                        <ul class="seo-list">
+                            <li><a href="#">Swap MATIC to USDC (Polygon)</a></li>
+                            <li><a href="#">Swap MATIC to USDT (Polygon)</a></li>
+                            <li><a href="#">Swap ETH to USDC (Arbitrum)</a></li>
+                            <li><a href="#">Swap ETH to ARB (Arbitrum)</a></li>
+                            <li><a href="#">Swap ETH to OP (Optimism)</a></li>
+                            <li><a href="#">Swap ETH to USDC (Optimism)</a></li>
+                            <li><a href="#">Swap AVAX to USDT (Avalanche)</a></li>
+                            <li><a href="#">Swap AVAX to USDC (Avalanche)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom" data-element="footer-copyright">
+                <span class="element-label">Copyright</span>
+                <p>&copy; 2026 CryptoExchange. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

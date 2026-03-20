@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заявки (Фиат) - Криптообменник</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- БЛОК: Шапка сайта -->
+    <header class="header" data-block="header">
+        <div class="container">
+            <div class="block-label">HEADER</div>
+            <div class="header-content">
+                <div class="logo" data-element="logo">
+                    <span class="element-label">Logo</span>
+                    <a href="index.html">CryptoExchange</a>
+                </div>
+
+                <nav class="nav" data-element="navigation">
+                    <span class="element-label">Navigation</span>
+                    <div class="nav-dropdown" data-element="nav-dropdown">
+                        <span class="element-label">Dropdown Menu</span>
+                        <button class="nav-link nav-dropdown-toggle active" id="exchange-dropdown">
+                            Обмен
+                            <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="nav-dropdown-menu" id="exchange-dropdown-menu">
+                            <a href="#" class="nav-dropdown-item">Крипта на крипту</a>
+                            <a href="#" class="nav-dropdown-item active">Фиат на крипту / Крипта на фиат</a>
+                            <a href="#" class="nav-dropdown-item">Наличные</a>
+                            <a href="#" class="nav-dropdown-item">DEX</a>
+                        </div>
+                    </div>
+                    <a href="aml-check.html" class="nav-link">Проверить AML</a>
+                    <a href="how-it-works.html" class="nav-link">Как совершить обмен</a>
+                    <a href="about.html" class="nav-link">О нас</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                </nav>
+
+                <div class="header-settings" data-element="header-settings">
+                    <span class="element-label">Settings</span>
+                    <button class="theme-toggle" data-element="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                        <span class="element-label">Theme Toggle</span>
+                        <svg class="theme-icon theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <svg class="theme-icon theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    <div class="language-toggle" data-element="language-toggle">
+                        <span class="element-label">Language Toggle</span>
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
+
+                <div class="header-actions" data-element="header-buttons">
+                    <span class="element-label">Actions</span>
+                    <button class="btn btn-secondary">Войти</button>
+                    <button class="btn btn-primary">Регистрация</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- БЛОК: Основной контент -->
+    <main class="main">
+        <div class="container">
+
+            <!-- БЛОК: Индикатор шагов (6 шагов — фиат поток) -->
+            <section class="steps-indicator" data-block="steps-indicator">
+                <div class="block-label">STEPS INDICATOR</div>
+                <div class="steps" data-element="steps">
+                    <span class="element-label">Steps (6-step Fiat Flow)</span>
+                    <div class="step completed">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Выбор валют</div>
+                    </div>
+                    <div class="step active">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Ввод данных</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Верификация</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Оплата</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-label">Обработка</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-label">Завершено</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- ВАРИАНТ 1: ФИАТ → КРИПТА (покупка крипты)   -->
+            <!-- ============================================ -->
+            <div class="order-layout" data-block="order-layout-fiat-buy">
+                <div class="block-label">ORDER LAYOUT — ФИАТ → КРИПТА</div>
+
+                <!-- Левая колонка: Форма ввода данных -->
+                <div class="order-form-section" data-element="order-form-fiat-buy">
+                    <span class="element-label">Order Form (Fiat → Crypto)</span>
+
+                    <div class="order-card">
+                        <h2 class="order-card-title">Данные для обмена</h2>
+                        <p class="fiat-flow-label">Направление: Фиат → Крипта (покупка)</p>
+
+                        <form class="order-form">
+                            <!-- Блок: Реквизиты банковской карты (откуда списываем) -->
+                            <div class="fiat-card-section" data-element="fiat-card-section">
+                                <span class="element-label">Bank Card Details</span>
+                                <div class="form-section-title">Банковская карта (списание)</div>
+
+                                <!-- Номер карты -->
+                                <div class="form-group" data-element="form-field">
+                                    <span class="element-label">Card Number</span>
+                                    <label class="form-label">
+                                        Номер карты
+                                        <span class="form-required">*</span>
+                                    </label>
+                                    <div class="fiat-card-input-wrapper">
+                                        <div class="fiat-card-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                                <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                                                <path d="M2 10H22" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <input type="text" class="form-input fiat-card-number" placeholder="0000 0000 0000 0000" maxlength="19">
+                                    </div>
+                                    <div class="form-hint">Visa, Mastercard, МИР</div>
+                                </div>
+
+                                <!-- Имя владельца -->
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        Имя владельца карты
+                                        <span class="form-required">*</span>
+                                    </label>
+                                    <input type="text" class="form-input" placeholder="IVAN IVANOV" style="text-transform: uppercase;">
+                                    <div class="form-hint">Как указано на карте (латиницей)</div>
+                                </div>
+
+                                <!-- Банк -->
+                                <div class="form-group">
+                                    <label class="form-label">Банк</label>
+                                    <div class="form-select-wrapper">
+                                        <select class="form-input form-select">
+                                            <option>Сбербанк</option>
+                                            <option>Тинькофф</option>
+                                            <option>Альфа-Банк</option>
+                                            <option>ВТБ</option>
+                                            <option>Газпромбанк</option>
+                                            <option>Райффайзен</option>
+                                            <option>Другой</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <!-- Блок: Адрес кошелька для получения крипты -->
+                            <div class="form-group" data-element="form-field">
+                                <span class="element-label">Crypto Wallet</span>
+                                <label class="form-label">
+                                    Адрес кошелька для получения BTC
+                                    <span class="form-required">*</span>
+                                </label>
+                                <input type="text" class="form-input" placeholder="Введите адрес кошелька" required>
+                                <div class="form-hint">Сеть: Bitcoin (BTC)</div>
+                            </div>
+
+                            <!-- MEMO -->
+                            <div class="form-group">
+                                <label class="form-label">MEMO / Тег / Комментарий</label>
+                                <input type="text" class="form-input" placeholder="Введите MEMO, если требуется">
+                                <div class="memo-checkbox-wrapper">
+                                    <label class="memo-checkbox-label">
+                                        <input type="checkbox" class="memo-checkbox-input">
+                                        <span class="memo-checkbox-text">MEMO не требуется</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label class="form-label">
+                                    Email для уведомлений
+                                    <span class="form-required">*</span>
+                                </label>
+                                <input type="email" class="form-input" placeholder="example@mail.com" required>
+                                <div class="form-hint">Мы отправим информацию о заявке на этот email</div>
+                            </div>
+
+                            <!-- Telegram -->
+                            <div class="form-group">
+                                <label class="form-label">Telegram (опционально)</label>
+                                <input type="text" class="form-input" placeholder="@username или номер телефона">
+                            </div>
+
+                            <!-- Промокод -->
+                            <div class="form-group">
+                                <label class="form-label">Промокод (опционально)</label>
+                                <div class="promo-input-group">
+                                    <input type="text" class="form-input" placeholder="Введите промокод">
+                                    <button type="button" class="btn btn-secondary">Применить</button>
+                                </div>
+                            </div>
+
+                            <!-- Согласие -->
+                            <div class="form-checkbox" data-element="form-checkbox">
+                                <span class="element-label">Checkbox</span>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="checkbox-input" required checked>
+                                    <span class="checkbox-text">
+                                        Я согласен с
+                                        <a href="terms.html" class="agreement-link">правилами обмена</a> и
+                                        <a href="aml.html" class="agreement-link">AML регламентом</a>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <!-- Кнопка -->
+                            <button type="submit" class="btn btn-primary btn-large" data-element="submit-button">
+                                <span class="element-label">Submit Button</span>
+                                Создать заявку на обмен
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Правая колонка: Детали заявки -->
+                <div class="order-details-section" data-element="order-details">
+                    <span class="element-label">Order Details</span>
+
+                    <div class="order-card">
+                        <h3 class="order-card-title">Детали заявки</h3>
+
+                        <!-- Таймер обновления курса -->
+                        <div class="rate-refresh" data-element="rate-refresh">
+                            <span class="element-label">Rate Refresh</span>
+                            <div class="rate-refresh-content">
+                                <svg class="rate-refresh-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3.51 15C4.15839 16.8404 5.38734 18.4202 7.01166 19.4896C8.63598 20.5591 10.5677 21.0629 12.5157 20.9261C14.4637 20.7893 16.3084 20.0198 17.7672 18.7346C19.226 17.4493 20.2184 15.7178 20.5962 13.8068C20.974 11.8958 20.7169 9.91456 19.862 8.16661C19.007 6.41866 17.6025 5.00078 15.8628 4.12916C14.1232 3.25754 12.1443 2.98152 10.2291 3.34075C8.31398 3.69998 6.57154 4.67462 5.27 6.12L1 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="rate-refresh-text">Курс обновится через <strong class="rate-refresh-timer">60</strong> сек</span>
+                            </div>
+                            <div class="rate-refresh-bar">
+                                <div class="rate-refresh-bar-fill"></div>
+                            </div>
+                        </div>
+
+                        <!-- Направление обмена -->
+                        <div class="exchange-direction" data-element="exchange-direction">
+                            <span class="element-label">Exchange Direction</span>
+                            <div class="exchange-pair">
+                                <div class="exchange-currency">
+                                    <div class="fiat-currency-icon">
+                                        <span>₽</span>
+                                    </div>
+                                    <div class="currency-info">
+                                        <div class="currency-name">Российский рубль</div>
+                                        <div class="currency-amount">50,000.00 RUB</div>
+                                    </div>
+                                </div>
+                                <div class="exchange-arrow">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="exchange-currency">
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" class="currency-icon-large">
+                                    <div class="currency-info">
+                                        <div class="currency-name">Bitcoin</div>
+                                        <div class="currency-amount">0.00534200 BTC</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <!-- Информация о заявке -->
+                        <div class="order-info" data-element="order-info">
+                            <span class="element-label">Order Info</span>
+
+                            <div class="info-row">
+                                <span class="info-label">Тип курса:</span>
+                                <span class="info-value">Плавающий</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">Способ оплаты:</span>
+                                <span class="info-value">Банковская карта</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">Валюта оплаты:</span>
+                                <span class="info-value">RUB (Рубль)</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">Сеть получения:</span>
+                                <span class="info-value">Bitcoin (BTC)</span>
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <div class="info-row info-row-total">
+                                <span class="info-label">Вы получите:</span>
+                                <span class="info-value-large">0.00534200 BTC</span>
+                            </div>
+                        </div>
+
+                        <!-- Предупреждение -->
+                        <div class="warning-box" data-element="warning-box">
+                            <span class="element-label">Warning</span>
+                            <svg class="warning-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2L2 17H18L10 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M10 8V12M10 14V14.5" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="warning-content">
+                                <div class="warning-title">Внимание!</div>
+                                <div class="warning-text">
+                                    При обмене фиат на крипту требуется верификация банковской карты и/или личности. Убедитесь, что карта оформлена на ваше имя.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Информационное сообщение -->
+                        <div class="info-message" data-element="fiat-info">
+                            <span class="element-label">Fiat Info</span>
+                            <svg class="info-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 16V12M12 8H12.01" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="info-text">
+                                После создания заявки вы перейдёте к этапу верификации. Верификация требуется при каждом обмене с участием фиатных валют.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- ВАРИАНТ 2: КРИПТА → ФИАТ (продажа крипты)   -->
+            <!-- ============================================ -->
+            <div class="order-layout" data-block="order-layout-fiat-sell" style="margin-top: 60px;">
+                <div class="block-label">ORDER LAYOUT — КРИПТА → ФИАТ</div>
+
+                <!-- Левая колонка: Форма ввода данных -->
+                <div class="order-form-section" data-element="order-form-fiat-sell">
+                    <span class="element-label">Order Form (Crypto → Fiat)</span>
+
+                    <div class="order-card">
+                        <h2 class="order-card-title">Данные для обмена</h2>
+                        <p class="fiat-flow-label">Направление: Крипта → Фиат (продажа)</p>
+
+                        <form class="order-form">
+                            <!-- Блок: Реквизиты банковской карты (куда зачисляем) -->
+                            <div class="fiat-card-section" data-element="fiat-card-section">
+                                <span class="element-label">Bank Card Details</span>
+                                <div class="form-section-title">Банковская карта (зачисление)</div>
+
+                                <!-- Номер карты -->
+                                <div class="form-group" data-element="form-field">
+                                    <span class="element-label">Card Number</span>
+                                    <label class="form-label">
+                                        Номер карты для получения
+                                        <span class="form-required">*</span>
+                                    </label>
+                                    <div class="fiat-card-input-wrapper">
+                                        <div class="fiat-card-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                                <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                                                <path d="M2 10H22" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <input type="text" class="form-input fiat-card-number" placeholder="0000 0000 0000 0000" maxlength="19">
+                                    </div>
+                                    <div class="form-hint">Visa, Mastercard, МИР</div>
+                                </div>
+
+                                <!-- Имя владельца -->
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        Имя владельца карты
+                                        <span class="form-required">*</span>
+                                    </label>
+                                    <input type="text" class="form-input" placeholder="IVAN IVANOV" style="text-transform: uppercase;">
+                                    <div class="form-hint">Как указано на карте (латиницей)</div>
+                                </div>
+
+                                <!-- Банк -->
+                                <div class="form-group">
+                                    <label class="form-label">Банк</label>
+                                    <div class="form-select-wrapper">
+                                        <select class="form-input form-select">
+                                            <option>Сбербанк</option>
+                                            <option>Тинькофф</option>
+                                            <option>Альфа-Банк</option>
+                                            <option>ВТБ</option>
+                                            <option>Газпромбанк</option>
+                                            <option>Райффайзен</option>
+                                            <option>Другой</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label class="form-label">
+                                    Email для уведомлений
+                                    <span class="form-required">*</span>
+                                </label>
+                                <input type="email" class="form-input" placeholder="example@mail.com" required>
+                                <div class="form-hint">Мы отправим информацию о заявке на этот email</div>
+                            </div>
+
+                            <!-- Telegram -->
+                            <div class="form-group">
+                                <label class="form-label">Telegram (опционально)</label>
+                                <input type="text" class="form-input" placeholder="@username или номер телефона">
+                            </div>
+
+                            <!-- Промокод -->
+                            <div class="form-group">
+                                <label class="form-label">Промокод (опционально)</label>
+                                <div class="promo-input-group">
+                                    <input type="text" class="form-input" placeholder="Введите промокод">
+                                    <button type="button" class="btn btn-secondary">Применить</button>
+                                </div>
+                            </div>
+
+                            <!-- Согласие -->
+                            <div class="form-checkbox" data-element="form-checkbox">
+                                <span class="element-label">Checkbox</span>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="checkbox-input" required checked>
+                                    <span class="checkbox-text">
+                                        Я согласен с
+                                        <a href="terms.html" class="agreement-link">правилами обмена</a> и
+                                        <a href="aml.html" class="agreement-link">AML регламентом</a>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <!-- Кнопка -->
+                            <button type="submit" class="btn btn-primary btn-large" data-element="submit-button">
+                                <span class="element-label">Submit Button</span>
+                                Создать заявку на обмен
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Правая колонка: Детали заявки -->
+                <div class="order-details-section" data-element="order-details">
+                    <span class="element-label">Order Details</span>
+
+                    <div class="order-card">
+                        <h3 class="order-card-title">Детали заявки</h3>
+
+                        <!-- Таймер обновления курса -->
+                        <div class="rate-refresh" data-element="rate-refresh">
+                            <span class="element-label">Rate Refresh</span>
+                            <div class="rate-refresh-content">
+                                <svg class="rate-refresh-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3.51 15C4.15839 16.8404 5.38734 18.4202 7.01166 19.4896C8.63598 20.5591 10.5677 21.0629 12.5157 20.9261C14.4637 20.7893 16.3084 20.0198 17.7672 18.7346C19.226 17.4493 20.2184 15.7178 20.5962 13.8068C20.974 11.8958 20.7169 9.91456 19.862 8.16661C19.007 6.41866 17.6025 5.00078 15.8628 4.12916C14.1232 3.25754 12.1443 2.98152 10.2291 3.34075C8.31398 3.69998 6.57154 4.67462 5.27 6.12L1 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="rate-refresh-text">Курс обновится через <strong class="rate-refresh-timer">60</strong> сек</span>
+                            </div>
+                            <div class="rate-refresh-bar">
+                                <div class="rate-refresh-bar-fill"></div>
+                            </div>
+                        </div>
+
+                        <!-- Направление обмена -->
+                        <div class="exchange-direction" data-element="exchange-direction">
+                            <span class="element-label">Exchange Direction</span>
+                            <div class="exchange-pair">
+                                <div class="exchange-currency">
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" class="currency-icon-large">
+                                    <div class="currency-info">
+                                        <div class="currency-name">Bitcoin</div>
+                                        <div class="currency-amount">0.01 BTC</div>
+                                    </div>
+                                </div>
+                                <div class="exchange-arrow">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="exchange-currency">
+                                    <div class="fiat-currency-icon">
+                                        <span>₽</span>
+                                    </div>
+                                    <div class="currency-info">
+                                        <div class="currency-name">Российский рубль</div>
+                                        <div class="currency-amount">93,640.00 RUB</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <!-- Информация о заявке -->
+                        <div class="order-info" data-element="order-info">
+                            <span class="element-label">Order Info</span>
+
+                            <div class="info-row">
+                                <span class="info-label">Тип курса:</span>
+                                <span class="info-value">Плавающий</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">Способ получения:</span>
+                                <span class="info-value">Банковская карта</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">Сеть отдачи:</span>
+                                <span class="info-value">Bitcoin (BTC)</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">Валюта получения:</span>
+                                <span class="info-value">RUB (Рубль)</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">Подтверждений:</span>
+                                <span class="info-value">3 подтверждения</span>
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <div class="info-row info-row-total">
+                                <span class="info-label">Вы получите:</span>
+                                <span class="info-value-large">93,640.00 RUB</span>
+                            </div>
+                        </div>
+
+                        <!-- Предупреждение -->
+                        <div class="warning-box" data-element="warning-box">
+                            <span class="element-label">Warning</span>
+                            <svg class="warning-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2L2 17H18L10 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M10 8V12M10 14V14.5" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="warning-content">
+                                <div class="warning-title">Внимание!</div>
+                                <div class="warning-text">
+                                    Зачисление средств на карту происходит в течение 15 минут после подтверждения транзакции в сети. Карта должна быть оформлена на ваше имя.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Информационное сообщение -->
+                        <div class="info-message" data-element="fiat-info">
+                            <span class="element-label">Fiat Info</span>
+                            <svg class="info-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 16V12M12 8H12.01" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <div class="info-text">
+                                При продаже крипты за фиат вам потребуется отправить криптовалюту на указанный адрес. После подтверждения транзакции средства будут зачислены на вашу банковскую карту.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- БЛОК: Футер -->
+    <footer class="footer" data-block="footer">
+        <div class="container">
+            <div class="block-label">FOOTER</div>
+            <div class="footer-content">
+                <div class="footer-section" data-element="footer-column">
+                    <span class="element-label">Footer Column</span>
+                    <h4 class="footer-title">CryptoExchange</h4>
+                    <p class="footer-text">Надежный криптообменник с 2026 года</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">TG</a>
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">X</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Сервисы</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Обмен валют</a></li>
+                        <li><a href="#">Партнерская программа</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Информация</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="how-it-works.html">Как это работает</a></li>
+                        <li><a href="terms.html">Правила использования</a></li>
+                        <li><a href="aml.html">AML регламент</a></li>
+                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Поддержка</h4>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">support@cryptoexchange.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" data-element="footer-copyright">
+                <span class="element-label">Copyright</span>
+                <p>&copy; 2026 CryptoExchange. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

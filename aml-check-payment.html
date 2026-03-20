@@ -80,116 +80,306 @@
                 <!-- Навигация назад + заголовок -->
                 <div class="aml-payment-header" data-element="aml-payment-header">
                     <span class="element-label">Payment Header</span>
-                    <a href="aml-check.html" class="aml-back-link">← Назад</a>
+                    <a href="aml-check.html" class="aml-back-link">&larr; Назад</a>
                     <div class="aml-payment-title-row">
                         <h1 class="aml-check-title">Оплата проверки</h1>
-                        <span class="aml-price-badge">$1.50</span>
                     </div>
                 </div>
 
-                <!-- Карточка оплаты -->
-                <div class="aml-check-card" data-block="aml-payment-form">
-                    <div class="block-label">PAYMENT FORM</div>
+                <!-- Выбор количества проверок -->
+                <div class="aml-check-card" data-block="aml-quantity-select">
+                    <div class="block-label">QUANTITY SELECT</div>
 
-                    <!-- Выбор сети оплаты -->
-                    <div class="form-group" data-element="payment-network">
-                        <span class="element-label">Payment Network</span>
-                        <label class="form-label">Сеть оплаты</label>
-                        <div class="aml-network-grid">
-                            <button class="aml-network-card active">
-                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" width="24" height="24">
-                                Bitcoin
-                            </button>
-                            <button class="aml-network-card">
-                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png" alt="ETH" width="24" height="24">
-                                Ethereum
-                            </button>
-                            <button class="aml-network-card">
-                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png" alt="BNB" width="24" height="24">
-                                BSC
-                            </button>
-                            <button class="aml-network-card">
-                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1958.png" alt="TRX" width="24" height="24">
-                                Tron
-                            </button>
-                        </div>
-                    </div>
+                    <div class="form-group" data-element="quantity-select">
+                        <span class="element-label">Quantity Select</span>
+                        <label class="form-label">Количество проверок</label>
 
-                    <!-- Выбор монеты -->
-                    <div class="form-group" data-element="payment-coin">
-                        <span class="element-label">Payment Coin</span>
-                        <label class="form-label">Монета</label>
-                        <div class="aml-coin-grid">
-                            <button class="aml-network-card active">
-                                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" width="24" height="24">
-                                BTC
-                            </button>
-                        </div>
-                    </div>
+                        <div class="aml-packages-grid">
+                            <div class="aml-package-card active" data-element="package-card">
+                                <span class="element-label">Package Card</span>
+                                <div class="aml-package-count">1</div>
+                                <div class="aml-package-label">проверка</div>
+                                <div class="aml-package-price">$1.50</div>
+                            </div>
 
-                    <div class="divider"></div>
+                            <div class="aml-package-card" data-element="package-card">
+                                <span class="element-label">Package Card</span>
+                                <div class="aml-package-count">5</div>
+                                <div class="aml-package-label">проверок</div>
+                                <div class="aml-package-price">$5.00</div>
+                                <div class="aml-package-per">$1.00 / шт</div>
+                            </div>
 
-                    <!-- Детали оплаты -->
-                    <div class="aml-payment-details" data-element="payment-details">
-                        <span class="element-label">Payment Details</span>
+                            <div class="aml-package-card" data-element="package-card">
+                                <span class="element-label">Package Card</span>
+                                <div class="aml-package-badge">Популярный</div>
+                                <div class="aml-package-count">10</div>
+                                <div class="aml-package-label">проверок</div>
+                                <div class="aml-package-price">$8.00</div>
+                                <div class="aml-package-per">$0.80 / шт</div>
+                            </div>
 
-                        <!-- QR код -->
-                        <div class="aml-payment-qr" data-element="payment-qr">
-                            <span class="element-label">QR Code</span>
-                            <div class="qr-placeholder">
-                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
-                                    <rect x="2" y="2" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                                    <rect x="14" y="2" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                                    <rect x="2" y="14" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                                    <rect x="14" y="14" width="4" height="4" stroke="currentColor" stroke-width="1.5"/>
-                                    <rect x="18" y="18" width="4" height="4" stroke="currentColor" stroke-width="1.5"/>
-                                </svg>
-                                <span>QR-код</span>
+                            <div class="aml-package-card" data-element="package-card">
+                                <span class="element-label">Package Card</span>
+                                <div class="aml-package-save">-40%</div>
+                                <div class="aml-package-count">25</div>
+                                <div class="aml-package-label">проверок</div>
+                                <div class="aml-package-price">$17.50</div>
+                                <div class="aml-package-per">$0.70 / шт</div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- Таймер -->
-                        <div class="aml-payment-timer" data-element="payment-timer">
-                            <span class="element-label">Payment Timer</span>
-                            <p class="aml-timer-text">Оплатите в течение <strong>15:00</strong></p>
+                <!-- Способ оплаты -->
+                <div class="aml-check-card" data-block="aml-payment-method">
+                    <div class="block-label">PAYMENT METHOD</div>
+
+                    <!-- Табы способа оплаты -->
+                    <div class="aml-payment-tabs" data-element="payment-tabs">
+                        <span class="element-label">Payment Tabs</span>
+                        <button class="aml-payment-tab active">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M8 12L12 8L16 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M12 8V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            Криптовалюта
+                        </button>
+                        <button class="aml-payment-tab">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <rect x="1" y="4" width="22" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M1 10H23" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Банковская карта
+                        </button>
+                        <button class="aml-payment-tab">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Баланс проверок
+                        </button>
+                    </div>
+
+                    <!-- =============================== -->
+                    <!-- ТАБ 1: Оплата криптовалютой     -->
+                    <!-- =============================== -->
+                    <div class="aml-payment-tab-content active" data-element="tab-crypto">
+                        <span class="element-label">Tab: Crypto Payment</span>
+
+                        <!-- Итого -->
+                        <div class="aml-buy-selected" data-element="payment-summary">
+                            <span class="element-label">Payment Summary</span>
+                            <div class="aml-buy-selected-info">
+                                <span class="aml-buy-selected-label">К оплате:</span>
+                                <span class="aml-buy-selected-value">1 проверка</span>
+                            </div>
+                            <span class="aml-price-badge">$1.50</span>
                         </div>
 
-                        <!-- Адрес -->
-                        <div class="form-group">
-                            <label class="form-label">Адрес для оплаты</label>
-                            <div class="address-field" data-element="payment-address">
-                                <span class="element-label">Payment Address</span>
-                                <span class="address-value">bc1qxy2kgdgcl2rke7ytzqfmplelhes034j7q5s3gp</span>
-                                <button class="copy-btn">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
+                        <div class="divider"></div>
+
+                        <!-- Выбор сети оплаты -->
+                        <div class="form-group" data-element="payment-network">
+                            <span class="element-label">Payment Network</span>
+                            <label class="form-label">Сеть оплаты</label>
+                            <div class="aml-network-grid">
+                                <button class="aml-network-card active">
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" width="24" height="24">
+                                    Bitcoin
+                                </button>
+                                <button class="aml-network-card">
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png" alt="ETH" width="24" height="24">
+                                    Ethereum
+                                </button>
+                                <button class="aml-network-card">
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png" alt="BNB" width="24" height="24">
+                                    BSC
+                                </button>
+                                <button class="aml-network-card">
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1958.png" alt="TRX" width="24" height="24">
+                                    Tron
                                 </button>
                             </div>
                         </div>
 
-                        <!-- Сумма -->
-                        <div class="form-group">
-                            <label class="form-label">Сумма к оплате</label>
-                            <div class="address-field" data-element="payment-amount">
-                                <span class="element-label">Payment Amount</span>
-                                <span class="address-value">0.00001612 BTC</span>
-                                <button class="copy-btn">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
+                        <!-- Выбор монеты -->
+                        <div class="form-group" data-element="payment-coin">
+                            <span class="element-label">Payment Coin</span>
+                            <label class="form-label">Монета</label>
+                            <div class="aml-coin-grid">
+                                <button class="aml-network-card active">
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" width="24" height="24">
+                                    BTC
                                 </button>
                             </div>
                         </div>
 
+                        <div class="divider"></div>
+
+                        <!-- Детали оплаты -->
+                        <div class="aml-payment-details" data-element="payment-details">
+                            <span class="element-label">Payment Details</span>
+
+                            <!-- QR код -->
+                            <div class="aml-payment-qr" data-element="payment-qr">
+                                <span class="element-label">QR Code</span>
+                                <div class="qr-placeholder">
+                                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
+                                        <rect x="2" y="2" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                        <rect x="14" y="2" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                        <rect x="2" y="14" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                        <rect x="14" y="14" width="4" height="4" stroke="currentColor" stroke-width="1.5"/>
+                                        <rect x="18" y="18" width="4" height="4" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                    <span>QR-код</span>
+                                </div>
+                            </div>
+
+                            <!-- Таймер -->
+                            <div class="aml-payment-timer" data-element="payment-timer">
+                                <span class="element-label">Payment Timer</span>
+                                <p class="aml-timer-text">Оплатите в течение <strong>15:00</strong></p>
+                            </div>
+
+                            <!-- Адрес -->
+                            <div class="form-group">
+                                <label class="form-label">Адрес для оплаты</label>
+                                <div class="address-field" data-element="payment-address">
+                                    <span class="element-label">Payment Address</span>
+                                    <span class="address-value">bc1qxy2kgdgcl2rke7ytzqfmplelhes034j7q5s3gp</span>
+                                    <button class="copy-btn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Сумма -->
+                            <div class="form-group">
+                                <label class="form-label">Сумма к оплате</label>
+                                <div class="address-field" data-element="payment-amount">
+                                    <span class="element-label">Payment Amount</span>
+                                    <span class="address-value">0.00001612 BTC</span>
+                                    <button class="copy-btn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Предупреждение -->
+                        <div class="info-message" data-element="payment-warning">
+                            <span class="element-label">Warning</span>
+                            <p>Отправьте точную сумму одним переводом. Средства, отправленные по неправильному адресу, не могут быть возвращены.</p>
+                        </div>
                     </div>
 
-                    <!-- Предупреждение -->
-                    <div class="info-message" data-element="payment-warning">
-                        <span class="element-label">Warning</span>
-                        <p>Отправьте точную сумму одним переводом. Средства, отправленные по неправильному адресу, не могут быть возвращены.</p>
+                    <!-- =============================== -->
+                    <!-- ТАБ 2: Оплата банковской картой -->
+                    <!-- =============================== -->
+                    <div class="aml-payment-tab-content" data-element="tab-fiat">
+                        <span class="element-label">Tab: Fiat Payment</span>
+
+                        <!-- Итого -->
+                        <div class="aml-buy-selected" data-element="payment-summary-fiat">
+                            <span class="element-label">Payment Summary</span>
+                            <div class="aml-buy-selected-info">
+                                <span class="aml-buy-selected-label">К оплате:</span>
+                                <span class="aml-buy-selected-value">1 проверка</span>
+                            </div>
+                            <span class="aml-price-badge">135 ₽</span>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <!-- Форма оплаты картой -->
+                        <form class="aml-fiat-form" data-element="fiat-form">
+                            <span class="element-label">Card Form</span>
+
+                            <div class="form-group">
+                                <label class="form-label">Номер карты</label>
+                                <input type="text" class="form-input" placeholder="0000 0000 0000 0000">
+                            </div>
+
+                            <div class="aml-fiat-form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Срок действия</label>
+                                    <input type="text" class="form-input" placeholder="MM / ГГ">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">CVV</label>
+                                    <input type="text" class="form-input" placeholder="000">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Имя владельца карты</label>
+                                <input type="text" class="form-input" placeholder="IVAN IVANOV">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Email для чека</label>
+                                <input type="email" class="form-input" placeholder="email@example.com">
+                            </div>
+
+                            <button type="button" class="btn btn-primary btn-full">Оплатить 135 ₽</button>
+                        </form>
+
+                        <div class="info-message" data-element="fiat-info">
+                            <span class="element-label">Info</span>
+                            <p>Оплата обрабатывается через защищённый платёжный шлюз. Данные вашей карты не сохраняются на нашем сервере.</p>
+                        </div>
+                    </div>
+
+                    <!-- =============================== -->
+                    <!-- ТАБ 3: Оплата с баланса         -->
+                    <!-- =============================== -->
+                    <div class="aml-payment-tab-content" data-element="tab-balance">
+                        <span class="element-label">Tab: Balance Payment</span>
+
+                        <!-- Текущий баланс -->
+                        <div class="aml-balance-card" data-element="balance-info">
+                            <span class="element-label">Balance Info</span>
+                            <div class="aml-balance-info">
+                                <div class="aml-balance-icon">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="aml-balance-text">
+                                    <div class="aml-balance-label">Доступно проверок</div>
+                                    <div class="aml-balance-value">7</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Сколько будет списано -->
+                        <div class="aml-balance-summary" data-element="balance-summary">
+                            <span class="element-label">Balance Summary</span>
+                            <div class="aml-balance-summary-row">
+                                <span class="aml-balance-summary-label">Будет списано:</span>
+                                <span class="aml-balance-summary-value">1 проверка</span>
+                            </div>
+                            <div class="aml-balance-summary-row">
+                                <span class="aml-balance-summary-label">Останется:</span>
+                                <span class="aml-balance-summary-value">6 проверок</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-full">Использовать проверку с баланса</button>
+
+                        <div class="info-message" data-element="balance-info-msg">
+                            <span class="element-label">Info</span>
+                            <p>Проверка будет выполнена мгновенно. Результат появится на странице и будет отправлен на указанный email.</p>
+                        </div>
                     </div>
 
                 </div>
