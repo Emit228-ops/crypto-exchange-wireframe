@@ -3738,6 +3738,402 @@ a {
 
 
 /* ==========================================
+   СТРАНИЦА AML ПРОВЕРКИ
+   ========================================== */
+
+.aml-check-layout {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) 0;
+}
+
+.aml-check-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.aml-check-icon {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.aml-check-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.aml-check-subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+}
+
+.aml-check-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Табы */
+
+.aml-check-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.aml-check-tab {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.aml-check-tab.active {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+/* Поле ввода с кнопкой */
+
+.aml-input-with-btn {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.aml-input-with-btn .form-input {
+    flex: 1;
+}
+
+.aml-paste-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.aml-paste-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* Стоимость */
+
+.aml-check-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.aml-price-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.aml-price-value {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+/* Оплата — заголовок */
+
+.aml-payment-header {
+    margin-bottom: var(--spacing-xl);
+}
+
+.aml-back-link {
+    display: inline-block;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.aml-back-link:hover {
+    text-decoration: underline;
+}
+
+.aml-payment-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+.aml-price-badge {
+    background: var(--color-primary);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+}
+
+/* Оплата — сетка сетей/монет */
+
+.aml-network-grid,
+.aml-coin-grid {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.aml-network-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.aml-network-card:hover {
+    border-color: var(--color-primary);
+}
+
+.aml-network-card.active {
+    border-color: var(--color-primary);
+    background: rgba(59, 130, 246, 0.05);
+}
+
+/* Оплата — детали */
+
+.aml-payment-details {
+    text-align: center;
+}
+
+.aml-payment-qr {
+    margin-bottom: var(--spacing-md);
+}
+
+.aml-payment-timer {
+    margin-bottom: var(--spacing-lg);
+}
+
+.aml-timer-text {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+}
+
+/* Результаты — ID */
+
+.aml-result-id-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.aml-result-id-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: 4px;
+}
+
+.aml-result-id-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.aml-result-id-value {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+.aml-result-id-date {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+/* Результаты — Risk Score */
+
+.aml-risk-header {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+}
+
+.aml-risk-score-large {
+    margin-bottom: var(--spacing-lg);
+}
+
+.aml-risk-percent {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    display: block;
+}
+
+.aml-risk-label {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    display: block;
+    margin-top: 4px;
+}
+
+.aml-risk--low { color: var(--color-success); }
+.aml-risk--medium { color: var(--color-warning); }
+.aml-risk--high { color: var(--color-error); }
+
+.aml-risk-bar {
+    height: 12px;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: var(--spacing-xs);
+}
+
+.aml-risk-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.5s;
+}
+
+.aml-risk-bar--low { background: var(--color-success); }
+.aml-risk-bar--medium { background: var(--color-warning); }
+.aml-risk-bar--high { background: var(--color-error); }
+
+.aml-risk-bar-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+/* Результаты — секции */
+
+.aml-section-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.info-value-copy {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+/* Результаты — происхождение средств */
+
+.aml-source-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.aml-source-group:last-child {
+    margin-bottom: 0;
+}
+
+.aml-source-group-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.aml-source-group-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.aml-source-group--low .aml-source-group-dot { background: var(--color-success); }
+.aml-source-group--medium .aml-source-group-dot { background: var(--color-warning); }
+.aml-source-group--high .aml-source-group-dot { background: var(--color-error); }
+
+.aml-source-group-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.aml-source-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.aml-source-item {
+    display: grid;
+    grid-template-columns: 160px 1fr 50px;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.aml-source-name {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.aml-source-bar-wrapper {
+    height: 8px;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.aml-source-bar {
+    height: 100%;
+    border-radius: var(--radius-full);
+    min-width: 2px;
+}
+
+.aml-source-bar--low { background: var(--color-success); }
+.aml-source-bar--medium { background: var(--color-warning); }
+.aml-source-bar--high { background: var(--color-error); }
+
+.aml-source-percent {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-align: right;
+}
+
+/* Результаты — кнопки */
+
+.aml-result-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+}
+
+
+/* ==========================================
    СТРАНИЦА БЛОГА
    ========================================== */
 
@@ -4052,6 +4448,14 @@ a {
 }
 
 @media (max-width: 768px) {
+    .aml-source-item {
+        grid-template-columns: 120px 1fr 45px;
+    }
+
+    .aml-network-grid {
+        flex-wrap: wrap;
+    }
+
     .blog-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -4238,6 +4642,32 @@ a {
 }
 
 @media (max-width: 480px) {
+    .aml-check-layout {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .aml-check-title {
+        font-size: var(--font-size-xl);
+    }
+
+    .aml-source-item {
+        grid-template-columns: 100px 1fr 40px;
+        font-size: var(--font-size-xs);
+    }
+
+    .aml-result-actions {
+        flex-direction: column;
+    }
+
+    .aml-input-with-btn {
+        flex-direction: column;
+    }
+
+    .aml-payment-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .blog-grid {
         grid-template-columns: 1fr;
     }

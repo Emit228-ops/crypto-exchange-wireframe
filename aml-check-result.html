@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты AML проверки - Криптообменник</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- БЛОК: Шапка сайта -->
+    <header class="header" data-block="header">
+        <div class="container">
+            <div class="block-label">HEADER</div>
+            <div class="header-content">
+                <div class="logo" data-element="logo">
+                    <span class="element-label">Logo</span>
+                    <a href="index.html">CryptoExchange</a>
+                </div>
+
+                <nav class="nav" data-element="navigation">
+                    <span class="element-label">Navigation</span>
+                    <div class="nav-dropdown" data-element="nav-dropdown">
+                        <span class="element-label">Dropdown Menu</span>
+                        <button class="nav-link nav-dropdown-toggle" id="exchange-dropdown">
+                            Обмен
+                            <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="nav-dropdown-menu" id="exchange-dropdown-menu">
+                            <a href="#" class="nav-dropdown-item">Крипта на крипту</a>
+                            <a href="#" class="nav-dropdown-item">Фиат на крипту / Крипта на фиат</a>
+                            <a href="#" class="nav-dropdown-item">Наличные</a>
+                            <a href="#" class="nav-dropdown-item">DEX</a>
+                        </div>
+                    </div>
+                    <a href="aml-check.html" class="nav-link active">Проверить AML</a>
+                    <a href="how-it-works.html" class="nav-link">Как совершить обмен</a>
+                    <a href="about.html" class="nav-link">О нас</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                </nav>
+
+                <div class="header-settings" data-element="header-settings">
+                    <span class="element-label">Settings</span>
+                    <button class="theme-toggle" data-element="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                        <span class="element-label">Theme Toggle</span>
+                        <svg class="theme-icon theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <svg class="theme-icon theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    <div class="language-toggle" data-element="language-toggle">
+                        <span class="element-label">Language Toggle</span>
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
+
+                <div class="header-actions" data-element="header-buttons">
+                    <span class="element-label">Actions</span>
+                    <button class="btn btn-secondary">Войти</button>
+                    <button class="btn btn-primary">Регистрация</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- БЛОК: Основной контент -->
+    <main class="main">
+        <div class="container">
+
+            <div class="aml-check-layout" data-block="aml-check-result-layout">
+                <div class="block-label">AML CHECK RESULT</div>
+
+                <!-- Заголовок -->
+                <div class="aml-check-header" data-element="result-header">
+                    <span class="element-label">Result Header</span>
+                    <div class="aml-check-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h1 class="aml-check-title">Результаты проверки</h1>
+                </div>
+
+                <!-- ID проверки -->
+                <div class="aml-result-id-card" data-element="result-id">
+                    <span class="element-label">Check ID</span>
+                    <div class="aml-result-id-row">
+                        <span class="aml-result-id-label">ID ПРОВЕРКИ:</span>
+                        <span class="aml-result-id-value">AML-20260312-847629</span>
+                        <button class="copy-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="aml-result-id-date">12 марта 2026, 14:15</span>
+                </div>
+
+                <!-- Risk Score -->
+                <div class="aml-check-card" data-block="risk-score-block">
+                    <div class="block-label">RISK SCORE</div>
+
+                    <div class="aml-risk-header" data-element="risk-score-display">
+                        <span class="element-label">Risk Score Display</span>
+                        <div class="aml-risk-score-large aml-risk--medium">
+                            <span class="aml-risk-percent">59.2%</span>
+                            <span class="aml-risk-label">Средний риск</span>
+                        </div>
+                        <div class="aml-risk-bar">
+                            <div class="aml-risk-bar-fill aml-risk-bar--medium" style="width: 59.2%"></div>
+                        </div>
+                        <div class="aml-risk-bar-labels">
+                            <span>0%</span>
+                            <span>25%</span>
+                            <span>50%</span>
+                            <span>75%</span>
+                            <span>100%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Информация о проверке -->
+                <div class="aml-check-card" data-block="check-info">
+                    <div class="block-label">CHECK INFO</div>
+
+                    <h2 class="aml-section-title" data-element="section-title">
+                        <span class="element-label">Section Title</span>
+                        Информация о проверке
+                    </h2>
+
+                    <div class="aml-info-grid" data-element="check-details">
+                        <span class="element-label">Check Details</span>
+
+                        <div class="info-row">
+                            <span class="info-label">Тип проверки</span>
+                            <span class="info-value">Входящая транзакция</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Хеш транзакции</span>
+                            <div class="info-value info-value-copy">
+                                <span class="aml-address">7a8b3f2e...d4c1a9b5</span>
+                                <button class="copy-btn">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Сумма USD</span>
+                            <span class="info-value">$6,986</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Сумма криптовалюты</span>
+                            <span class="info-value">0.09996 BTC</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Отправитель</span>
+                            <div class="info-value info-value-copy">
+                                <span class="aml-address">bc1qxy2kgd...m7vl3q</span>
+                                <button class="copy-btn">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Получатель</span>
+                            <div class="info-value info-value-copy">
+                                <span class="aml-address">bc1qw508d...0wpjn9</span>
+                                <button class="copy-btn">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Блокчейн</span>
+                            <span class="info-value">Bitcoin</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Дата перевода</span>
+                            <span class="info-value">12 марта 2026, 14:15</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Происхождение средств -->
+                <div class="aml-check-card" data-block="funds-origin">
+                    <div class="block-label">FUNDS ORIGIN</div>
+
+                    <h2 class="aml-section-title" data-element="section-title">
+                        <span class="element-label">Section Title</span>
+                        Происхождение средств
+                    </h2>
+
+                    <!-- Легальные источники -->
+                    <div class="aml-source-group" data-element="sources-legal">
+                        <span class="element-label">Legal Sources</span>
+                        <div class="aml-source-group-header aml-source-group--low">
+                            <span class="aml-source-group-dot"></span>
+                            <span class="aml-source-group-title">Легальные источники</span>
+                        </div>
+                        <div class="aml-source-list">
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Биржа</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--low" style="width: 82.6%"></div>
+                                </div>
+                                <span class="aml-source-percent">82.6%</span>
+                            </div>
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Остаток</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--low" style="width: 1.5%"></div>
+                                </div>
+                                <span class="aml-source-percent">1.5%</span>
+                            </div>
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Майнинг</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--low" style="width: 0.8%"></div>
+                                </div>
+                                <span class="aml-source-percent">0.8%</span>
+                            </div>
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Другое</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--low" style="width: 0.7%"></div>
+                                </div>
+                                <span class="aml-source-percent">0.7%</span>
+                            </div>
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Платежный провайдер</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--low" style="width: 0.4%"></div>
+                                </div>
+                                <span class="aml-source-percent">0.4%</span>
+                            </div>
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Горячий кошелек</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--low" style="width: 0.4%"></div>
+                                </div>
+                                <span class="aml-source-percent">0.4%</span>
+                            </div>
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Майнинг-пул</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--low" style="width: 0.3%"></div>
+                                </div>
+                                <span class="aml-source-percent">0.3%</span>
+                            </div>
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">P2P-биржа</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--low" style="width: 0.2%"></div>
+                                </div>
+                                <span class="aml-source-percent">0.2%</span>
+                            </div>
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Криптоматы</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--low" style="width: 0.2%"></div>
+                                </div>
+                                <span class="aml-source-percent">0.2%</span>
+                            </div>
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Мост</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--low" style="width: 0.1%"></div>
+                                </div>
+                                <span class="aml-source-percent">0.1%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Средний риск -->
+                    <div class="aml-source-group" data-element="sources-medium">
+                        <span class="element-label">Medium Risk Sources</span>
+                        <div class="aml-source-group-header aml-source-group--medium">
+                            <span class="aml-source-group-dot"></span>
+                            <span class="aml-source-group-title">Средний риск</span>
+                        </div>
+                        <div class="aml-source-list">
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Высокорисковая биржа</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--medium" style="width: 9.8%"></div>
+                                </div>
+                                <span class="aml-source-percent">9.8%</span>
+                            </div>
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Азартные игры</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--medium" style="width: 1.1%"></div>
+                                </div>
+                                <span class="aml-source-percent">1.1%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Высокий риск -->
+                    <div class="aml-source-group" data-element="sources-high">
+                        <span class="element-label">High Risk Sources</span>
+                        <div class="aml-source-group-header aml-source-group--high">
+                            <span class="aml-source-group-dot"></span>
+                            <span class="aml-source-group-title">Высокий риск</span>
+                        </div>
+                        <div class="aml-source-list">
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Миксер</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--high" style="width: 0.9%"></div>
+                                </div>
+                                <span class="aml-source-percent">0.9%</span>
+                            </div>
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Даркнет-продажи</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--high" style="width: 0.5%"></div>
+                                </div>
+                                <span class="aml-source-percent">0.5%</span>
+                            </div>
+                            <div class="aml-source-item">
+                                <span class="aml-source-name">Незаконная деятельность</span>
+                                <div class="aml-source-bar-wrapper">
+                                    <div class="aml-source-bar aml-source-bar--high" style="width: 0.5%"></div>
+                                </div>
+                                <span class="aml-source-percent">0.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Кнопки -->
+                <div class="aml-result-actions" data-element="result-actions">
+                    <span class="element-label">Result Actions</span>
+                    <button class="btn btn-primary">Скачать отчёт</button>
+                    <a href="aml-check.html" class="btn btn-secondary">Новая проверка</a>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- БЛОК: Футер -->
+    <footer class="footer" data-block="footer">
+        <div class="container">
+            <div class="block-label">FOOTER</div>
+            <div class="footer-content">
+                <div class="footer-section" data-element="footer-column">
+                    <span class="element-label">Footer Column</span>
+                    <h4 class="footer-title">CryptoExchange</h4>
+                    <p class="footer-text">Надежный криптообменник с 2026 года</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">TG</a>
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">X</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Сервисы</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Обмен валют</a></li>
+                        <li><a href="#">Партнерская программа</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Информация</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="how-it-works.html">Как это работает</a></li>
+                        <li><a href="terms.html">Правила использования</a></li>
+                        <li><a href="aml.html">AML регламент</a></li>
+                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Поддержка</h4>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">support@cryptoexchange.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" data-element="footer-copyright">
+                <span class="element-label">Copyright</span>
+                <p>&copy; 2026 CryptoExchange. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

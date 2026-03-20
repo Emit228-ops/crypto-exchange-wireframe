@@ -22,6 +22,9 @@
 | privacy.html | Политика конфиденциальности |
 | blog.html | Блог (список SEO-статей) |
 | blog-article.html | Шаблон статьи блога |
+| aml-check.html | AML проверка (форма) |
+| aml-check-payment.html | Оплата AML проверки |
+| aml-check-result.html | Результаты AML проверки |
 | styles.css | Стили и CSS-переменные |
 | script.js | Интерактивность |
 
@@ -419,6 +422,71 @@ ARTICLE LAYOUT
 FOOTER (идентичен главной)
 ```
 
+## HTML структура: aml-check.html
+
+```
+HEADER (идентичен главной, ссылка "Проверить AML" активна)
+
+AML CHECK LAYOUT
+├── AML Check Header (иконка, заголовок, подзаголовок)
+└── AML CHECK FORM
+    ├── Tabs (Адрес / Транзакция)
+    ├── Network Select (dropdown)
+    ├── Coin Select (dropdown)
+    ├── Wallet Address + Paste Button
+    ├── Email Field
+    ├── Check Price ($1.50)
+    └── Submit Button ("Проверить")
+
+FOOTER (идентичен главной)
+```
+
+## HTML структура: aml-check-payment.html
+
+```
+HEADER (идентичен главной, ссылка "Проверить AML" активна)
+
+AML CHECK PAYMENT
+├── Payment Header (← Назад, заголовок, бейдж $1.50)
+└── PAYMENT FORM
+    ├── Payment Network (карточки: Bitcoin, Ethereum, BSC, Tron)
+    ├── Payment Coin (карточки)
+    ├── Divider
+    ├── Payment Details
+    │   ├── QR Code (placeholder)
+    │   ├── Timer (15:00)
+    │   ├── Payment Address + Copy
+    │   └── Payment Amount + Copy
+    └── Warning Message
+
+FOOTER (идентичен главной)
+```
+
+## HTML структура: aml-check-result.html
+
+```
+HEADER (идентичен главной, ссылка "Проверить AML" активна)
+
+AML CHECK RESULT
+├── Result Header (иконка, заголовок)
+├── Check ID Card (ID + copy, дата)
+├── RISK SCORE
+│   ├── Score Display (процент, текст уровня)
+│   ├── Progress Bar
+│   └── Scale Labels (0–100%)
+├── CHECK INFO
+│   ├── Section Title
+│   └── Info Grid (тип, хеш, суммы, отправитель, получатель, блокчейн, дата)
+├── FUNDS ORIGIN
+│   ├── Section Title
+│   ├── Legal Sources (зелёный, 10 строк с прогресс-барами)
+│   ├── Medium Risk Sources (жёлтый, 2 строки)
+│   └── High Risk Sources (красный, 3 строки)
+└── Result Actions ("Скачать отчёт", "Новая проверка")
+
+FOOTER (идентичен главной)
+```
+
 ## Атрибуты разметки
 
 ### Блоки (data-block)
@@ -449,6 +517,14 @@ FOOTER (идентичен главной)
 | blog-layout | blog | Layout списка статей |
 | blog-grid | blog | Сетка карточек статей |
 | article-layout | blog-article | Layout страницы статьи |
+| aml-check-layout | aml-check | Layout формы AML проверки |
+| aml-check-form | aml-check | Форма AML проверки |
+| aml-check-payment-layout | aml-check-payment | Layout оплаты AML |
+| aml-payment-form | aml-check-payment | Форма оплаты AML |
+| aml-check-result-layout | aml-check-result | Layout результатов AML |
+| risk-score-block | aml-check-result | Блок Risk Score |
+| check-info | aml-check-result | Информация о проверке |
+| funds-origin | aml-check-result | Происхождение средств |
 | footer | все | Футер |
 | partners | index | Партнёры |
 | seo-links | index | SEO-перелинковка |
@@ -489,6 +565,12 @@ FOOTER (идентичен главной)
 
 **blog-article.html:** breadcrumbs, article-header, article-image, article-content, article-callout, article-tags, article-nav, article-cta.
 
+**aml-check.html:** aml-check-header, aml-check-tabs, network-select, coin-select, wallet-address, email-field, check-price.
+
+**aml-check-payment.html:** aml-payment-header, payment-network, payment-coin, payment-details, payment-qr, payment-timer, payment-address, payment-amount, payment-warning.
+
+**aml-check-result.html:** result-header, result-id, risk-score-display, section-title, check-details, sources-legal, sources-medium, sources-high, result-actions.
+
 ## CSS переменные (styles.css, блок :root)
 
 | Группа | Переменные |
@@ -521,3 +603,4 @@ FOOTER (идентичен главной)
 | .dashboard-layout | Sidebar + контент (grid 260px 1fr) | dashboard |
 | .blog-layout | По центру (max-width 1100px) | blog |
 | .article-layout | По центру (max-width 800px) | blog-article |
+| .aml-check-layout | По центру (max-width 600px) | aml-check, aml-check-payment, aml-check-result |
