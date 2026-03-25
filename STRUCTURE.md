@@ -25,6 +25,8 @@
 | blog-article.html | Шаблон статьи блога |
 | exchange-order-fiat.html | Оформление заявки (фиат) |
 | exchange-payment-fiat.html | Оплата заявки (фиат) |
+| index-cash.html | Главная страница (наличный обмен) |
+| exchange-order-cash.html | Оформление заявки (наличные) |
 | index-dex.html | Главная страница DEX (децентрализованный обмен) |
 | aml-check.html | AML проверка (форма) |
 | aml-check-payment.html | Оплата AML проверки (крипта / карта / баланс) |
@@ -224,6 +226,107 @@ ORDER LAYOUT — КРИПТА → ФИАТ
     ├── Order Info (курс, способ получения, сумма)
     ├── Warning Box
     └── Info Message
+
+FOOTER (идентичен главной)
+```
+
+## HTML структура: index-cash.html
+
+```
+HEADER (идентичен главной, "Наличные" активен в dropdown)
+
+HERO SECTION
+├── Hero Text
+│   ├── Заголовок: "Обмен криптовалюты за наличные"
+│   ├── Подзаголовок
+│   └── Conditions Badges
+│       ├── Фиксация курса (при бронировании)
+│       ├── Верификация (требуется паспорт)
+│       └── Минимальная сумма (зависит от города)
+├── Exchange Form (Cash)
+│   ├── Form Title: "Обмен за наличные"
+│   ├── Direction Tabs (Купить / Продать)
+│   ├── Send Field (наличные RUB, выбор города)
+│   ├── Switch Button
+│   ├── Receive Field (крипта BTC, выбор сети)
+│   ├── Agreement Checkbox
+│   ├── Rate Refresh (таймер 60 сек)
+│   └── Submit Button ("Купить BTC за наличные")
+
+SEO TEXT — текст о наличном обмене
+
+POPULAR DIRECTIONS (CASH) — 6 карточек
+├── Наличные → BTC
+├── Наличные → USDT
+├── Наличные → ETH
+├── BTC → Наличные
+├── USDT → Наличные
+└── ETH → Наличные
+
+EXCHANGE STEPS (CASH) — 4 шага
+├── Выберите валюту и город
+├── Забронируйте визит
+├── Посетите офис
+└── Получите средства
+
+REVIEWS — 4 карточки отзывов о наличных обменах
+
+FOOTER (идентичен главной)
+├── Partners
+└── SEO Links (Купить за наличные, Продать за наличные, Города обмена)
+```
+
+## HTML структура: exchange-order-cash.html
+
+```
+HEADER (идентичен главной, "Наличные" активен в dropdown)
+
+STEPS INDICATOR (5 шагов — наличный поток)
+├── Выбор валют [completed]
+├── Ввод данных [active]
+├── Бронирование
+├── Визит в офис
+└── Завершено
+
+CASH DIRECTION TABS (Наличные → Крипта / Крипта → Наличные)
+
+ORDER LAYOUT — НАЛИЧНЫЕ → КРИПТА
+├── Order Form (Cash → Crypto)
+│   ├── City Section
+│   │   ├── City Select (Москва, СПб, Новосибирск, Казань, Екатеринбург)
+│   │   └── Office Notice (адрес после верификации)
+│   ├── Crypto Wallet Address
+│   ├── MEMO
+│   ├── Telegram (required)
+│   ├── Email
+│   ├── Promo Code
+│   ├── Agreement Checkbox
+│   └── Submit Button ("Забронировать визит")
+└── Order Details
+    ├── Rate Refresh (таймер 60 сек)
+    ├── Exchange Direction (₽ Наличные → BTC)
+    ├── Order Info (курс, способ оплаты, город, сумма)
+    ├── Min Amount Badge (10,000 ₽)
+    ├── Warning Box (наличные + паспорт)
+    └── Info Message (бронирование)
+
+ORDER LAYOUT — КРИПТА → НАЛИЧНЫЕ
+├── Order Form (Crypto → Cash)
+│   ├── City Section
+│   │   ├── City Select
+│   │   └── Office Notice (адрес после верификации)
+│   ├── Telegram (required)
+│   ├── Email
+│   ├── Promo Code
+│   ├── Agreement Checkbox
+│   └── Submit Button ("Забронировать визит")
+└── Order Details
+    ├── Rate Refresh
+    ├── Exchange Direction (BTC → ₽ Наличные)
+    ├── Order Info (курс, сеть отдачи, город, сумма)
+    ├── Min Amount Badge (10,000 ₽)
+    ├── Warning Box (отправка крипты + визит)
+    └── Info Message (выдача наличных)
 
 FOOTER (идентичен главной)
 ```
@@ -716,6 +819,12 @@ FOOTER (идентичен главной)
 | risk-score-block | aml-check-result | Блок Risk Score |
 | check-info | aml-check-result | Информация о проверке |
 | funds-origin | aml-check-result | Происхождение средств |
+| exchange-form-cash | index-cash | Форма обмена (наличные) |
+| popular-directions-cash | index-cash | Популярные направления (наличные) |
+| exchange-steps-cash | index-cash | Шаги обмена (наличные) |
+| order-layout-cash-buy | exchange-order-cash | Layout заявки наличные → крипта |
+| order-layout-cash-sell | exchange-order-cash | Layout заявки крипта → наличные |
+| cash-direction-tabs | exchange-order-cash | Табы направления наличного обмена |
 | dex-swap-form | index-dex | Виджет DEX обмена (LI.FI) |
 | exchange-steps-dex | index-dex | Шаги DEX обмена |
 | footer | все | Футер |
@@ -763,6 +872,10 @@ FOOTER (идентичен главной)
 **aml-check-payment.html:** aml-payment-header, quantity-select, package-card, payment-tabs, tab-crypto, payment-summary, payment-network, payment-coin, payment-details, payment-qr, payment-timer, payment-address, payment-amount, payment-warning, tab-fiat, payment-summary-fiat, fiat-form, fiat-info, tab-balance, balance-info, balance-summary, balance-info-msg.
 
 **aml-check-result.html:** result-header, result-id, risk-score-display, section-title, check-details, sources-legal, sources-medium, sources-high, result-actions.
+
+**index-cash.html:** hero-text, conditions-badges, condition-badge, cash-form-tabs, send-field-cash, cash-currency-select, city-select, switch-button, receive-field-crypto, network-select, agreement-checkbox, rate-refresh, submit-button, seo-text-content, section-title, directions-grid, direction-card, exchange-steps-grid, step-card, reviews-grid, review-card, partners-grid, partner-logo, seo-links-grid, seo-column.
+
+**exchange-order-cash.html:** steps, order-form-cash-buy, order-form-cash-sell, order-details, cash-city-section, office-notice, form-field, form-checkbox, rate-refresh, exchange-direction, order-info, cash-min-amount, warning-box, cash-info, submit-button.
 
 **index-dex.html:** hero-text, condition-badge, lifi-widget-container, widget-info, step-card, seo-links-grid, seo-column.
 

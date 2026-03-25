@@ -5829,3 +5829,173 @@ a {
         height: 36px;
     }
 }
+
+/* ==========================================
+   СТРАНИЦЫ НАЛИЧНОГО ОБМЕНА
+   ========================================== */
+
+/* Секция выбора города и офиса */
+.cash-city-section {
+    position: relative;
+}
+
+.cash-city-section .form-section-title {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Карточка офиса */
+.cash-office-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.cash-office-name {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.cash-office-address,
+.cash-office-hours,
+.cash-office-phone {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.cash-office-address svg,
+.cash-office-hours svg,
+.cash-office-phone svg {
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+}
+
+.cash-office-phone span {
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+/* Плейсхолдер карты */
+.cash-map-placeholder {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    background-color: var(--color-bg-tertiary);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-md);
+}
+
+.cash-map-text {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.cash-map-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+/* Иконка наличной валюты */
+.cash-currency-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-bg-tertiary);
+    border: 2px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+}
+
+/* Бейдж минимальной суммы */
+.cash-min-amount {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-top: var(--spacing-md);
+}
+
+.cash-min-amount svg {
+    color: var(--color-warning);
+    flex-shrink: 0;
+}
+
+.cash-min-amount strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+/* Тёмная тема — наличный обмен */
+[data-theme="dark"] .cash-office-card {
+    background: var(--color-bg-dark);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .cash-map-placeholder {
+    background: var(--color-bg-dark);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .cash-currency-icon {
+    background: var(--color-bg-dark);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .cash-min-amount {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+/* Адаптивность — наличный обмен */
+@media (max-width: 768px) {
+    .cash-map-placeholder {
+        height: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cash-currency-icon {
+        width: 32px;
+        height: 32px;
+        font-size: var(--font-size-lg);
+    }
+
+    .cash-office-card {
+        padding: var(--spacing-md);
+    }
+
+    .cash-map-placeholder {
+        height: 120px;
+    }
+}
